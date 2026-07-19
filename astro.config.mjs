@@ -71,7 +71,7 @@ export default defineConfig({
         {
           label: '版本变更历史记录',
           slug: 'changelog',
-          badge: { text: 'v1.19.6', variant: 'note' },
+          badge: { text: 'v1.19.7', variant: 'note' },
         },
       ],
     }),

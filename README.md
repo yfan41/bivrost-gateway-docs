@@ -1,6 +1,6 @@
 # 彼络物联网关 说明书（文档站）
 
-基于 [Starlight](https://starlight.astro.build/)（Astro）的《彼络物联网关 说明书》在线文档，内容对应说明书 **v1.19.6**，截图取自当前版本的网关 Web 管理页面。
+基于 [Starlight](https://starlight.astro.build/)（Astro）的《彼络物联网关 说明书》在线文档，内容对应说明书 **v1.19.7**，截图取自当前版本的网关 Web 管理页面。
 
 ## 开发
 
