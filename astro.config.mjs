@@ -3,12 +3,19 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightLinksValidator from 'starlight-links-validator';
 import remarkHeadingId from 'remark-heading-id';
+import rehypeBasePath from './src/plugins/rehype-base-path.mjs';
+
+const base = '/docs/gateway';
 
 export default defineConfig({
-  site: 'https://docs.bivrost.cn',
+  site: 'https://bivrost.cn',
+  base,
   markdown: {
     // Support Docusaurus-style explicit heading anchors: ## 标题 {#anchor}
     remarkPlugins: [remarkHeadingId],
+    // Content uses root-absolute links/images (e.g. `/usage/login/`); rewrite
+    // them to account for `base` so they still resolve under the subpath.
+    rehypePlugins: [[rehypeBasePath, { base }]],
   },
   integrations: [
     starlight({
