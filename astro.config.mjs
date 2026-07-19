@@ -5,7 +5,7 @@ import starlightLinksValidator from 'starlight-links-validator';
 import remarkHeadingId from 'remark-heading-id';
 
 export default defineConfig({
-  site: 'https://docs.bivrost.cn',
+  site: 'https://gateway.docs.bivrost.cn',
   markdown: {
     // Support Docusaurus-style explicit heading anchors: ## 标题 {#anchor}
     remarkPlugins: [remarkHeadingId],
