@@ -4,11 +4,53 @@ import starlight from '@astrojs/starlight';
 import starlightLinksValidator from 'starlight-links-validator';
 import remarkHeadingId from 'remark-heading-id';
 
+// The manual is served under a subpath: https://docs.bivrost.cn/gateway/.
+const base = '/gateway';
+// Prefix used to rebase hand-authored root-absolute links (see plugin below):
+// the base with any trailing slash removed.
+const basePrefix = base.replace(/\/+$/, '');
+
+// The docs author internal links and images as root-absolute paths
+// (e.g. [x](/usage/network/), ![](/img/manual/...)). Astro/Starlight only rebase
+// their OWN generated URLs (assets, sidebar, relative links) under a non-root
+// `base`; hand-authored absolute paths are left untouched and would 404 once
+// served from /gateway. This rehype plugin prefixes them with the base at build
+// time so the site works under the subfolder and the links validator stays green.
+// (Mirrors the hast plugin in the protocol-docs repo, adapted to rehype since this
+// repo uses the default markdown processor rather than satteri.)
+function rehypeRebaseAbsoluteLinks() {
+  return (/** @type {any} */ tree) => {
+    /** @param {any} node */
+    const walk = (node) => {
+      if (
+        node.type === 'element' &&
+        (node.tagName === 'a' || node.tagName === 'img')
+      ) {
+        const key = node.tagName === 'img' ? 'src' : 'href';
+        const url = node.properties?.[key];
+        if (
+          typeof url === 'string' &&
+          url.startsWith('/') &&
+          !url.startsWith('//') && // protocol-relative → external, leave alone
+          !url.startsWith(basePrefix + '/') &&
+          url !== basePrefix
+        ) {
+          node.properties[key] = basePrefix + url;
+        }
+      }
+      if (node.children) for (const child of node.children) walk(child);
+    };
+    walk(tree);
+  };
+}
+
 export default defineConfig({
-  site: 'https://gateway.docs.bivrost.cn',
+  site: 'https://docs.bivrost.cn',
+  base,
   markdown: {
     // Support Docusaurus-style explicit heading anchors: ## 标题 {#anchor}
     remarkPlugins: [remarkHeadingId],
+    rehypePlugins: [rehypeRebaseAbsoluteLinks],
   },
   integrations: [
     starlight({
