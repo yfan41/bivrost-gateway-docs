@@ -35,13 +35,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        # base '/gateway' is hardcoded in astro.config.mjs, so no build env is needed.
-        # pnpm build runs starlight-links-validator; a broken link fails the build
-        # (and the deploy) before anything is uploaded.
-        run: pnpm build
-
-      - name: Deploy over SSH (rsync)
+      - name: Build & deploy over SSH (rsync)
+        # Publishes the manual twice: the latest tree served in place at /gateway/,
+        # and a frozen snapshot at /gateway/v<version>/. DOCS_BASE (read by
+        # astro.config.mjs) rebases each build's URLs; VERSION at the repo root is
+        # the single source of the version. pnpm build runs starlight-links-validator;
+        # a broken link fails the build (and the deploy) before anything is uploaded.
         env:
           SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
@@ -53,6 +52,7 @@ jobs:
           DEPLOY_PATH: /var/www/docs.bivrost.cn/gateway
         run: |
           set -euo pipefail
+          VER="$(cat VERSION)"
           mkdir -p "$HOME/.ssh"
           chmod 700 "$HOME/.ssh"
           printf '%s\n' "$SSH_KEY" > "$HOME/.ssh/deploy_key"
@@ -62,6 +62,17 @@ jobs:
           # can stay on without maintaining a SSH_KNOWN_HOSTS secret.
           ssh-keyscan -p "$PORT" -H "$SSH_HOST" > "$HOME/.ssh/known_hosts" 2>/dev/null
           chmod 644 "$HOME/.ssh/known_hosts"
+          SSH="ssh -i $HOME/.ssh/deploy_key -p ${PORT} -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o StrictHostKeyChecking=yes"
+
+          # 1) Latest — served in place at /gateway/. --exclude keeps --delete from
+          #    wiping the sibling v<version>/ snapshot dirs (no content dir starts
+          #    with /v<digit>).
+          DOCS_BASE=/gateway pnpm build
+          rsync -avz --delete --exclude '/v[0-9]*/' \
+            -e "$SSH" dist/ "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/"
+
+          # 2) Frozen snapshot at /gateway/v<version>/ (isolated subdir, plain --delete).
+          DOCS_BASE="/gateway/v${VER}" pnpm build
+          $SSH "${SSH_USER}@${SSH_HOST}" "mkdir -p '${DEPLOY_PATH}/v${VER}'"
           rsync -avz --delete \
-            -e "ssh -i $HOME/.ssh/deploy_key -p ${PORT} -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o StrictHostKeyChecking=yes" \
-            dist/ "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/"
+            -e "$SSH" dist/ "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/v${VER}/"

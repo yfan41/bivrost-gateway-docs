@@ -1,11 +1,18 @@
 // @ts-check
+import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightLinksValidator from 'starlight-links-validator';
 import remarkHeadingId from 'remark-heading-id';
 
-// The manual is served under a subpath: https://docs.bivrost.cn/gateway/.
-const base = '/gateway';
+// Single source of truth for the doc version (also drives the CI base path and
+// the deploy subdir). See VERSION at the repo root.
+const version = readFileSync(new URL('./VERSION', import.meta.url), 'utf8').trim();
+
+// The manual is served in place at https://docs.bivrost.cn/gateway/ (latest) and
+// as a frozen snapshot at /gateway/v<version>/. CI sets DOCS_BASE per build; the
+// default '/gateway' keeps local dev and a plain `pnpm build` on the latest path.
+const base = process.env.DOCS_BASE || '/gateway';
 // Prefix used to rebase hand-authored root-absolute links (see plugin below):
 // the base with any trailing slash removed.
 const basePrefix = base.replace(/\/+$/, '');
@@ -113,7 +120,7 @@ export default defineConfig({
         {
           label: '版本变更历史记录',
           slug: 'changelog',
-          badge: { text: 'v1.19.7', variant: 'note' },
+          badge: { text: `v${version}`, variant: 'note' },
         },
       ],
     }),
