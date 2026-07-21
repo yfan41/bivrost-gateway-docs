@@ -2,8 +2,8 @@
 import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { satteri } from '@astrojs/markdown-satteri';
 import starlightLinksValidator from 'starlight-links-validator';
-import remarkHeadingId from 'remark-heading-id';
 
 // Single source of truth for the doc version (also drives the CI base path and
 // the deploy subdir). See VERSION at the repo root.
@@ -12,27 +12,29 @@ const version = readFileSync(new URL('./VERSION', import.meta.url), 'utf8').trim
 // The manual is served in place at https://docs.bivrost.cn/gateway/ (latest) and
 // as a frozen snapshot at /gateway/v<version>/. CI sets DOCS_BASE per build; the
 // default '/gateway' keeps local dev and a plain `pnpm build` on the latest path.
-const base = process.env.DOCS_BASE || '/gateway';
+const docsBase = process.env.DOCS_BASE || '/gateway';
 // Prefix used to rebase hand-authored root-absolute links (see plugin below):
-// the base with any trailing slash removed.
-const basePrefix = base.replace(/\/+$/, '');
+// '' when serving from root, otherwise the base with any trailing slash removed.
+const basePrefix = docsBase === '/' ? '' : docsBase.replace(/\/+$/, '');
 
 // The docs author internal links and images as root-absolute paths
 // (e.g. [x](/usage/network/), ![](/img/manual/...)). Astro/Starlight only rebase
 // their OWN generated URLs (assets, sidebar, relative links) under a non-root
 // `base`; hand-authored absolute paths are left untouched and would 404 once
-// served from /gateway. This rehype plugin prefixes them with the base at build
+// served from a subfolder. This hast plugin prefixes them with the base at build
 // time so the site works under the subfolder and the links validator stays green.
-// (Mirrors the hast plugin in the protocol-docs repo, adapted to rehype since this
-// repo uses the default markdown processor rather than satteri.)
-function rehypeRebaseAbsoluteLinks() {
-  return (/** @type {any} */ tree) => {
-    /** @param {any} node */
-    const walk = (node) => {
-      if (
-        node.type === 'element' &&
-        (node.tagName === 'a' || node.tagName === 'img')
-      ) {
+// (Same shape as the rebase plugin in the protocol-docs repo.)
+const rebaseAbsoluteLinks = {
+  name: 'rebase-absolute-links',
+  element: [
+    {
+      filter: ['a', 'img'],
+      /**
+       * @param {any} node hast element node (satteri does not type its hastPlugins)
+       * @param {any} ctx satteri visitor context (exposes setProperty)
+       */
+      visit(node, ctx) {
+        if (!basePrefix) return;
         const key = node.tagName === 'img' ? 'src' : 'href';
         const url = node.properties?.[key];
         if (
@@ -42,22 +44,22 @@ function rehypeRebaseAbsoluteLinks() {
           !url.startsWith(basePrefix + '/') &&
           url !== basePrefix
         ) {
-          node.properties[key] = basePrefix + url;
+          ctx.setProperty(node, key, basePrefix + url);
         }
-      }
-      if (node.children) for (const child of node.children) walk(child);
-    };
-    walk(tree);
-  };
-}
+      },
+    },
+  ],
+};
 
 export default defineConfig({
   site: 'https://docs.bivrost.cn',
-  base,
+  base: docsBase,
   markdown: {
-    // Support Docusaurus-style explicit heading anchors: ## 标题 {#anchor}
-    remarkPlugins: [remarkHeadingId],
-    rehypePlugins: [rehypeRebaseAbsoluteLinks],
+    // headingAttributes：支持自定义标题锚点语法 ## 标题 {#anchor}
+    processor: satteri({
+      features: { headingAttributes: true },
+      hastPlugins: [rebaseAbsoluteLinks],
+    }),
   },
   integrations: [
     starlight({

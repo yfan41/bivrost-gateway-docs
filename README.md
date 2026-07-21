@@ -6,14 +6,14 @@
 
 ```bash
 pnpm install
-pnpm dev          # 本地开发服务器（热更新）
+pnpm start        # 本地开发服务器（热更新）
 ```
 
 ## 构建与预览
 
 ```bash
 pnpm build        # 生成静态站点到 dist/（starlight-links-validator 校验所有内部链接与锚点，失败即报错）
-pnpm preview      # 本地预览 dist/ 产物
+pnpm serve        # 本地预览 dist/ 产物
 ```
 
 ## 目录结构
@@ -26,7 +26,7 @@ pnpm preview      # 本地预览 dist/ 产物
 
 ## 写作约定
 
-- 标题锚点使用 `## 标题 {#anchor}` 语法（由 `remark-heading-id` 支持），与说明书 PDF 的编号锚点保持一致
+- 标题锚点使用 `## 标题 {#anchor}` 语法（由 satteri 的 `headingAttributes` 支持），与说明书 PDF 的编号锚点保持一致
 - 提示框使用 Starlight aside 语法：`:::note[注]` / `:::caution[注意]`（不支持 `:::info`，用 `note` 代替）
 - 页面标题由 frontmatter `title` 渲染为 H1，正文中不要再写 `#` 一级标题
 
