@@ -1,11 +1,18 @@
 ---
 import Default from '@astrojs/starlight/components/Footer.astro';
+
+// Starlight sets `Astro.currentLocale` from the route's locale (undefined for
+// the root/简体中文 tree, 'en' under /en/).
+const isEnglish = Astro.currentLocale === 'en';
 ---
 
 <Default><slot /></Default>
 <div class="copyright">
-  © BIVROST TECHONOLOGIES Company Limited / 深圳市彼络科技有限公司 · 说明书
-  v1.19.7 · 联系电话：18824672282
+  {
+    isEnglish
+      ? '© BIVROST TECHONOLOGIES Company Limited · Manual v1.19.7 · Tel: +86 188 2467 2282'
+      : '© BIVROST TECHONOLOGIES Company Limited / 深圳市彼络科技有限公司 · 说明书 v1.19.7 · 联系电话：18824672282'
+  }
 </div>
 
 <style>

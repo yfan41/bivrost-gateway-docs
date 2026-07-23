@@ -63,7 +63,10 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-      title: '彼络物联网关 说明书',
+      title: {
+        'zh-CN': '彼络物联网关 说明书',
+        en: 'Bivrost IoT Gateway Manual',
+      },
       description:
         '数控机床、激光焊接机、机器人、PLC 等设备的数据采集与加工程序传送服务',
       favicon: '/img/favicon.ico',
@@ -71,9 +74,12 @@ export default defineConfig({
         src: './src/assets/logo.png',
         alt: 'Bivrost',
       },
+      // 简体中文 is served at the root (/gateway/...); English lives under
+      // /gateway/en/... with its own content tree in src/content/docs/en/.
       defaultLocale: 'root',
       locales: {
         root: { label: '简体中文', lang: 'zh-CN' },
+        en: { label: 'English', lang: 'en' },
       },
       customCss: ['./src/styles/custom.css'],
       components: {
@@ -82,45 +88,147 @@ export default defineConfig({
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 4 },
       pagination: true,
       plugins: [starlightLinksValidator()],
+      // One tree for both locales: Starlight resolves each `slug` to the entry
+      // of the current locale (e.g. `usage/login` → `en/usage/login`), so only
+      // the labels need translating.
       sidebar: [
-        { label: '产品使用协议', slug: 'license' },
-        { label: '一、简介', link: '/' },
-        { label: '二、配件列表', slug: 'accessories' },
-        { label: '三、基本参数', slug: 'specs' },
-        { label: '四、联网说明', slug: 'networking' },
+        {
+          label: '产品使用协议',
+          translations: { en: 'Product Licence Agreement' },
+          slug: 'license',
+        },
+        {
+          label: '一、简介',
+          translations: { en: '1. Introduction' },
+          slug: 'index',
+        },
+        {
+          label: '二、配件列表',
+          translations: { en: '2. Packing List' },
+          slug: 'accessories',
+        },
+        {
+          label: '三、基本参数',
+          translations: { en: '3. Specifications' },
+          slug: 'specs',
+        },
+        {
+          label: '四、联网说明',
+          translations: { en: '4. Networking' },
+          slug: 'networking',
+        },
         {
           label: '五、网关使用',
+          translations: { en: '5. Using the Gateway' },
           collapsed: false,
           items: [
-            { label: '概述', slug: 'usage' },
-            { label: '5.1. 登录', slug: 'usage/login' },
-            { label: '5.2. 主页', slug: 'usage/home' },
-            { label: '5.3. 机台配置', slug: 'usage/machines' },
-            { label: '5.4. 机组配置', slug: 'usage/groups' },
-            { label: '5.5. 任务配置', slug: 'usage/tasks' },
-            { label: '5.6. 通讯配置', slug: 'usage/communication' },
-            { label: '5.7. 网络配置', slug: 'usage/network' },
-            { label: '5.8. 接口测试', slug: 'usage/api-test' },
-            { label: '5.9. 程序传输', slug: 'usage/file-transfer' },
-            { label: '5.10. 数据分析', slug: 'usage/analysis' },
-            { label: '5.11. 监控台', slug: 'usage/monitor' },
-            { label: '5.12. 设置', slug: 'usage/settings' },
-            { label: '5.13. 其它', slug: 'usage/misc' },
+            {
+              label: '概述',
+              translations: { en: 'Overview' },
+              slug: 'usage',
+            },
+            {
+              label: '5.1. 登录',
+              translations: { en: '5.1. Signing In' },
+              slug: 'usage/login',
+            },
+            {
+              label: '5.2. 主页',
+              translations: { en: '5.2. Home' },
+              slug: 'usage/home',
+            },
+            {
+              label: '5.3. 机台配置',
+              translations: { en: '5.3. Machines' },
+              slug: 'usage/machines',
+            },
+            {
+              label: '5.4. 机组配置',
+              translations: { en: '5.4. Groups' },
+              slug: 'usage/groups',
+            },
+            {
+              label: '5.5. 任务配置',
+              translations: { en: '5.5. Tasks' },
+              slug: 'usage/tasks',
+            },
+            {
+              label: '5.6. 通讯配置',
+              translations: { en: '5.6. Communication' },
+              slug: 'usage/communication',
+            },
+            {
+              label: '5.7. 网络配置',
+              translations: { en: '5.7. Network' },
+              slug: 'usage/network',
+            },
+            {
+              label: '5.8. 接口测试',
+              translations: { en: '5.8. API Test' },
+              slug: 'usage/api-test',
+            },
+            {
+              label: '5.9. 程序传输',
+              translations: { en: '5.9. File Transfer' },
+              slug: 'usage/file-transfer',
+            },
+            {
+              label: '5.10. 数据分析',
+              translations: { en: '5.10. Analysis' },
+              slug: 'usage/analysis',
+            },
+            {
+              label: '5.11. 监控台',
+              translations: { en: '5.11. Monitor' },
+              slug: 'usage/monitor',
+            },
+            {
+              label: '5.12. 设置',
+              translations: { en: '5.12. Settings' },
+              slug: 'usage/settings',
+            },
+            {
+              label: '5.13. 其它',
+              translations: { en: '5.13. Other' },
+              slug: 'usage/misc',
+            },
           ],
         },
         {
           label: '六、补充说明',
+          translations: { en: '6. Appendices' },
           collapsed: true,
           items: [
-            { label: '概述', slug: 'reference' },
-            { label: '6.1. 名词解释', slug: 'reference/glossary' },
-            { label: '6.2. 命令格式', slug: 'reference/command-format' },
+            {
+              label: '概述',
+              translations: { en: 'Overview' },
+              slug: 'reference',
+            },
+            {
+              label: '6.1. 名词解释',
+              translations: { en: '6.1. Glossary' },
+              slug: 'reference/glossary',
+            },
+            {
+              label: '6.2. 命令格式',
+              translations: { en: '6.2. Command Format' },
+              slug: 'reference/command-format',
+            },
           ],
         },
-        { label: '七、常见问题', slug: 'faq' },
-        { label: '八、已知问题', slug: 'known-issues' },
+        {
+          label: '七、常见问题',
+          translations: { en: '7. FAQ' },
+          slug: 'faq',
+        },
+        {
+          label: '八、已知问题',
+          translations: { en: '8. Known Issues' },
+          slug: 'known-issues',
+        },
         {
           label: '版本变更历史记录',
+          translations: { en: 'Changelog' },
           slug: 'changelog',
           badge: { text: `v${version}`, variant: 'note' },
         },
