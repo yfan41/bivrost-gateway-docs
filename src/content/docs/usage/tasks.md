@@ -1,5 +1,5 @@
 ---
-title: "5.5. 任务配置"
+title: "3.5. 任务配置"
 ---
 
 **任务配置**包括机台任务间隔设置，机组任务间隔设置，OEE 监控设置，刀具寿命监控设置，加工计数监控设置，过载监控设置，警报监控设置，机台状态监控设置，和任务管理器设置等。
@@ -10,9 +10,9 @@ title: "5.5. 任务配置"
 
 ![任务配置页面](/img/manual/tasks/tasks-page.png)
 
-## 5.5.1. 机台任务间隔设置 {#machine-intervals}
+## 3.5.1. 机台任务间隔设置 {#machine-intervals}
 
-在"机台任务间隔设置"对 [5.3.1.2. 任务设置](/usage/machines/#task-settings)中相应机台任务的自动采集间隔进行设置，单位为毫秒，默认均为 5000 毫秒。
+在"机台任务间隔设置"对 [3.3.1.2. 任务设置](/usage/machines/#task-settings)中相应机台任务的自动采集间隔进行设置，单位为毫秒，默认均为 5000 毫秒。
 
 :::caution[注]
 建议采集间隔设置为 5000 毫秒或更长，采集间隔太短有可能导致性能较差的机台出现未知故障。
@@ -23,23 +23,23 @@ title: "5.5. 任务配置"
 
 上图中"过载监控间隔"默认为 100 毫秒。由于过载出现时间很短，需要设置较短的监控间隔以准确获取数据。
 
-上图中的"OEE 监控间隔"为机台 OEE 数据的自动采集间隔，详见 [6.1.1. 机台 OEE 数据](/reference/glossary/#machine-oee)。
+上图中的"OEE 监控间隔"为机台 OEE 数据的自动采集间隔，详见 [4.1.1. 机台 OEE 数据](/reference/glossary/#machine-oee)。
 
 设置完成后，点击界面下方**保存**按键。在主页点击**重启服务**以生效。
 
-## 5.5.2. 机组任务间隔设置 {#group-intervals}
+## 3.5.2. 机组任务间隔设置 {#group-intervals}
 
-在"机组任务间隔"对 [5.4.1.2. 机组任务设置](/usage/groups/#group-tasks)中对应的机组任务的自动采集间隔进行设置，单位为毫秒，默认均为 5000 毫秒。
+在"机组任务间隔"对 [3.4.1.2. 机组任务设置](/usage/groups/#group-tasks)中对应的机组任务的自动采集间隔进行设置，单位为毫秒，默认均为 5000 毫秒。
 
 ![机组任务间隔设置](/img/manual/tasks/group-intervals.png)
 
-上图中的"加工计数间隔"为机组加工计数的自动采集间隔，详见 [6.1.3. 机组加工计数](/reference/glossary/#group-count)；"OEE 监控间隔"为机组 OEE 数据的自动采集间隔，详见 [6.1.2. 机组 OEE 数据](/reference/glossary/#group-oee)。
+上图中的"加工计数间隔"为机组加工计数的自动采集间隔，详见 [4.1.3. 机组加工计数](/reference/glossary/#group-count)；"OEE 监控间隔"为机组 OEE 数据的自动采集间隔，详见 [4.1.2. 机组 OEE 数据](/reference/glossary/#group-oee)。
 
 设置完成后，点击界面下方**保存**按键。在主页点击**重启服务**以生效。
 
-## 5.5.3. OEE 监控设置 {#oee-monitor}
+## 3.5.3. OEE 监控设置 {#oee-monitor}
 
-在"OEE 监控设置"对机台 OEE（详见 [6.1.1. 机台 OEE 数据](/reference/glossary/#machine-oee)），和机组 OEE（详见 [6.1.2. 机组 OEE 数据](/reference/glossary/#group-oee)）的监控时间，开动率计算方式等进行设置。
+在"OEE 监控设置"对机台 OEE（详见 [4.1.1. 机台 OEE 数据](/reference/glossary/#machine-oee)），和机组 OEE（详见 [4.1.2. 机组 OEE 数据](/reference/glossary/#group-oee)）的监控时间，开动率计算方式等进行设置。
 
 ![OEE 监控设置](/img/manual/tasks/oee-monitor.png)
 
@@ -83,25 +83,25 @@ title: "5.5. 任务配置"
 - 总时间 = 3600 秒，监控时间从 18:45 到 19:45，覆盖了部分休息时间段。
 - 休息时间 = 19:45 - 19:30 = 15 分钟 = 900 秒。
 
-## 5.5.4. 刀具寿命监控设置 {#toollife-monitor}
+## 3.5.4. 刀具寿命监控设置 {#toollife-monitor}
 
 在"刀具寿命监控设置"对刀具寿命数据进行设置。选项"启用刀具寿命详情"默认不启用，此时刀具寿命接口仅输出通用数据，通用数据由原始数据转换后根据统一的定义与单位计算得到。启用此选项后，刀具寿命接口输出通用数据与原始数据。刀具寿命数据的通用数据与原始数据说明见《通讯协议》1.2.25. ToolLife：刀具寿命数据。
 
 ![刀具寿命监控设置](/img/manual/tasks/toollife-monitor.png)
 
-## 5.5.5. 加工计数监控设置 {#count-monitor}
+## 3.5.5. 加工计数监控设置 {#count-monitor}
 
 在"加工计数监控设置"对当前加工计数的监控时间进行设置。
 
 当前加工计数为监控时间内机台的累计加工计数。
 
-"监控模式"有"到点重置"与"实时窗口"两种，默认为"到点重置"，默认重置时刻为 00:00。这两种模式的说明可以参考 [5.5.3. OEE 监控设置](#oee-monitor)。
+"监控模式"有"到点重置"与"实时窗口"两种，默认为"到点重置"，默认重置时刻为 00:00。这两种模式的说明可以参考 [3.5.3. OEE 监控设置](#oee-monitor)。
 
 ![加工计数监控设置](/img/manual/tasks/count-monitor.png)
 
 ![加工计数实时窗口](/img/manual/tasks/count-monitor-window.png)
 
-## 5.5.6. 过载监控设置 {#overload-monitor}
+## 3.5.6. 过载监控设置 {#overload-monitor}
 
 在"过载监控设置"对过载任务中的主轴负载上限进行设置，默认为 100%。
 
@@ -109,7 +109,7 @@ title: "5.5. 任务配置"
 
 ![过载监控设置](/img/manual/tasks/overload-monitor.png)
 
-## 5.5.7. 警报监控设置 {#alarm-monitor}
+## 3.5.7. 警报监控设置 {#alarm-monitor}
 
 在"警报监控设置"对警报信息任务中的警报内容区分报警级别，设置判断机台处于警报激活状态的最低报警级别。
 
@@ -123,7 +123,7 @@ title: "5.5. 任务配置"
 
 默认判断机台处于警报激活状态的最低报警级别为警告级别。
 
-### 5.5.7.1. 警报映射文件 {#alarm-mapping-files}
+### 3.5.7.1. 警报映射文件 {#alarm-mapping-files}
 
 **警报映射**用于将机台上报的报警号，映射为自定义的报警内容。适用于只上报报警号、不上报报警文本，或需要统一报警描述的机台。
 
@@ -143,9 +143,9 @@ title: "5.5. 任务配置"
 | 1000 | 急停按钮被按下 |
 | 2001 | 主轴过载 |
 
-上传映射文件后，需要在[机台配置](/usage/machines/)中对应机台的"当前警报"任务设置中启用警报映射并选择该文件，详见 [5.3.1.2.6. 警报映射](/usage/machines/#alarm-mapping)。
+上传映射文件后，需要在[机台配置](/usage/machines/)中对应机台的"当前警报"任务设置中启用警报映射并选择该文件，详见 [3.3.1.2.6. 警报映射](/usage/machines/#alarm-mapping)。
 
-## 5.5.8. 机台状态监控设置 {#status-monitor}
+## 3.5.8. 机台状态监控设置 {#status-monitor}
 
 在"机台监控设置"可以设置机台状态任务的相关选项，包括启用状态详情，启用调机状态修正，和启用转换状态等。此节机台任务相关变量详见《通讯协议》1.2.4. CNCStatus：机台状态。
 
@@ -155,7 +155,7 @@ title: "5.5. 任务配置"
 
 ![启用调机状态修正](/img/manual/tasks/status-monitor-adjust.png)
 
-启用"调机状态修正"或"状态转换"后，会根据相应规则修正状态，在 adjustedStatus 修正状态（《通讯协议》1.2.4. CNCStatus:机台状态）输出。在统计 OEE，状态累计时间等涉及机台状态的计算中，优先使用修正状态判断状态。默认都不开启，adjustedStatus 修正状态与机台返回的实时状态一致。这里的"调机状态修正"和"状态转换"是全局设置。启用 [5.3.1.2.5. 特殊设置](/usage/machines/#special-settings)中的机台同名设置，会覆盖全局设置。
+启用"调机状态修正"或"状态转换"后，会根据相应规则修正状态，在 adjustedStatus 修正状态（《通讯协议》1.2.4. CNCStatus:机台状态）输出。在统计 OEE，状态累计时间等涉及机台状态的计算中，优先使用修正状态判断状态。默认都不开启，adjustedStatus 修正状态与机台返回的实时状态一致。这里的"调机状态修正"和"状态转换"是全局设置。启用 [3.3.1.2.5. 特殊设置](/usage/machines/#special-settings)中的机台同名设置，会覆盖全局设置。
 
 调机状态修正的规则为：
 
@@ -173,14 +173,14 @@ title: "5.5. 任务配置"
 CNCStatus_cncStatus = "MANUAL_MDI_RUN" | AUTO_RUN
 ```
 
-`CNCStatus_cncStatus = "MANUAL_MDI_RUN"` 是前置条件（详见 [6.2.2. 前置条件](/reference/command-format/#precondition)），如果此机台状态任务得到的 cncStatus（运行状态，String 类型）为 "MANUAL_MDI_RUN"，则把 adjustedStatus 修正状态设置为 AUTO_RUN。如果有多条转换命令，用 ";" 隔开。
+`CNCStatus_cncStatus = "MANUAL_MDI_RUN"` 是前置条件（详见 [4.2.2. 前置条件](/reference/command-format/#precondition)），如果此机台状态任务得到的 cncStatus（运行状态，String 类型）为 "MANUAL_MDI_RUN"，则把 adjustedStatus 修正状态设置为 AUTO_RUN。如果有多条转换命令，用 ";" 隔开。
 
 同时开启这两个选项时，先执行调机状态修正，再执行状态转换。
 
-## 5.5.9. 任务管理器设置 {#task-manager}
+## 3.5.9. 任务管理器设置 {#task-manager}
 
 每个任务管理器对应一个任务线程。在"任务管理器设置"可以设置最大任务管理器数量，即最大任务线程数。
 
 ![任务管理器设置](/img/manual/tasks/task-manager.png)
 
-每个机台默认分配 1 个任务管理器，用户可设置多个独立的任务管理器以提高任务执行效率（详见 [5.3.1.5. 高级设置](/usage/machines/#advanced-settings)中的并行任务处理）。任务管理器越多，对硬件需求越高。用户应当根据硬件性能调整此参数。最大任务管理器数量默认为 255。当激活机台任务管理器总数超过最大任务管理器数量时，会自动合并任务管理器，使其总数小于最大数量，任务的执行效率将降低。
+每个机台默认分配 1 个任务管理器，用户可设置多个独立的任务管理器以提高任务执行效率（详见 [3.3.1.5. 高级设置](/usage/machines/#advanced-settings)中的并行任务处理）。任务管理器越多，对硬件需求越高。用户应当根据硬件性能调整此参数。最大任务管理器数量默认为 255。当激活机台任务管理器总数超过最大任务管理器数量时，会自动合并任务管理器，使其总数小于最大数量，任务的执行效率将降低。

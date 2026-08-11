@@ -56,3 +56,68 @@
 .site-title > span {
   text-overflow: ellipsis;
 }
+
+/*
+ * Front-page hero (index.md `hero:` frontmatter on the doc template, not a
+ * splash page): tame Starlight's splash-sized padding, collapse the empty
+ * image column, and style the version badge injected by src/components/Hero.astro.
+ * These win over Starlight because its rules live in @layer starlight and
+ * user customCss is unlayered.
+ */
+.hero {
+  padding-block: 1.5rem 0.5rem;
+}
+@media (min-width: 50rem) {
+  .hero:not(:has(img, .hero-html)) {
+    grid-template-columns: 100%;
+  }
+}
+.hero .hero-version {
+  display: inline-block;
+  border: 1px solid var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+  background: var(--sl-color-accent-low);
+  border-radius: 999rem;
+  padding: 0.1rem 0.6rem;
+  font-size: var(--sl-text-sm);
+  margin-inline-end: 0.5rem;
+}
+
+/* Front-page quick-links card grid (raw HTML in index.md; Starlight LinkCard
+   look-alike using its theme tokens so light/dark both work). */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.75rem;
+}
+.home-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
+  box-shadow: var(--sl-shadow-sm);
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.home-card:hover {
+  border-color: var(--sl-color-accent);
+}
+.home-card-title {
+  color: var(--sl-color-white);
+  font-weight: 600;
+}
+.home-card-desc {
+  color: var(--sl-color-gray-3);
+  font-size: var(--sl-text-sm);
+}
+
+/* CNC support matrix ✓/✗ (Starlight's theme-aware semantic colors). */
+.sl-markdown-content td .sup-y {
+  color: var(--sl-color-green);
+  font-weight: 600;
+}
+.sl-markdown-content td .sup-n {
+  color: var(--sl-color-red);
+}

@@ -1,11 +1,11 @@
 ---
-title: "6.2. 命令格式"
+title: "4.2. 命令格式"
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 5
 ---
 
-## 6.2.1. PLC 数据任务 {#plc-task}
+## 4.2.1. PLC 数据任务 {#plc-task}
 
 PLC 数据任务格式如下，多组数据以 ";" 分隔。
 
@@ -16,9 +16,9 @@ PLC 数据任务格式如下，多组数据以 ";" 分隔。
 其中区域，起始地址，数据数量，数据类型为必须项，用于指定数据的来源和形式；标签，前置条件，任务间隔，后处理为可选项。
 
 - **标签**用于在 MQTT，数据库等通讯中标识数据，如没有设置，会根据任务顺序和数据长度自动分配。
-- **前置条件**为此条命令的前置条件，先判断此条件，满足则执行，如不设置则默认执行，与 [5.3.1.2.1. 前置条件](/usage/machines/#precondition)中的一致。格式详见 [6.2.2. 前置条件](#precondition)。
-- **任务间隔**为此条命令的间隔设置，如不设置，则默认为 [5.5.1. 机台任务间隔设置](/usage/tasks/#machine-intervals)与 [5.5.2. 机组任务间隔设置](/usage/tasks/#group-intervals)中相应的任务间隔，格式详见 [6.2.3. 任务间隔](#interval)。
-- **后处理**可以有多个，每个后处理对此次任务或其它任务获取的数据处理后以新标签上传，详见 [6.2.4. 后处理](#post-processing)。
+- **前置条件**为此条命令的前置条件，先判断此条件，满足则执行，如不设置则默认执行，与 [3.3.1.2.1. 前置条件](/usage/machines/#precondition)中的一致。格式详见 [4.2.2. 前置条件](#precondition)。
+- **任务间隔**为此条命令的间隔设置，如不设置，则默认为 [3.5.1. 机台任务间隔设置](/usage/tasks/#machine-intervals)与 [3.5.2. 机组任务间隔设置](/usage/tasks/#group-intervals)中相应的任务间隔，格式详见 [4.2.3. 任务间隔](#interval)。
+- **后处理**可以有多个，每个后处理对此次任务或其它任务获取的数据处理后以新标签上传，详见 [4.2.4. 后处理](#post-processing)。
 
 以 [CNC]FANUC 发那科 [Oi-F] 为例：
 
@@ -29,8 +29,8 @@ R,200|rawData0,1,Byte,$INTERVAL$1000$INTERVAL$,$POST$___PLC_TrawData0___[0]>0$PO
 ```
 
 - `R,0,9,Byte` 代表读取设备 PLC 地址位 R0 开始（包括 R0）的 9 个类型为 Byte 的数据，没有设置标签。
-- `R,100|数据2,6,Byte` 代表读取设备 PLC 地址位 R100 开始（包括 R100）的 6 个类型为 Byte 的数据，标签为"数据 2"，前置条件为 `CNCStatus_cncStatus = "AUTO_RUN"`，即当机台状态为自动运行时。前置条件相关内容详见 [6.2.2. 前置条件](#precondition)。
-- `R,200|rawData0,1,Byte` 代表读取设备 PLC 地址位 R200 类型为 Byte 的数据，标签为 "rawData0"；`$INTERVAL$1000$INTERVAL$` 代表此条任务间隔设为 1000 毫秒；`$POST$___PLC_TrawData0___[0]>0$POST$|心跳信号`，是后处理命令与其标签。在后处理中判断 rawData0 得到的值是否大于 0，将结果以"心跳信号"为标签上传。后处理相关内容详见 [6.2.4. 后处理](#post-processing)。
+- `R,100|数据2,6,Byte` 代表读取设备 PLC 地址位 R100 开始（包括 R100）的 6 个类型为 Byte 的数据，标签为"数据 2"，前置条件为 `CNCStatus_cncStatus = "AUTO_RUN"`，即当机台状态为自动运行时。前置条件相关内容详见 [4.2.2. 前置条件](#precondition)。
+- `R,200|rawData0,1,Byte` 代表读取设备 PLC 地址位 R200 类型为 Byte 的数据，标签为 "rawData0"；`$INTERVAL$1000$INTERVAL$` 代表此条任务间隔设为 1000 毫秒；`$POST$___PLC_TrawData0___[0]>0$POST$|心跳信号`，是后处理命令与其标签。在后处理中判断 rawData0 得到的值是否大于 0，将结果以"心跳信号"为标签上传。后处理相关内容详见 [4.2.4. 后处理](#post-processing)。
 
 以 [PLC]Simatic 西门子 [S300] 为例：
 
@@ -53,11 +53,11 @@ $TAG$|name=AB.C[0],,8,Float;
 
 用户可以查找设备手册或联系设备厂家以获取目标 PLC 数据的区域地址以及目标数据的类型。
 
-## 6.2.2. 前置条件 {#precondition}
+## 4.2.2. 前置条件 {#precondition}
 
 前置条件设定任务执行的前提，只有满足设定的条件时，才会执行对应的采集任务。如为空白，则默认无前置条件，直接执行任务。
 
-非 PLC 数据任务可通过 [5.3.1.2.1. 前置条件](/usage/machines/#precondition)设置前置条件，PLC 数据任务在命令中，添加前置条件命令，格式为：
+非 PLC 数据任务可通过 [3.3.1.2.1. 前置条件](/usage/machines/#precondition)设置前置条件，PLC 数据任务在命令中，添加前置条件命令，格式为：
 
 ```
 $COND$前置条件$COND$
@@ -83,9 +83,9 @@ a > 100 and (b < 50.0f or c = "AUTO_RUN")
 
 目前可用于逻辑判断的变量为：`<type>_<tag>` 与 `prev_<type>_<tag>`。其中 `<type>` 是数据类；`<tag>` 是数据标签；prev 代表数据前值。`<type>` 与 `<tag>` 的具体介绍详见《通讯协议》1.2. 数据说明。
 
-## 6.2.3. 任务间隔 {#interval}
+## 4.2.3. 任务间隔 {#interval}
 
-任务间隔用于设置指定任务的间隔，如不设置，默认为 [5.5.1. 机台任务间隔设置](/usage/tasks/#machine-intervals)与 [5.5.2. 机组任务间隔设置](/usage/tasks/#group-intervals)中相应的任务间隔。格式如下：
+任务间隔用于设置指定任务的间隔，如不设置，默认为 [3.5.1. 机台任务间隔设置](/usage/tasks/#machine-intervals)与 [3.5.2. 机组任务间隔设置](/usage/tasks/#group-intervals)中相应的任务间隔。格式如下：
 
 ```
 $INTERVAL$间隔$INTERVAL$
@@ -93,11 +93,11 @@ $INTERVAL$间隔$INTERVAL$
 
 其中间隔为数字，单位为毫秒。
 
-## 6.2.4. 后处理 {#post-processing}
+## 4.2.4. 后处理 {#post-processing}
 
 用户可以使用后处理命令对获取的原始数据进行处理。后处理目前有两种：
 
-### 6.2.4.1. $DA$ 直接获取 {#da}
+### 4.2.4.1. $DA$ 直接获取 {#da}
 
 $DA$，即直接获取左侧读取到的数据中的指定位置的一个数据，以指定标签上传，不能进行计算处理，但可以合并数据点位相邻的 PLC 任务，减少 PLC 任务数量，以提高执行效率。例如：
 
@@ -112,7 +112,7 @@ $DA$4$DA$|工件计数-不合格数;
 
 如果 $DA$ 标签未指定，默认标签为：`原始数据标签_数字`，这里的数字为 $DA$ 指定的位置。如上面这个例子 $DA$ 未设置标签，则这三个数的默认标签为 `count_0`，`count_3`，`count_4`。
 
-### 6.2.4.2. $POST$ 后处理 {#post}
+### 4.2.4.2. $POST$ 后处理 {#post}
 
 $POST$，即对指定已获取的一个或多个数据进行计算/比较等处理，将处理后的结果上传。
 
@@ -170,7 +170,7 @@ if(___PLC_TrawData0_data___[0] = 5, "ALARM", "NO_ALARM"))$POST$|警报状态;
 
 D0 的数值代表机台的状态，D0=1：自动运行；D0=2：暂停；D0=4：紧急停止；D0=5 有告警。D0=其他值：待机。其中 D0=4 或 5 都属于警报状态。
 
-### 6.2.4.3. $POST$ 后处理可用函数 {#post-functions}
+### 4.2.4.3. $POST$ 后处理可用函数 {#post-functions}
 
 在 $POST$ 命令中支持使用 Encoding，Enumberable，BitConverter，Math 等 .Net 静态成员下的方法。
 
@@ -290,7 +290,7 @@ $POST$ToUInt32(PGetSubBytes(___PLC_TrawData0_data___, 166, 4, true), 0)$POST$|�
 $POST$UTF8.GetString(PGetSubBytes(___PLC_TrawData0_data___, 170, 28))$POST$|工位1工件二维码;
 ```
 
-### 6.2.4.4. $MOCK$ 模拟任务 {#mock}
+### 4.2.4.4. $MOCK$ 模拟任务 {#mock}
 
 $MOCK$ 任务返回指定数量与类型的虚拟值，返回值没有实际意义，仅用于一些特殊场合。如后处理不可单独出现，必须出现在一个 PLC 任务的必须部分之后。然而有些情况下后处理与数据读取需要的间隔不同，或者其他原因，需要把后处理单独设置为一个任务。这种情况下可以使用 $MOCK$ 任务。
 
@@ -306,7 +306,7 @@ $POST$(___PLC_Tmacro1_500_515_8_pDouble___ - ___PLC_Tmacro1_500_515_0_pDouble___
 
 这里第 1 个任务读取机台宏变量 500~515，默认间隔每隔 5 秒。第 2 个任务每隔 1 分钟，用前一个任务中获得的宏变量 507 减去宏变量 500，判断得到的差是否小于等于 10，结果为 True 或 False，以标签"切断刀剩余寿命不足"为标签上传。
 
-## 6.2.5. 外部 PLC 数据任务 {#external-plc}
+## 4.2.5. 外部 PLC 数据任务 {#external-plc}
 
 网关支持通过添加外部 PLC 的方式对机台的周边设备进行数据采集。
 
@@ -337,7 +337,7 @@ $POST$(___PLC_Tmacro1_500_515_8_pDouble___ - ___PLC_Tmacro1_500_515_0_pDouble___
 | bit32TypeFormat | 32 位型格式，可选值为：ABCD，CDAB，BADC，DCBA，默认为 DCBA。 |
 | bit64TypeFormat | 64 位型格式，可选值为：ABCDEFGH，GHEFCDAB，BADCFEHG，HGFEDCBA，默认为 HGFEDCBA。 |
 
-PLC 数据读取命令详见 [6.2.1. PLC 数据任务](#plc-task)。
+PLC 数据读取命令详见 [4.2.1. PLC 数据任务](#plc-task)。
 
 **示例：**
 
@@ -353,7 +353,7 @@ source=COM2|protocal=modbusRTU|baudRate=14400|encoding=ASCII;4x,0,1,Int16;4x,10,
 - 第一段：通过网关串口 1，以 modbusRTU 协议；读取 4x 区，0 位开始 1 个 Int16。
 - 第二段：通过网关串口 2，以 modbusRTU 协议，波特率设为 14400，编码为 ASCII；读取 4x 区，0 位开始 1 个 Int16；10 位开始 2 个 Int32。
 
-## 6.2.6. 外部机台 {#external-machine}
+## 4.2.6. 外部机台 {#external-machine}
 
 通过添加外部机台的方式，可以将其它网关的机台添加到本网关的机组。需要先在云平台设置或 Hub 设置处做相关设置，关联其它网关。
 
@@ -371,7 +371,7 @@ UID,MachineID[|countMultiplier=COUNTMULTIPLIER|name=NAME,...];...
 iotgw1,1;iotgw2,100010|countMultiplier=1|name=加工中心10;
 ```
 
-## 6.2.7. 受保护 API 与授权 API {#protected-api}
+## 4.2.7. 受保护 API 与授权 API {#protected-api}
 
 API 命令用于设置受保护 API 和授权 API。
 

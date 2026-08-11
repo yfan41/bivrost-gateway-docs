@@ -1,5 +1,5 @@
 ---
-title: "5.3. Machines"
+title: "3.3. Machines"
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 5
@@ -38,9 +38,9 @@ Type a keyword into the 🔍 **Find Machine** box and the matching machines appe
 
 Click ↻ **Refresh** to reload the whole machine list.
 
-Click + **Add Machine** to add a machine — see [5.3.1. Adding a Machine](#add-machine).
+Click + **Add Machine** to add a machine — see [3.3.1. Adding a Machine](#add-machine).
 
-## 5.3.1. Adding a Machine {#add-machine}
+## 3.3.1. Adding a Machine {#add-machine}
 
 Click + **Add Machine** at the top right. The drop-down menu contains **Create CNC**, **Create Laser Cutter**, **Create Robot** and **Create PLC**.
 
@@ -54,11 +54,11 @@ The dialogs for the different machine types are similar. The main differences ar
 
 The example below adds a CNC machine:
 
-Click **Create CNC**. The "Create CNC Machine" dialog opens with the tabs "General", "Task", "DNC", "External PLC" and "Advanced". Fill in all of the tabs and click **Confirm** to add the machine. Anything you need to change afterwards can be edited in the "Edit CNC Machine" dialog (see [5.3.2. Editing a Machine](#edit-machine)).
+Click **Create CNC**. The "Create CNC Machine" dialog opens with the tabs "General", "Task", "DNC", "External PLC" and "Advanced". Fill in all of the tabs and click **Confirm** to add the machine. Anything you need to change afterwards can be edited in the "Edit CNC Machine" dialog (see [3.3.2. Editing a Machine](#edit-machine)).
 
 ![Create CNC Machine dialog](/img/manual/en/machines/add-cnc-dialog.png)
 
-### 5.3.1.1. General Settings {#general-settings}
+### 3.3.1.1. General Settings {#general-settings}
 
 The "General" tab holds the machine's connection settings: choose "System" and "Model", enter the machine's IP address and machine name, and select an encoding. For the machine-side IP settings, see *Machine Setup*. If you choose Mock as the system, the IP address must be 127.0.0.X, where X is 1–255. Note that when "Activate" is selected in the dialog the machine is license-activated: it uses one collection license and collection is running. Clearing the checkbox withdraws the collection license used by that machine, pauses collection, and makes the withdrawn license available to another machine.
 
@@ -70,21 +70,21 @@ Some models and connection methods — such as Siemens machines that expose an O
 
 ![Siemens OPC UA username and password](/img/manual/en/machines/general-tab-opcua.png)
 
-### 5.3.1.2. Task Settings {#task-settings}
+### 3.3.1.2. Task Settings {#task-settings}
 
 The "Task" tab configures the machine's automatic collection tasks. Select an available interface to turn on automatic collection for the corresponding task. Interfaces not covered by your license are shown as "Unlicensed" and cannot be selected. The number of enabled tasks appears in the "Task Count" column of the **Machines** page.
 
 ![Task settings](/img/manual/en/machines/task-tab.png)
 
-This tab turns the machine's automatic collection tasks on and off. Task results can be published through the cloud platform, MODBUS, MQTT or a database. To receive task results you must enable and configure at least one of the cloud, MODBUS, MQTT or database transports in [5.6. Communication](/en/usage/communication/). Collection intervals and detailed task settings are configured in [5.5. Tasks](/en/usage/tasks/). For the format in which task results are published over MODBUS, MQTT and databases, see *Communication Protocol*. Collection through the HTTP interfaces does not require any machine task to be enabled.
+This tab turns the machine's automatic collection tasks on and off. Task results can be published through the cloud platform, MODBUS, MQTT or a database. To receive task results you must enable and configure at least one of the cloud, MODBUS, MQTT or database transports in [3.6. Communication](/en/usage/communication/). Collection intervals and detailed task settings are configured in [3.5. Tasks](/en/usage/tasks/). For the format in which task results are published over MODBUS, MQTT and databases, see *Communication Protocol*. Collection through the HTTP interfaces does not require any machine task to be enabled.
 
 The ⚙ button to the right of a task opens its advanced settings — Precondition, Target Channels, Target Tools, Custom Functions, Special Settings and so on.
 
 ![Task advanced settings dialog](/img/manual/en/machines/task-settings-dialog.png)
 
-#### 5.3.1.2.1. Precondition {#precondition}
+#### 3.3.1.2.1. Precondition {#precondition}
 
-When a precondition is set, the gateway evaluates it before each run of the task and only performs the collection if the condition is met. Left blank, the task has no precondition and always runs. For the precondition syntax, see [6.2.2. Precondition](/en/reference/command-format/#precondition).
+When a precondition is set, the gateway evaluates it before each run of the task and only performs the collection if the condition is met. Left blank, the task has no precondition and always runs. For the precondition syntax, see [4.2.2. Precondition](/en/reference/command-format/#precondition).
 
 For example:
 
@@ -96,13 +96,13 @@ Tasks that have a precondition are marked with a blue branch icon to the right o
 
 ![Precondition badge](/img/manual/en/machines/task-precondition-badge.png)
 
-#### 5.3.1.2.2. Target Channels {#target-channel}
+#### 3.3.1.2.2. Target Channels {#target-channel}
 
 Some machines expose data for several channels — for example channel 1 for the main spindle and channel 2 for the sub-spindle. The default target channel is 0, which collects data from the main channel only. To collect data from several channels, list them under target channels. The tasks that support this setting include Current Tool No, Machine Status, Program Info, Current Program Block, Position, Feed and Spindle, Load, Overload and Cutter comp.
 
 For example: `0;1-3`
 
-#### 5.3.1.2.3. Target Tools {#target-tools}
+#### 3.3.1.2.3. Target Tools {#target-tools}
 
 The Tool Life and Cutter comp tasks require target tools to be entered in the dialog behind the ⚙ button next to the task. How tools are specified depends on the machine's control system; by default no tools are specified. Follow the example in the hint text, or see *Communication Protocol*, 2.5.1.12. readOffsetData (Read Offset Data) and 2.5.1.21. readToolLife (Read Tool Life).
 
@@ -116,20 +116,20 @@ On a Siemens control, for instance, a tool is defined by a tool number (Tool) an
 - `3-5.1` means tool 3 offset 1, tool 4 offset 1 and tool 5 offset 1;
 - `7-9.1-3` means tools 7, 8 and 9, offsets 1, 2 and 3 on each of them.
 
-#### 5.3.1.2.4. Custom Functions {#custom-functions}
+#### 3.3.1.2.4. Custom Functions {#custom-functions}
 
 The Count, Machine Status and Alarm tasks support custom functions, which substitute the result of a PLC task for the data returned by the native interface. Custom functions are mainly used on controls where a customised module replaces the native one, or where the control does not support the required communication and the manufacturer supplies an address list so the data can be read from PLC addresses instead.
 
 ![Custom functions](/img/manual/en/machines/task-custom-functions.png)
 
 :::note[Caution]
-The data type of the PLC data task result must be compatible with the data type of the native interface. The `count` field of the Count task, for example, is Int32, so the data behind the tag you enter must be convertible to Int32. If the raw count in the PLC is a string, use the post-processing feature of the PLC data task to convert it to Int32 and enter the tag of the processed value. For an example of the PLC task settings behind a custom status, see example 4 in [6.2.4.2. $POST$ Post-processing](/en/reference/command-format/#post).
+The data type of the PLC data task result must be compatible with the data type of the native interface. The `count` field of the Count task, for example, is Int32, so the data behind the tag you enter must be convertible to Int32. If the raw count in the PLC is a string, use the post-processing feature of the PLC data task to convert it to Int32 and enter the tag of the processed value. For an example of the PLC task settings behind a custom status, see example 4 in [4.2.4.2. $POST$ Post-processing](/en/reference/command-format/#post).
 
 :::
 
-#### 5.3.1.2.5. Special Settings {#special-settings}
+#### 3.3.1.2.5. Special Settings {#special-settings}
 
-The Machine Status task supports adjusted status settings: you can enable manual-status adjustment and status conversion, both off by default. These are the same settings as the ones with the same names in [5.5.8. Machine Status Monitoring Settings](/en/usage/tasks/#status-monitor); those are global, and enabling them here overrides the global settings for this machine.
+The Machine Status task supports adjusted status settings: you can enable manual-status adjustment and status conversion, both off by default. These are the same settings as the ones with the same names in [3.5.8. Machine Status Monitoring Settings](/en/usage/tasks/#status-monitor); those are global, and enabling them here overrides the global settings for this machine.
 
 ![Adjusted status settings](/img/manual/en/machines/task-status-adjust.png)
 
@@ -149,17 +149,17 @@ With status conversion enabled, `adjustedStatus` is set according to the command
 CNCStatus_cncStatus = "MANUAL_MDI_RUN" | AUTO_RUN
 ```
 
-`CNCStatus_cncStatus = "MANUAL_MDI_RUN"` is the precondition (see [6.2.2. Precondition](/en/reference/command-format/#precondition)): if the `cncStatus` value (the running status, of type String) returned by this machine's Machine Status task is "MANUAL_MDI_RUN", then `adjustedStatus` is set to AUTO_RUN. Separate multiple conversion commands with ";".
+`CNCStatus_cncStatus = "MANUAL_MDI_RUN"` is the precondition (see [4.2.2. Precondition](/en/reference/command-format/#precondition)): if the `cncStatus` value (the running status, of type String) returned by this machine's Machine Status task is "MANUAL_MDI_RUN", then `adjustedStatus` is set to AUTO_RUN. Separate multiple conversion commands with ";".
 
 When both options are enabled, manual-status adjustment runs first and status conversion second.
 
-The PLC Data task requires the commands for the target PLC data to be entered in the dialog behind the ⚙ button next to the task — see [6.2.1. PLC Data Task](/en/reference/command-format/#plc-task).
+The PLC Data task requires the commands for the target PLC data to be entered in the dialog behind the ⚙ button next to the task — see [4.2.1. PLC Data Task](/en/reference/command-format/#plc-task).
 
 ![PLC data task commands](/img/manual/en/machines/task-plc-command.png)
 
-If MODBUS communication is enabled ([5.6.2. MODBUS Settings](/en/usage/communication/#modbus)), the reserved MODBUS address space limits a single machine's PLC data tasks (including external PLC data) to 10000 address registers after conversion — see *Communication Protocol*, 3.1. Machine-related Data.
+If MODBUS communication is enabled ([3.6.2. MODBUS Settings](/en/usage/communication/#modbus)), the reserved MODBUS address space limits a single machine's PLC data tasks (including external PLC data) to 10000 address registers after conversion — see *Communication Protocol*, 3.1. Machine-related Data.
 
-#### 5.3.1.2.6. Alarm Mapping {#alarm-mapping}
+#### 3.3.1.2.6. Alarm Mapping {#alarm-mapping}
 
 The Alarm task supports alarm mapping, which replaces the alarm numbers reported by the machine with your own alarm text. It suits machines that report only an alarm number and no alarm text, or installations where alarm descriptions need to be standardised.
 
@@ -167,11 +167,11 @@ In the dialog behind the ⚙ button next to the Alarm task, select "Enable Alarm
 
 ![Alarm mapping settings](/img/manual/en/machines/task-alarm-mapping.png)
 
-Mapping files are uploaded and managed in [5.5.7.1. Alarm Mapping Files](/en/usage/tasks/#alarm-mapping-files); a file must be uploaded there before it can be selected here. After enabling it, click **Confirm** to save, then go to [Home](/en/usage/home/) and click **Restart Service** to apply the change.
+Mapping files are uploaded and managed in [3.5.7.1. Alarm Mapping Files](/en/usage/tasks/#alarm-mapping-files); a file must be uploaded there before it can be selected here. After enabling it, click **Confirm** to save, then go to [Home](/en/usage/home/) and click **Restart Service** to apply the change.
 
-#### 5.3.1.2.7. Additional Notes {#task-misc}
+#### 3.3.1.2.7. Additional Notes {#task-misc}
 
-Machine OEE data covers Off Time, Wait Time, Emergency Time, Autorun Time, Manual Time and machine Availability — see [6.1.1. Machine OEE Data](/en/reference/glossary/#machine-oee). OEE data depends on local caching, so the "Local Caching" switch under Options in [5.12. Settings](/en/usage/settings/) must be turned on.
+Machine OEE data covers Off Time, Wait Time, Emergency Time, Autorun Time, Manual Time and machine Availability — see [4.1.1. Machine OEE Data](/en/reference/glossary/#machine-oee). OEE data depends on local caching, so the "Local Caching" switch under Options in [3.12. Settings](/en/usage/settings/) must be turned on.
 
 Write Offset Data and DNC are not available as machine tasks; they must be called through the HTTP interfaces or the MQTT RPC interfaces — see *Communication Protocol*.
 
@@ -179,7 +179,7 @@ Cumulative Status Time is the total time spent in each status since the gateway 
 
 Cycle Data gives the duration of the last cycle; the gateway derives it from Machine Status, Count and Program Info.
 
-### 5.3.1.3. DNC Settings {#transfer-settings}
+### 3.3.1.3. DNC Settings {#transfer-settings}
 
 The "DNC" tab sets the file transfer method and target location.
 
@@ -191,7 +191,7 @@ The "File Server Type" options are:
 - **Shared Folder** and **Shared Folder (Win XP)**, which transfer files through a shared folder;
 - **FTP Server**, which transfers files over FTP;
 - **Wireless Disk**, an external storage device attached to the machine that connects to the gateway over WiFi and to the machine over USB or RS232;
-- **Gateway File Server**, a file server hosted on the gateway itself that the machine can reach over FTP or a shared folder — see [5.6.5. Gateway File Server Settings](/en/usage/communication/#file-server).
+- **Gateway File Server**, a file server hosted on the gateway itself that the machine can reach over FTP or a shared folder — see [3.6.5. Gateway File Server Settings](/en/usage/communication/#file-server).
 
 ![File server types](/img/manual/en/machines/transfer-server-types.png)
 
@@ -199,9 +199,9 @@ If the machine's own storage is too small, or the machine does not support trans
 
 If the root directory is left blank, the machine's default path is used. The default path differs by machine model — see *Communication Protocol*, 2.6. File Management Interfaces.
 
-### 5.3.1.4. External PLC Settings {#external-plc-settings}
+### 3.3.1.4. External PLC Settings {#external-plc-settings}
 
-The "External PLC" tab lets you add commands that collect data from an external PLC attached to equipment around the machine — see [6.2.5. External PLC Data Task](/en/reference/command-format/#external-plc). Once a valid external PLC data task has been added, collection starts automatically after a service restart. The collection interval for external PLC data tasks, and the way their results are retrieved, are the same as for PLC data tasks.
+The "External PLC" tab lets you add commands that collect data from an external PLC attached to equipment around the machine — see [4.2.5. External PLC Data Task](/en/reference/command-format/#external-plc). Once a valid external PLC data task has been added, collection starts automatically after a service restart. The collection interval for external PLC data tasks, and the way their results are retrieved, are the same as for PLC data tasks.
 
 ![External PLC settings](/img/manual/en/machines/external-plc-tab.png)
 
@@ -211,7 +211,7 @@ For example:
 source=COM1|protocol=modbusRTU;4x,0,1,Int16;4x,10,2,Int32
 ```
 
-### 5.3.1.5. Advanced Settings {#advanced-settings}
+### 3.3.1.5. Advanced Settings {#advanced-settings}
 
 The "Advanced" tab lets you customise the machine ID (MachineID), the slave ID (SlaveID), Network Error as Offline, Parallel Task Processing, and custom attributes.
 
@@ -223,7 +223,7 @@ The "Advanced" tab lets you customise the machine ID (MachineID), the slave ID (
 
 **Network Error as Offline** is off by default. When it is on and the machine fails to connect for network reasons on the first attempt (previously reported as "Network Error"), the gateway treats the machine as offline instead of reporting a connection error. This suits machines that are powered down or lose network connectivity from time to time, where all such unreachable states should be treated uniformly as offline.
 
-**Parallel Task Processing** is the number of task managers — that is, threads — allocated to the machine. The default is 1. Raising it consumes more system resources, so only raise it when the machine has a large number of tasks with very short intervals and the default setting cannot keep collection up to date. Some control systems do not support multi-threaded connections and must be left at 1. Note that the sum of the Parallel Task Processing values of all activated machines should be less than the maximum number of task managers (see [5.5.9. Task Manager Settings](/en/usage/tasks/#task-manager)).
+**Parallel Task Processing** is the number of task managers — that is, threads — allocated to the machine. The default is 1. Raising it consumes more system resources, so only raise it when the machine has a large number of tasks with very short intervals and the default setting cannot keep collection up to date. Some control systems do not support multi-threaded connections and must be left at 1. Note that the sum of the Parallel Task Processing values of all activated machines should be less than the maximum number of task managers (see [3.5.9. Task Manager Settings](/en/usage/tasks/#task-manager)).
 
 **Custom Attributes** add user-defined attribute tags to the task data returned by the gateway. The format is:
 
@@ -239,31 +239,31 @@ Example:
 
 In the task data, custom attributes are added after the `<entityID>` attribute (MachineID, in the case of a machine).
 
-### 5.3.1.6. Connection Status {#connection-status}
+### 3.3.1.6. Connection Status {#connection-status}
 
 Once everything in the create machine dialog is set, click **Confirm** to save. The new machine appears on the **Machines** page. Note that its "Connection" icon is a yellow circle at this point, meaning the machine is not loaded; go to [Home](/en/usage/home/) and click **Restart Service** to load the newly configured machine.
 
 ![Machine not loaded](/img/manual/en/machines/connection-pending.png)
 
-After the **Restart Service**, the Connection icon turns into a green check, meaning communication is working. Any other icon means the configuration is wrong or there is a fault in the machine, the gateway or the network — hover over the icon for an explanation, or refer to the table of common connection icons in [5.3. Machines](/en/usage/machines/).
+After the **Restart Service**, the Connection icon turns into a green check, meaning communication is working. Any other icon means the configuration is wrong or there is a fault in the machine, the gateway or the network — hover over the icon for an explanation, or refer to the table of common connection icons in [3.3. Machines](/en/usage/machines/).
 
 ![Machine connected](/img/manual/en/machines/connection-ok.png)
 
-## 5.3.2. Editing a Machine {#edit-machine}
+## 3.3.2. Editing a Machine {#edit-machine}
 
-Click the edit button ✏️ in the "Operations" column at the right of a row in the machine list. The "Edit CNC Machine" / "Edit Laser Cutter" / "Edit Robot" / "Edit PLC Machine" dialog opens; it is similar to the corresponding "Create CNC Machine" / "Create Laser Cutter" / "Create Robot" / "Create PLC Machine" dialog. For a description of each tab, see [5.3.1. Adding a Machine](#add-machine). The machine type — CNC, laser cutter, robot or PLC — cannot be changed in the edit dialog.
+Click the edit button ✏️ in the "Operations" column at the right of a row in the machine list. The "Edit CNC Machine" / "Edit Laser Cutter" / "Edit Robot" / "Edit PLC Machine" dialog opens; it is similar to the corresponding "Create CNC Machine" / "Create Laser Cutter" / "Create Robot" / "Create PLC Machine" dialog. For a description of each tab, see [3.3.1. Adding a Machine](#add-machine). The machine type — CNC, laser cutter, robot or PLC — cannot be changed in the edit dialog.
 
 ![Edit CNC Machine and Edit Laser Cutter](/img/manual/en/machines/edit-dialogs-1.png)
 
 ![Edit Robot and Edit PLC Machine](/img/manual/en/machines/edit-dialogs-2.png)
 
-## 5.3.3. Deleting a Machine {#delete-machine}
+## 3.3.3. Deleting a Machine {#delete-machine}
 
 Click the delete button 🗑️ in the "Operations" column at the right of a row in the machine list. The "Delete Machine" dialog appears; click **Confirm** to delete the machine permanently.
 
 ![Delete machine](/img/manual/en/machines/delete-dialog.png)
 
-## 5.3.4. Batch Activation {#batch-activate}
+## 3.3.4. Batch Activation {#batch-activate}
 
 Select several machines using the checkboxes at the far left of the list, or the select-all button at the top left of the list.
 
@@ -275,7 +275,7 @@ Click Batch Activation, choose whether to activate, and click Confirm to set the
 
 ![Batch activation](/img/manual/en/machines/batch-activate-dialog.png)
 
-## 5.3.5. Batch Edit {#batch-edit}
+## 3.3.5. Batch Edit {#batch-edit}
 
 Select several machines using the checkboxes at the far left of the list, or the select-all button at the top left of the list. Note that they must all have the same system and model.
 
@@ -288,7 +288,7 @@ Batch Edit covers shared options only. Options that are specific to a single mac
 
 ![Batch edit](/img/manual/en/machines/batch-edit-dialog.png)
 
-## 5.3.6. Batch Delete {#batch-delete}
+## 3.3.6. Batch Delete {#batch-delete}
 
 Select several machines using the checkboxes at the far left of the list, or the select-all button at the top left of the list.
 

@@ -1,5 +1,5 @@
 ---
-title: "五、网关使用"
+title: "三、网关使用"
 ---
 
 网关已设置通电自动启动。通上电源后，等待约 1 分钟开机完成后即可使用。
@@ -19,16 +19,16 @@ title: "五、网关使用"
 
 网关管理页面顶部导航栏包含**配置**（机台/机组/任务/通讯），**诊断**（接口测试/网络工具/日志），**应用**（程序传输/数据分析/监控），**系统**（网络/设置）四个菜单。本章依次介绍网关管理页面的各项功能：
 
-- [5.1. 登录](/usage/login/)
-- [5.2. 主页](/usage/home/)
-- [5.3. 机台配置](/usage/machines/)
-- [5.4. 机组配置](/usage/groups/)
-- [5.5. 任务配置](/usage/tasks/)
-- [5.6. 通讯配置](/usage/communication/)
-- [5.7. 网络配置](/usage/network/)
-- [5.8. 接口测试](/usage/api-test/)
-- [5.9. 程序传输](/usage/file-transfer/)
-- [5.10. 数据分析](/usage/analysis/)
-- [5.11. 监控台](/usage/monitor/)
-- [5.12. 设置](/usage/settings/)
-- [5.13. 其它](/usage/misc/)
+- [3.1. 登录](/usage/login/)
+- [3.2. 主页](/usage/home/)
+- [3.3. 机台配置](/usage/machines/)
+- [3.4. 机组配置](/usage/groups/)
+- [3.5. 任务配置](/usage/tasks/)
+- [3.6. 通讯配置](/usage/communication/)
+- [3.7. 网络配置](/usage/network/)
+- [3.8. 接口测试](/usage/api-test/)
+- [3.9. 程序传输](/usage/file-transfer/)
+- [3.10. 数据分析](/usage/analysis/)
+- [3.11. 监控台](/usage/monitor/)
+- [3.12. 设置](/usage/settings/)
+- [3.13. 其它](/usage/misc/)

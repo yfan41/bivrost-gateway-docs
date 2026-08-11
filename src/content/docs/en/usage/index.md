@@ -1,5 +1,5 @@
 ---
-title: "5. Using the Gateway"
+title: "3. Using the Gateway"
 ---
 
 The gateway is configured to start automatically when power is applied. After connecting the power supply, wait about 1 minute for start-up to finish; the gateway is then ready to use.
@@ -19,16 +19,16 @@ To switch the gateway off, use the **Shutdown/Restart Gateway** function button 
 
 The navigation bar at the top of the gateway management page contains four menus: **Configurations** (Machines / Group / Task / Communication), **Diagnosis** (API Test / Network Tools / Logger), **App** (DNC / Analysis / Monitor) and **System** (Network / Settings). This chapter covers each function of the gateway management page in turn:
 
-- [5.1. Signing In](/en/usage/login/)
-- [5.2. Home](/en/usage/home/)
-- [5.3. Machines](/en/usage/machines/)
-- [5.4. Groups](/en/usage/groups/)
-- [5.5. Tasks](/en/usage/tasks/)
-- [5.6. Communication](/en/usage/communication/)
-- [5.7. Network](/en/usage/network/)
-- [5.8. API Test](/en/usage/api-test/)
-- [5.9. DNC (Program Transfer)](/en/usage/file-transfer/)
-- [5.10. Analysis](/en/usage/analysis/)
-- [5.11. Monitor](/en/usage/monitor/)
-- [5.12. Settings](/en/usage/settings/)
-- [5.13. Other](/en/usage/misc/)
+- [3.1. Signing In](/en/usage/login/)
+- [3.2. Home](/en/usage/home/)
+- [3.3. Machines](/en/usage/machines/)
+- [3.4. Groups](/en/usage/groups/)
+- [3.5. Tasks](/en/usage/tasks/)
+- [3.6. Communication](/en/usage/communication/)
+- [3.7. Network](/en/usage/network/)
+- [3.8. API Test](/en/usage/api-test/)
+- [3.9. DNC (Program Transfer)](/en/usage/file-transfer/)
+- [3.10. Analysis](/en/usage/analysis/)
+- [3.11. Monitor](/en/usage/monitor/)
+- [3.12. Settings](/en/usage/settings/)
+- [3.13. Other](/en/usage/misc/)

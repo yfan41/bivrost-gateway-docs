@@ -1,5 +1,5 @@
 ---
-title: "5.6. 通讯配置"
+title: "3.6. 通讯配置"
 ---
 
 **通讯配置**包括云平台设置，MODBUS 设置，MQTT 设置，数据库设置，网管文件服务器设置，HTTP 设置，和 HUB 设置等。用户可以根据需要开启一个或多个通讯方式。
@@ -8,13 +8,13 @@ title: "5.6. 通讯配置"
 
 ![通讯配置页面](/img/manual/communication/communication-page.png)
 
-## 5.6.1. 云平台配置 {#cloud}
+## 3.6.1. 云平台配置 {#cloud}
 
 点击"启用"开关以启用云平台通讯。
 
 ![云平台设置](/img/manual/communication/cloud-settings.png)
 
-启用云平台通讯，完成服务器相关设置，并开启目标机台/机组的自动采集任务（详见 [5.3.1.2. 任务设置](/usage/machines/#task-settings)，与 [5.4.1.2. 机组任务设置](/usage/groups/#group-tasks)）后，即可通过标准协议将任务数据实时上传到指定标准云平台，从而实现数据的存储，分析，看板显示等功能。彼络已搭建了一个标准云平台服务器 tb.bivrost.cn，可以联系客服试用（详见《云平台说明》）。
+启用云平台通讯，完成服务器相关设置，并开启目标机台/机组的自动采集任务（详见 [3.3.1.2. 任务设置](/usage/machines/#task-settings)，与 [3.4.1.2. 机组任务设置](/usage/groups/#group-tasks)）后，即可通过标准协议将任务数据实时上传到指定标准云平台，从而实现数据的存储，分析，看板显示等功能。彼络已搭建了一个标准云平台服务器 tb.bivrost.cn，可以联系客服试用（详见《云平台说明》）。
 
 - **服务器地址**处输入云平台地址。
 - **网关令牌**处输入云平台分配给网关的令牌。
@@ -34,13 +34,13 @@ UID,网关令牌;
 
 :::
 
-## 5.6.2. MODBUS 配置 {#modbus}
+## 3.6.2. MODBUS 配置 {#modbus}
 
 点击"启用"开关以启用 MODBUS 通讯。
 
 ![MODBUS 设置](/img/manual/communication/modbus-settings.png)
 
-启用 MODBUS 通讯，并开启目标机台/机组的自动采集任务（详见 [5.3.1.2. 任务设置](/usage/machines/#task-settings)，与 [5.4.1.2. 机组任务设置](/usage/groups/#group-tasks)）后，网关会基于 MODBUS 协议，将任务数据存在相应地址位中，详见《通讯协议》三、MODBUS 通讯。
+启用 MODBUS 通讯，并开启目标机台/机组的自动采集任务（详见 [3.3.1.2. 任务设置](/usage/machines/#task-settings)，与 [3.4.1.2. 机组任务设置](/usage/groups/#group-tasks)）后，网关会基于 MODBUS 协议，将任务数据存在相应地址位中，详见《通讯协议》三、MODBUS 通讯。
 
 - **32 位型格式**选项可以选择 32 位型数据（长型整数 Int32，单精度浮点数 Float 等占用两个寄存器地址的数据）在 MODBUS 通讯中的解码格式。默认为 "DCBA"。
 - **64 位型格式**选项可以选择 64 位型数据（双精度浮点数 Double 等占用四个寄存器地址的数据）在 MODBUS 通讯中的解码格式。默认为 "HGFEDCBA"。
@@ -52,13 +52,13 @@ UID,网关令牌;
 
 :::
 
-## 5.6.3. MQTT 配置 {#mqtt}
+## 3.6.3. MQTT 配置 {#mqtt}
 
 打开"启用"开关以启用 MQTT 通讯。
 
 ![MQTT 设置](/img/manual/communication/mqtt-settings.png)
 
-启用 MQTT 通讯，并开启目标机台/机组的自动采集任务（详见 [5.3.1.2. 任务设置](/usage/machines/#task-settings)，与 [5.4.1.2. 机组任务设置](/usage/groups/#group-tasks)）后，网关会基于 MQTT 协议，将任务数据转化成 JSON 格式的报文，并发布至指定 MQTT 服务器，详见《通讯协议》四、MQTT 通讯。
+启用 MQTT 通讯，并开启目标机台/机组的自动采集任务（详见 [3.3.1.2. 任务设置](/usage/machines/#task-settings)，与 [3.4.1.2. 机组任务设置](/usage/groups/#group-tasks)）后，网关会基于 MQTT 协议，将任务数据转化成 JSON 格式的报文，并发布至指定 MQTT 服务器，详见《通讯协议》四、MQTT 通讯。
 
 MQTT 设置包括：模式，服务器地址，服务器端口，客户端 ID，匿名登录，用户名，密码，数据上报主题，RPC 请求主题，RPC 回复主题，编码，数组转字符串，变化值上传。
 
@@ -71,13 +71,13 @@ MQTT 设置包括：模式，服务器地址，服务器端口，客户端 ID，
 
 :::
 
-## 5.6.4. 数据库配置 {#database}
+## 3.6.4. 数据库配置 {#database}
 
 打开"启用"开关以启用数据库通讯。
 
 ![数据库设置](/img/manual/communication/database-settings.png)
 
-启用数据库通讯，并开启目标机台/机组的自动采集任务（详见 [5.3.1.2. 任务设置](/usage/machines/#task-settings)，与 [5.4.1.2. 机组任务设置](/usage/groups/#group-tasks)）后，网关将自动采集任务结果数据写入到指定数据库。当前支持的数据库类型包括：SQL Server，MySQL，PostgreSQL，InfluxDB v2.x 等。详见《通讯协议》五、数据库通讯。
+启用数据库通讯，并开启目标机台/机组的自动采集任务（详见 [3.3.1.2. 任务设置](/usage/machines/#task-settings)，与 [3.4.1.2. 机组任务设置](/usage/groups/#group-tasks)）后，网关将自动采集任务结果数据写入到指定数据库。当前支持的数据库类型包括：SQL Server，MySQL，PostgreSQL，InfluxDB v2.x 等。详见《通讯协议》五、数据库通讯。
 
 数据库设置包括：类型，服务器地址，服务器端口，用户名，密码，数据库，表前缀，保存模式，数据保留期限，使用本地时间，启用主键，变化值写入等设置。
 
@@ -95,7 +95,7 @@ MQTT 设置包括：模式，服务器地址，服务器端口，客户端 ID，
 ![数据库自定义保存模式设置](/img/manual/communication/database-save-mode.png)
 
 - **数据保留期限**，是数据在数据库中保存的期限，单位为小时。如设置为 x，则网关启动后定时执行数据库清理，自动删除 x 小时前的数据。默认为 0，即保留所有数据。
-- **使用本地时间**选项打开后，在写入数据时，使用 [5.12. 设置](/usage/settings/)中所在时区的本地时间，否则使用 UTC 时间。
+- **使用本地时间**选项打开后，在写入数据时，使用 [3.12. 设置](/usage/settings/)中所在时区的本地时间，否则使用 UTC 时间。
 - **启用主键**后，会在数据库所有表格中加一列主键。
 - **变化值写入**选项开启后，机台任务设置与机组任务设置中开启的自动采集任务，只有在采集结果发生变化时才会写入结果。
 
@@ -104,9 +104,9 @@ MQTT 设置包括：模式，服务器地址，服务器端口，客户端 ID，
 
 :::
 
-## 5.6.5. 网关文件服务器配置 {#file-server}
+## 3.6.5. 网关文件服务器配置 {#file-server}
 
-打开"启用"开关以启用网关文件服务器。网关文件服务器是网关本地创建的一个文件服务器，机台可通过 FTP 或共享文件夹等方式访问。开启后，[5.3.1.3. 程序传输设置](/usage/machines/#transfer-settings)中文件服务器类型选项可设置为"网关文件服务器"。
+打开"启用"开关以启用网关文件服务器。网关文件服务器是网关本地创建的一个文件服务器，机台可通过 FTP 或共享文件夹等方式访问。开启后，[3.3.1.3. 程序传输设置](/usage/machines/#transfer-settings)中文件服务器类型选项可设置为"网关文件服务器"。
 
 ![网关文件服务器设置](/img/manual/communication/file-server-settings.png)
 
@@ -131,7 +131,7 @@ ftp://iotgw 或 ftp://网关IP
 
 :::
 
-## 5.6.6. HTTP 设置 {#http}
+## 3.6.6. HTTP 设置 {#http}
 
 打开"启用"开关以启用 HTTP 设置。
 
@@ -144,7 +144,7 @@ ftp://iotgw 或 ftp://网关IP
 
 :::
 
-## 5.6.7. Hub 设置 {#hub}
+## 3.6.7. Hub 设置 {#hub}
 
 打开"启用"开关以启用 Hub 设置。Hub 服务器用于远程访问网关接口，实现远程修改配置，异地网关数据互通等功能。需联系客服部署。
 

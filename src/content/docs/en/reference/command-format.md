@@ -1,11 +1,11 @@
 ---
-title: "6.2. Command Format"
+title: "4.2. Command Format"
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 5
 ---
 
-## 6.2.1. PLC Data Task {#plc-task}
+## 4.2.1. PLC Data Task {#plc-task}
 
 A PLC data task has the format below. Separate multiple reads with ";".
 
@@ -16,9 +16,9 @@ Area,Start Address[|Tag],Data Count,Data Type[,Precondition,Task Interval,Post-p
 Area, Start Address, Data Count and Data Type are mandatory — together they define where the data comes from and what shape it has. Tag, Precondition, Task Interval and Post-processing are optional.
 
 - **Tag** identifies the data in MQTT, database and other communication channels. If you do not set one, the gateway assigns it automatically from the task order and the data length.
-- **Precondition** is the precondition for this command. It is evaluated first, and the command runs only if the condition is met; if it is not set, the command always runs. It works exactly like [5.3.1.2.1. Precondition](/en/usage/machines/#precondition). For the syntax, see [6.2.2. Precondition](#precondition).
-- **Task Interval** is the interval for this command. If it is not set, the gateway uses the matching interval from [5.5.1. Machine Task Interval Settings](/en/usage/tasks/#machine-intervals) and [5.5.2. Group Task Interval Settings](/en/usage/tasks/#group-intervals). For the syntax, see [6.2.3. Task Interval](#interval).
-- **Post-processing** may appear more than once. Each post-processing expression transforms data returned by this task or by another task and publishes the result under a new tag. See [6.2.4. Post-processing](#post-processing).
+- **Precondition** is the precondition for this command. It is evaluated first, and the command runs only if the condition is met; if it is not set, the command always runs. It works exactly like [3.3.1.2.1. Precondition](/en/usage/machines/#precondition). For the syntax, see [4.2.2. Precondition](#precondition).
+- **Task Interval** is the interval for this command. If it is not set, the gateway uses the matching interval from [3.5.1. Machine Task Interval Settings](/en/usage/tasks/#machine-intervals) and [3.5.2. Group Task Interval Settings](/en/usage/tasks/#group-intervals). For the syntax, see [4.2.3. Task Interval](#interval).
+- **Post-processing** may appear more than once. Each post-processing expression transforms data returned by this task or by another task and publishes the result under a new tag. See [4.2.4. Post-processing](#post-processing).
 
 Taking [CNC]Fanuc [Oi-F] as an example:
 
@@ -29,8 +29,8 @@ R,200|rawData0,1,Byte,$INTERVAL$1000$INTERVAL$,$POST$___PLC_TrawData0___[0]>0$PO
 ```
 
 - `R,0,9,Byte` reads 9 values of type Byte starting at PLC address R0 (R0 included), with no tag set.
-- `R,100|Data2,6,Byte` reads 6 values of type Byte starting at PLC address R100 (R100 included), tagged "Data2", with the precondition `CNCStatus_cncStatus = "AUTO_RUN"` — that is, only while the machine is in automatic operation. For more on preconditions, see [6.2.2. Precondition](#precondition).
-- `R,200|rawData0,1,Byte` reads one value of type Byte at PLC address R200, tagged "rawData0". `$INTERVAL$1000$INTERVAL$` sets the interval for this command to 1000 milliseconds. `$POST$___PLC_TrawData0___[0]>0$POST$|Heartbeat` is a post-processing expression and its tag: it tests whether the value read into rawData0 is greater than 0 and publishes the result under the tag "Heartbeat". For more on post-processing, see [6.2.4. Post-processing](#post-processing).
+- `R,100|Data2,6,Byte` reads 6 values of type Byte starting at PLC address R100 (R100 included), tagged "Data2", with the precondition `CNCStatus_cncStatus = "AUTO_RUN"` — that is, only while the machine is in automatic operation. For more on preconditions, see [4.2.2. Precondition](#precondition).
+- `R,200|rawData0,1,Byte` reads one value of type Byte at PLC address R200, tagged "rawData0". `$INTERVAL$1000$INTERVAL$` sets the interval for this command to 1000 milliseconds. `$POST$___PLC_TrawData0___[0]>0$POST$|Heartbeat` is a post-processing expression and its tag: it tests whether the value read into rawData0 is greater than 0 and publishes the result under the tag "Heartbeat". For more on post-processing, see [4.2.4. Post-processing](#post-processing).
 
 Taking [PLC]Simatic [S300] as an example:
 
@@ -53,11 +53,11 @@ For a fuller description of Area, Start Address, Data Count, Data Type and the o
 
 Consult the device manual or contact the device manufacturer to obtain the area and address of the target PLC data and the type of the target data.
 
-## 6.2.2. Precondition {#precondition}
+## 4.2.2. Precondition {#precondition}
 
 A precondition sets the prerequisite for running a task: the collection task runs only when the condition you set is met. If it is left blank, there is no precondition and the task runs directly.
 
-For non-PLC data tasks you set the precondition in [5.3.1.2.1. Precondition](/en/usage/machines/#precondition). For PLC data tasks you add a precondition command inside the command itself, in this format:
+For non-PLC data tasks you set the precondition in [3.3.1.2.1. Precondition](/en/usage/machines/#precondition). For PLC data tasks you add a precondition command inside the command itself, in this format:
 
 ```
 $COND$Precondition$COND$
@@ -83,9 +83,9 @@ a > 100 and (b < 50.0f or c = "AUTO_RUN")
 
 The variables currently available for logical tests are `<type>_<tag>` and `prev_<type>_<tag>`, where `<type>` is the data class, `<tag>` is the data tag, and prev refers to the previous value of the data. For details on `<type>` and `<tag>`, see *Communication Protocol* 1.2. Data Description.
 
-## 6.2.3. Task Interval {#interval}
+## 4.2.3. Task Interval {#interval}
 
-The task interval sets the interval for a specific task. If it is not set, the gateway uses the matching interval from [5.5.1. Machine Task Interval Settings](/en/usage/tasks/#machine-intervals) and [5.5.2. Group Task Interval Settings](/en/usage/tasks/#group-intervals). The format is:
+The task interval sets the interval for a specific task. If it is not set, the gateway uses the matching interval from [3.5.1. Machine Task Interval Settings](/en/usage/tasks/#machine-intervals) and [3.5.2. Group Task Interval Settings](/en/usage/tasks/#group-intervals). The format is:
 
 ```
 $INTERVAL$Interval$INTERVAL$
@@ -93,11 +93,11 @@ $INTERVAL$Interval$INTERVAL$
 
 Interval is a number, in milliseconds.
 
-## 6.2.4. Post-processing {#post-processing}
+## 4.2.4. Post-processing {#post-processing}
 
 Post-processing commands let you transform the raw data you collect. Two kinds are currently available:
 
-### 6.2.4.1. $DA$ Direct Access {#da}
+### 4.2.4.1. $DA$ Direct Access {#da}
 
 $DA$ takes a single value at a given position out of the data read by the command to its left and publishes it under a given tag. It cannot perform calculations, but it lets you merge PLC tasks whose addresses are adjacent, reducing the number of PLC tasks and improving execution efficiency. For example:
 
@@ -112,7 +112,7 @@ This reads 4 Int32 values starting at R2036, giving an array of length 4. $DA$ t
 
 If a $DA$ tag is not specified, the default tag is `<raw data tag>_<number>`, where the number is the position given to $DA$. Had the example above set no tags, the three values would default to `count_0`, `count_3` and `count_4`.
 
-### 6.2.4.2. $POST$ Post-processing {#post}
+### 4.2.4.2. $POST$ Post-processing {#post}
 
 $POST$ performs calculations, comparisons and similar processing on one or more values that have already been collected, and uploads the result.
 
@@ -170,7 +170,7 @@ if(___PLC_TrawData0_data___[0] = 5, "ALARM", "NO_ALARM"))$POST$|Alarm Status;
 
 The value of D0 represents the state of the machine. D0=1: automatic operation; D0=2: paused; D0=4: emergency stop; D0=5: alarm present; any other value of D0: Wait. D0=4 and D0=5 both count as an alarm state.
 
-### 6.2.4.3. $POST$ Post-processing Functions {#post-functions}
+### 4.2.4.3. $POST$ Post-processing Functions {#post-functions}
 
 Inside a $POST$ command you can call methods on .NET static members such as Encoding, Enumberable, BitConverter and Math.
 
@@ -290,7 +290,7 @@ $POST$ToUInt32(PGetSubBytes(___PLC_TrawData0_data___, 166, 4, true), 0)$POST$|Al
 $POST$UTF8.GetString(PGetSubBytes(___PLC_TrawData0_data___, 170, 28))$POST$|Station 1 Part QR Code;
 ```
 
-### 6.2.4.4. $MOCK$ Mock Task {#mock}
+### 4.2.4.4. $MOCK$ Mock Task {#mock}
 
 A $MOCK$ task returns the requested number of dummy values of the requested type. The returned values carry no real meaning; they exist only for a few special situations. Post-processing cannot stand on its own — it must follow the mandatory part of a PLC task. In some cases, however, the post-processing needs a different interval from the data read, or for other reasons has to be set up as a task of its own. A $MOCK$ task covers those cases.
 
@@ -306,7 +306,7 @@ $POST$(___PLC_Tmacro1_500_515_8_pDouble___ - ___PLC_Tmacro1_500_515_0_pDouble___
 
 Here the first task reads machine macro variables 500 to 515 at the default interval of once every 5 seconds. The second task runs once a minute, subtracts macro variable 500 from macro variable 507 as read by the first task, and tests whether the difference is less than or equal to 10. The result, True or False, is uploaded under the tag "Cutoff Tool Life Low".
 
-## 6.2.5. External PLC Data Task {#external-plc}
+## 4.2.5. External PLC Data Task {#external-plc}
 
 The gateway can collect data from equipment around the machine by adding an external PLC.
 
@@ -337,7 +337,7 @@ Supported communication protocols:
 | bit32TypeFormat | 32-bit type format (Byte(4) Order). Allowed values: ABCD, CDAB, BADC, DCBA. Default DCBA. |
 | bit64TypeFormat | 64-bit type format (Byte(8) Order). Allowed values: ABCDEFGH, GHEFCDAB, BADCFEHG, HGFEDCBA. Default HGFEDCBA. |
 
-For the PLC read commands, see [6.2.1. PLC Data Task](#plc-task).
+For the PLC read commands, see [4.2.1. PLC Data Task](#plc-task).
 
 **Example:**
 
@@ -353,7 +353,7 @@ Separate different data sources with a line break.
 - First line: over gateway serial port 1, using the modbusRTU protocol, read 1 Int16 from area 4x starting at address 0.
 - Second line: over gateway serial port 2, using the modbusRTU protocol with the baud rate set to 14400 and the encoding set to ASCII, read 1 Int16 from area 4x starting at address 0, and 2 Int32 starting at address 10.
 
-## 6.2.6. External Machines {#external-machine}
+## 4.2.6. External Machines {#external-machine}
 
 By adding external machines you can bring machines belonging to other gateways into a group on this gateway. You must first link the other gateway in Cloud Settings or Hub Settings.
 
@@ -371,7 +371,7 @@ UID is the UID of the other, already linked gateway; MachineID is the machine nu
 iotgw1,1;iotgw2,100010|countMultiplier=1|name=Machining Center 10;
 ```
 
-## 6.2.7. Protected API and Authorized APIs {#protected-api}
+## 4.2.7. Protected API and Authorized APIs {#protected-api}
 
 API commands are used to configure protected APIs and authorized APIs.
 

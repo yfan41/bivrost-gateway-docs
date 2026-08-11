@@ -1,5 +1,5 @@
 ---
-title: "5.4. Groups"
+title: "3.4. Groups"
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 5
@@ -10,7 +10,7 @@ On the **Groups** page you can combine the machines defined on the **Machines** 
 After changing anything on the **Groups** page, return to the home page and click **Restart Service** for the changes to take effect.
 
 :::note[Note]
-Unlike machine activation, activating a group does not consume a license. An activated group is enabled, and its data is uploaded through the cloud platform (see [5.6.1. Cloud Settings](/en/usage/communication/#cloud) for how to set this up), MODBUS, MQTT and a database (see the *Communication Protocol*). A deactivated group stops collecting statistics for that group and stops uploading them. If a group contains a machine that is not activated (see [5.3. Machines](/en/usage/machines/)), no data is collected or included in the statistics for that machine.
+Unlike machine activation, activating a group does not consume a license. An activated group is enabled, and its data is uploaded through the cloud platform (see [3.6.1. Cloud Settings](/en/usage/communication/#cloud) for how to set this up), MODBUS, MQTT and a database (see the *Communication Protocol*). A deactivated group stops collecting statistics for that group and stops uploading them. If a group contains a machine that is not activated (see [3.3. Machines](/en/usage/machines/)), no data is collected or included in the statistics for that machine.
 
 :::
 
@@ -24,17 +24,17 @@ Click the 🔍 Find Group button and type a keyword into the input field to its 
 
 Click the ↻ Refresh button to refresh the whole group list.
 
-Click the + Create Group button to add a group, as described in [5.4.1. Adding a Group](#add-group).
+Click the + Create Group button to add a group, as described in [3.4.1. Adding a Group](#add-group).
 
-## 5.4.1. Adding a Group {#add-group}
+## 3.4.1. Adding a Group {#add-group}
 
 Click the + Create Group button in the top-right corner. The "Create Group" dialog opens, with four sections from top to bottom: "Identity", "Select Machine(s) for This Group", "Task" and "Advanced".
 
 ![Create Group dialog](/img/manual/en/groups/add-group-dialog.png)
 
-### 5.4.1.1. Group General Settings {#group-general}
+### 3.4.1.1. Group General Settings {#group-general}
 
-In the "Identity" section, enter the group number and the group name. The group number must currently be an integer between 1 and 16 inclusive, and must not duplicate an existing group number. You can also activate or deactivate the group: statistics are uploaded only while the group is activated. Deactivating it disables the group, and its statistics are no longer uploaded. If the group contains a machine that is not activated (for machine activation, see [5.3. Machines](/en/usage/machines/)), that machine is not added to the collection list and is neither polled nor included in the statistics.
+In the "Identity" section, enter the group number and the group name. The group number must currently be an integer between 1 and 16 inclusive, and must not duplicate an existing group number. You can also activate or deactivate the group: statistics are uploaded only while the group is activated. Deactivating it disables the group, and its statistics are no longer uploaded. If the group contains a machine that is not activated (for machine activation, see [3.3. Machines](/en/usage/machines/)), that machine is not added to the collection list and is neither polled nor included in the statistics.
 
 
 Click the "Search" box under "Select Machine(s) for This Group" and pick the machines for the group from the machine list. The selected machines are shown as tags, and the number of machines in the group appears in the "Machine Count" column on the **Groups** page.
@@ -59,48 +59,48 @@ If the last operation is handled by several machines, set the count multiplier o
 
 If a machine produces several parts per cycle, set its count multiplier to the corresponding number.
 
-By enabling external machines you can add to the group machines that belong to the gateways linked in Cloud Settings or Hub Settings. This requires a command that identifies the gateway and the machine; see [6.2.6. External Machines](/en/reference/command-format/#external-machine).
+By enabling external machines you can add to the group machines that belong to the gateways linked in Cloud Settings or Hub Settings. This requires a command that identifies the gateway and the machine; see [4.2.6. External Machines](/en/reference/command-format/#external-machine).
 
 ![Enabling external machines](/img/manual/en/groups/group-external-machines.png)
 
-### 5.4.1.2. Group Task Settings {#group-tasks}
+### 3.4.1.2. Group Task Settings {#group-tasks}
 
 In the "Task" section, configure the group's automatic collection tasks. Tick an available interface to turn on automatic statistics collection and upload for the corresponding group task. The number of enabled tasks appears in the "Task Count" column of the table on the "Groups" page.
 
-Group tasks work in much the same way as machine tasks: their results can be uploaded automatically through the cloud platform, MODBUS, MQTT or a database. To receive group task results, at least one of the cloud platform, MODBUS, MQTT or database communication methods must be enabled and configured in [5.6. Communication](/en/usage/communication/). The collection interval and the detailed settings for group tasks are configured in [5.5. Tasks](/en/usage/tasks/). For the format in which group task results are published over MODBUS, MQTT and a database, see the *Communication Protocol*.
+Group tasks work in much the same way as machine tasks: their results can be uploaded automatically through the cloud platform, MODBUS, MQTT or a database. To receive group task results, at least one of the cloud platform, MODBUS, MQTT or database communication methods must be enabled and configured in [3.6. Communication](/en/usage/communication/). The collection interval and the detailed settings for group tasks are configured in [3.5. Tasks](/en/usage/tasks/). For the format in which group task results are published over MODBUS, MQTT and a database, see the *Communication Protocol*.
 
 :::note[Note]
-If the group contains a machine that is not activated (for machine activation, see [5.3. Machines](/en/usage/machines/)), that machine is not on the collection list and is not included in the statistics.
+If the group contains a machine that is not activated (for machine activation, see [3.3. Machines](/en/usage/machines/)), that machine is not on the collection list and is not included in the statistics.
 
 :::
 
 
-Group OEE data covers all activated machines in the group: total Off time, total Wait time, total Emergency time, total Autorun time, total Manual time, the current number of machines that are Off, Wait, Emergency, Autorun and Manual, and the group availability. See [6.1.2. Group OEE Data](/en/reference/glossary/#group-oee).
+Group OEE data covers all activated machines in the group: total Off time, total Wait time, total Emergency time, total Autorun time, total Manual time, the current number of machines that are Off, Wait, Emergency, Autorun and Manual, and the group availability. See [4.1.2. Group OEE Data](/en/reference/glossary/#group-oee).
 
-For the group part count, see [6.1.3. Group Part Count](/en/reference/glossary/#group-count).
+For the group part count, see [4.1.3. Group Part Count](/en/reference/glossary/#group-count).
 
-Both group OEE and the group part count require local caching, so the "Local Caching" switch under Options in [5.12. Settings](/en/usage/settings/) must be turned on before you enable them.
+Both group OEE and the group part count require local caching, so the "Local Caching" switch under Options in [3.12. Settings](/en/usage/settings/) must be turned on before you enable them.
 
 Group Cumulative Status Time is the total time spent in each status, summed over all machines in the group, since the gateway started collecting from those machines, in seconds.
 
-### 5.4.1.3. Advanced Settings {#group-advanced}
+### 3.4.1.3. Advanced Settings {#group-advanced}
 
 In the "Advanced" section you can define a custom group ID (GroupID). The group ID identifies the group's data for every communication method except MODBUS. The default group ID is the letter g followed by the group number, for example "g1".
 
 
-## 5.4.2. Editing a Group {#edit-group}
+## 3.4.2. Editing a Group {#edit-group}
 
 Click the **Edit** button in the "Operations" column on the right of an existing group row to open the "Edit Group" dialog, which is similar to "Create Group". Here you can change the group number, group name and activation state, select the machines in the group, adjust their count multipliers, configure group tasks, change the group ID, and so on.
 
 ![Editing a group](/img/manual/en/groups/edit-group-dialog.png)
 
-## 5.4.3. Deleting a Group {#delete-group}
+## 3.4.3. Deleting a Group {#delete-group}
 
 Click the **Delete** button in the "Operations" column on the right of an existing group row. The "Delete Group" dialog appears; click **Confirm** to delete the group.
 
 ![Deleting a group](/img/manual/en/groups/delete-group-dialog.png)
 
-## 5.4.4. Batch Activation {#group-batch-activate}
+## 3.4.4. Batch Activation {#group-batch-activate}
 
 Select several groups using the checkboxes at the far left of the list, or the select-all button at the top left of the list.
 
@@ -111,7 +111,7 @@ A batch action bar then appears at the top of the page with the **Activate**, **
 Click **Activate** or **Deactivate** to activate or deactivate all the selected groups at once.
 
 
-## 5.4.5. Batch Delete {#group-batch-delete}
+## 3.4.5. Batch Delete {#group-batch-delete}
 
 Select several groups using the checkboxes at the far left of the list, or the select-all button at the top left of the list.
 

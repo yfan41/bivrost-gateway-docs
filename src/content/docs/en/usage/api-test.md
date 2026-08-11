@@ -1,5 +1,5 @@
 ---
-title: "5.8. API Test"
+title: "3.8. API Test"
 ---
 
 This page exposes a selection of read and write interfaces so you can verify them before going live. Full descriptions of every interface on this page can be found under 2.5.1. Direct Read/Write in the *Communication Protocol*.
@@ -14,13 +14,13 @@ In the **Select Machine** box at the top, pick a machine that is activated on th
 
 ![Select Interface](/img/manual/en/api-test/interface-picker.png)
 
-## 5.8.1. Common Data Interface {#common-data}
+## 3.8.1. Common Data Interface {#common-data}
 
 Monitoring common data polls a set of frequently used interfaces at a regular interval (roughly every 5 seconds) — Machine Status, Program Info, Current Tool No, Count, Alarm and so on — and refreshes the data as shown below. Click **Stop Monitoring** to leave monitoring.
 
 ![Common Data monitoring](/img/manual/en/api-test/common-data.png)
 
-## 5.8.2. Read Data Interfaces {#read-data}
+## 3.8.2. Read Data Interfaces {#read-data}
 
 Apart from the **Common Data** interface and the **Write PLC Data** and **Write Offset Data** interfaces, every interface is a read interface. Send a request on a read interface — the **Count** interface, for example — and you get the result shown below. The **Count** interface returns the machine's part count. The line below that begins with `/api/cnc/` is the HTTP interface address. The result is inside `{}`, where "count" is the name and 2806 is the value for that name. For a detailed description of each interface, see the corresponding entry under 2.5.1. Direct Read/Write in the *Communication Protocol*.
 
@@ -38,7 +38,7 @@ Some interfaces support multi-channel machines and can return data for a specifi
 
 ![Select Channel](/img/manual/en/api-test/channel-picker.png)
 
-The **Read PLC Data** interface needs additional inputs such as **Area**, **Start Address**, **Data Count** and **Data Type**. See [6.2.1. PLC Data Task](/en/reference/command-format/#plc-task) and 2.5.1.18. readPlcData — Read PLC Data in the *Communication Protocol*.
+The **Read PLC Data** interface needs additional inputs such as **Area**, **Start Address**, **Data Count** and **Data Type**. See [4.2.1. PLC Data Task](/en/reference/command-format/#plc-task) and 2.5.1.18. readPlcData — Read PLC Data in the *Communication Protocol*.
 
 ![Read PLC Data](/img/manual/en/api-test/read-plc-data.png)
 
@@ -50,7 +50,7 @@ The **Read Tool Life** and **Read Tool Life Details** interfaces need different 
 
 ![Read Tool Life](/img/manual/en/api-test/read-toollife.png)
 
-## 5.8.3. Write Data Interfaces {#write-data}
+## 3.8.3. Write Data Interfaces {#write-data}
 
 The write interfaces are **Write PLC Data** and **Write Offset Data**. Like the **Read PLC Data** and **Read Offset Data** interfaces, they need inputs such as **Area**, **Start Address**, **Data Type** and **Offset Number**, and in addition you must supply the data to be written in the request body. See 2.5.1.19. writePlcData — Write PLC Data and 2.5.1.14. writeOffsetData — Write Offset Data in the *Communication Protocol*. Click **Beautify** to reformat the request body into standard JSON.
 
@@ -90,7 +90,7 @@ A successful write returns an error code (errorCode, where 0 means success) and 
 }
 ```
 
-## 5.8.4. Troubleshooting Test Failures {#troubleshooting}
+## 3.8.4. Troubleshooting Test Failures {#troubleshooting}
 
 A failed API test returns **Failed to Call API**, as shown below. The response gives an **Error Code**, a **Description**, **Details** and a suggested **Remedy**.
 

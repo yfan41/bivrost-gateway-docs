@@ -1,11 +1,11 @@
 ---
-title: "5.10. Analysis"
+title: "3.10. Analysis"
 ---
 
 The Analysis page extracts the machine and group data held in the gateway's local storage and builds a statistics table for a given group, over a given period of time, broken down by grouping interval.
 
 :::note[Points to note when using Analysis]
-- [5.12.2.3. Local Caching](/en/usage/settings/#local-cache) must be enabled first, so that machine status history can be kept on the gateway itself. Local history is retained for at most 365 days, so no time option may be set earlier than 365 days before the current time.
+- [3.12.2.3. Local Caching](/en/usage/settings/#local-cache) must be enabled first, so that machine status history can be kept on the gateway itself. Local history is retained for at most 365 days, so no time option may be set earlier than 365 days before the current time.
 - The difference between the start time and the end time (the time range) may not exceed 31 days.
 - Machines and groups should already be configured.
 - If the end of the time range is later than the current time, the current time is used as the end time.
@@ -41,7 +41,7 @@ If the end of the time range is later than the current time, it is automatically
 
 The options specific to each analyzer, and the results they produce, are described below.
 
-## 5.10.1. Alarm Analysis {#alarm-analysis}
+## 3.10.1. Alarm Analysis {#alarm-analysis}
 
 The figure below shows the alarm analysis table for every machine in the selected group, produced by choosing Alarm Analysis, Group 1 and the last 30 days and clicking **Run analysis**. It lists the start and end time of each alarm, its message and its level.
 
@@ -50,7 +50,7 @@ The figure below shows the alarm analysis table for every machine in the selecte
 Once the result has been calculated, click **Export** to download it as a CSV file. The file is named automatically as `AnalyzerName-GroupName-StartTime-EndTime.csv`.
 
 
-## 5.10.2. Count Analysis {#count-analysis}
+## 3.10.2. Count Analysis {#count-analysis}
 
 The figure below shows the count analysis table for every machine in the selected group, produced by choosing Count Analysis, Group 1 and the last 30 days and clicking **Run analysis**. Count here means the count produced within the specified time range.
 
@@ -66,7 +66,7 @@ Two settings are specific to this analyzer: **Group by interval (h)** and **Aggr
 
 Once the result has been calculated, click **Export** to download it as a CSV file. The file is named automatically as `AnalyzerName-GroupName-StartTime-EndTime.csv`.
 
-## 5.10.3. Cycle Analysis {#cycle-analysis}
+## 3.10.3. Cycle Analysis {#cycle-analysis}
 
 The figure below shows the cycle analysis table for every machine, produced by choosing Cycle Analysis, Group 1 and the last 30 days and clicking **Run analysis**. It shows, for each machine within the period, the start and end time of every cycle, the main program that was running, and the cycle time.
 
@@ -74,7 +74,7 @@ The figure below shows the cycle analysis table for every machine, produced by c
 
 Once the result has been calculated, click **Export** to download it as a CSV file. The file is named automatically as `AnalyzerName-GroupName-StartTime-EndTime.csv`.
 
-## 5.10.4. OEE Analysis {#oee-analysis}
+## 3.10.4. OEE Analysis {#oee-analysis}
 
 The figure below shows the OEE analysis table for every machine, produced by choosing OEE Analysis and Group 1, entering an explicit start and end time, setting a grouping interval and clicking **Run analysis**.
 
@@ -89,7 +89,7 @@ Two settings are specific to this analyzer:
 
 Once the result has been calculated, click **Export** to download it as a CSV file. The file is named automatically as `AnalyzerName-GroupName-StartTime-EndTime.csv`.
 
-## 5.10.5. Overall Analysis {#comprehensive-analysis}
+## 3.10.5. Overall Analysis {#comprehensive-analysis}
 
 Overall Analysis combines Count Analysis and OEE Analysis.
 

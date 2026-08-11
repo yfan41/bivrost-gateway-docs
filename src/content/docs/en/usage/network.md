@@ -1,12 +1,12 @@
 ---
-title: "5.7. Network"
+title: "3.7. Network"
 ---
 
 The **Network** page is split into two parts: "Interfaces" (LAN1, LAN2 and the wireless adapter) and "Services" (Static Routing Settings, Remote Access Settings). Click an interface card to expand its settings.
 
 ![Network page](/img/manual/en/network/network-page.png)
 
-## 5.7.1. Wired Network {#wired}
+## 3.7.1. Wired Network {#wired}
 
 The "Wired Network" section shows the current connection status of the LAN1 port. "Connected" means the LAN adapter has detected a device at the other end of the cable; it does not guarantee that the device can be pinged. You can change the Connection Type of the gateway's LAN1 port, setting the IP Assignment Mode to DHCP (obtained automatically) or Static (entered manually). LAN1 is normally set to Static, in which case you can edit the IP Address, Subnet Mask, Default Gateway and DNS server settings. The default gateway and DNS server only need to be changed when the company network is restricted; otherwise leave them at their defaults. When you are done, click **Save** to apply the settings.
 
@@ -17,9 +17,9 @@ The settings take effect as soon as you click **Save** — no service restart is
 
 ![LAN1 Settings](/img/manual/en/network/lan1-settings.png)
 
-Once the LAN2 Settings option has been enabled under [Settings](/en/usage/settings/), LAN2 Settings appears below LAN1 Settings and you can change the Connection Type of the LAN2 port; see [5.12. Settings](/en/usage/settings/) for details.
+Once the LAN2 Settings option has been enabled under [Settings](/en/usage/settings/), LAN2 Settings appears below LAN1 Settings and you can change the Connection Type of the LAN2 port; see [3.12. Settings](/en/usage/settings/) for details.
 
-## 5.7.2. WiFi Settings {#wireless}
+## 3.7.2. WiFi Settings {#wireless}
 
 The gateway is fitted with a wireless adapter and can connect to a WiFi network (models on which the wireless adapter is unavailable do not show this section).
 
@@ -29,10 +29,10 @@ While WiFi is disconnected, click the "WiFi Name" field to scan automatically fo
 Enter the "WiFi Password" and click **Connect**. If the connection succeeds, the "Status" field shows "Connected: [WiFi name][signal strength]" and the **Connect** button changes to **Disconnect**. Unless you click **Disconnect**, the gateway reconnects automatically whenever it detects that network again. Clicking **Disconnect** drops the current network and stops the gateway from reconnecting to it automatically.
 
 
-Once connected, click **Configure** to open the "WiFi Settings" dialog. As in [5.7.1. Wired Network](#wired), you can change the WiFi IP Address, Subnet Mask and other settings.
+Once connected, click **Configure** to open the "WiFi Settings" dialog. As in [3.7.1. Wired Network](#wired), you can change the WiFi IP Address, Subnet Mask and other settings.
 
 
-## 5.7.3. Static Routing Settings {#static-routing}
+## 3.7.3. Static Routing Settings {#static-routing}
 
 You can add static routes here. The route format is:
 
@@ -44,7 +44,7 @@ Separate multiple routes with `;`.
 
 ![Static Routing Settings](/img/manual/en/network/static-routing.png)
 
-## 5.7.4. Remote Access Settings {#remote-access}
+## 3.7.4. Remote Access Settings {#remote-access}
 
 Once remote access is configured, connecting to a remote server provides the following:
 

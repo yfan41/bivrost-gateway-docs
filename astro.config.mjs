@@ -87,10 +87,19 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
       components: {
         Footer: './src/components/Footer.astro',
+        Hero: './src/components/Hero.astro',
       },
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 4 },
       pagination: true,
-      plugins: [starlightLinksValidator()],
+      // errorOnRelativeLinks off: the front page (index.md) authors its hero
+      // actions and quick-link cards as relative links (`networking/`), because
+      // the validator reads frontmatter and raw-HTML hrefs from the source
+      // BEFORE the rebaseAbsoluteLinks plugin runs — root-absolute links there
+      // would fail validation under DOCS_BASE=/gateway even though the rendered
+      // output is correct. Relative links resolve under any base and are still
+      // existence-checked by the validator. Body prose keeps the root-absolute
+      // convention.
+      plugins: [starlightLinksValidator({ errorOnRelativeLinks: false })],
       // One tree for both locales: Starlight resolves each `slug` to the entry
       // of the current locale (e.g. `usage/login` → `en/usage/login`), so only
       // the labels need translating.
@@ -106,23 +115,13 @@ export default defineConfig({
           slug: 'index',
         },
         {
-          label: '二、配件列表',
-          translations: { en: '2. Packing List' },
-          slug: 'accessories',
-        },
-        {
-          label: '三、基本参数',
-          translations: { en: '3. Specifications' },
-          slug: 'specs',
-        },
-        {
-          label: '四、联网说明',
-          translations: { en: '4. Networking' },
+          label: '二、联网说明',
+          translations: { en: '2. Networking' },
           slug: 'networking',
         },
         {
-          label: '五、网关使用',
-          translations: { en: '5. Using the Gateway' },
+          label: '三、网关使用',
+          translations: { en: '3. Using the Gateway' },
           collapsed: false,
           items: [
             {
@@ -131,75 +130,75 @@ export default defineConfig({
               slug: 'usage',
             },
             {
-              label: '5.1. 登录',
-              translations: { en: '5.1. Signing In' },
+              label: '3.1. 登录',
+              translations: { en: '3.1. Signing In' },
               slug: 'usage/login',
             },
             {
-              label: '5.2. 主页',
-              translations: { en: '5.2. Home' },
+              label: '3.2. 主页',
+              translations: { en: '3.2. Home' },
               slug: 'usage/home',
             },
             {
-              label: '5.3. 机台配置',
-              translations: { en: '5.3. Machines' },
+              label: '3.3. 机台配置',
+              translations: { en: '3.3. Machines' },
               slug: 'usage/machines',
             },
             {
-              label: '5.4. 机组配置',
-              translations: { en: '5.4. Groups' },
+              label: '3.4. 机组配置',
+              translations: { en: '3.4. Groups' },
               slug: 'usage/groups',
             },
             {
-              label: '5.5. 任务配置',
-              translations: { en: '5.5. Tasks' },
+              label: '3.5. 任务配置',
+              translations: { en: '3.5. Tasks' },
               slug: 'usage/tasks',
             },
             {
-              label: '5.6. 通讯配置',
-              translations: { en: '5.6. Communication' },
+              label: '3.6. 通讯配置',
+              translations: { en: '3.6. Communication' },
               slug: 'usage/communication',
             },
             {
-              label: '5.7. 网络配置',
-              translations: { en: '5.7. Network' },
+              label: '3.7. 网络配置',
+              translations: { en: '3.7. Network' },
               slug: 'usage/network',
             },
             {
-              label: '5.8. 接口测试',
-              translations: { en: '5.8. API Test' },
+              label: '3.8. 接口测试',
+              translations: { en: '3.8. API Test' },
               slug: 'usage/api-test',
             },
             {
-              label: '5.9. 程序传输',
-              translations: { en: '5.9. File Transfer' },
+              label: '3.9. 程序传输',
+              translations: { en: '3.9. File Transfer' },
               slug: 'usage/file-transfer',
             },
             {
-              label: '5.10. 数据分析',
-              translations: { en: '5.10. Analysis' },
+              label: '3.10. 数据分析',
+              translations: { en: '3.10. Analysis' },
               slug: 'usage/analysis',
             },
             {
-              label: '5.11. 监控台',
-              translations: { en: '5.11. Monitor' },
+              label: '3.11. 监控台',
+              translations: { en: '3.11. Monitor' },
               slug: 'usage/monitor',
             },
             {
-              label: '5.12. 设置',
-              translations: { en: '5.12. Settings' },
+              label: '3.12. 设置',
+              translations: { en: '3.12. Settings' },
               slug: 'usage/settings',
             },
             {
-              label: '5.13. 其它',
-              translations: { en: '5.13. Other' },
+              label: '3.13. 其它',
+              translations: { en: '3.13. Other' },
               slug: 'usage/misc',
             },
           ],
         },
         {
-          label: '六、补充说明',
-          translations: { en: '6. Appendices' },
+          label: '四、补充说明',
+          translations: { en: '4. Appendices' },
           collapsed: true,
           items: [
             {
@@ -208,25 +207,25 @@ export default defineConfig({
               slug: 'reference',
             },
             {
-              label: '6.1. 名词解释',
-              translations: { en: '6.1. Glossary' },
+              label: '4.1. 名词解释',
+              translations: { en: '4.1. Glossary' },
               slug: 'reference/glossary',
             },
             {
-              label: '6.2. 命令格式',
-              translations: { en: '6.2. Command Format' },
+              label: '4.2. 命令格式',
+              translations: { en: '4.2. Command Format' },
               slug: 'reference/command-format',
             },
           ],
         },
         {
-          label: '七、常见问题',
-          translations: { en: '7. FAQ' },
+          label: '五、常见问题',
+          translations: { en: '5. FAQ' },
           slug: 'faq',
         },
         {
-          label: '八、已知问题',
-          translations: { en: '8. Known Issues' },
+          label: '六、已知问题',
+          translations: { en: '6. Known Issues' },
           slug: 'known-issues',
         },
         {

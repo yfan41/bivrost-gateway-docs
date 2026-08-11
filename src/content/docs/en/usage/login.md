@@ -1,5 +1,5 @@
 ---
-title: "5.1. Signing In"
+title: "3.1. Signing In"
 ---
 
 You can connect a computer to the gateway in any of the following ways:
@@ -35,6 +35,6 @@ http://BIV-152KUCG.local
 Alternatively, in the address bar of the computer's browser (Chrome recommended), enter the gateway's IP address (the initial LAN1 IP is 192.168.100.1) and press Enter to open the login page. The initial account and password are both admin. Click **Login**. You can switch the interface language in the top-right corner.
 
 :::note[Note]
-After changing the LAN1 IP address (see [5.7.1. Wired Network](/en/usage/network/#wired)), sign in using the new IP address. If you are connected through the LAN2 port or over WiFi, use the corresponding IP address.
+After changing the LAN1 IP address (see [3.7.1. Wired Network](/en/usage/network/#wired)), sign in using the new IP address. If you are connected through the LAN2 port or over WiFi, use the corresponding IP address.
 
 :::
