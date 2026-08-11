@@ -10,9 +10,12 @@ import starlightLinksValidator from 'starlight-links-validator';
 const version = readFileSync(new URL('./VERSION', import.meta.url), 'utf8').trim();
 
 // The manual is served in place at https://docs.bivrost.cn/gateway/ (latest) and
-// as a frozen snapshot at /gateway/v<version>/. CI sets DOCS_BASE per build; the
-// default '/gateway' keeps local dev and a plain `pnpm build` on the latest path.
-const docsBase = process.env.DOCS_BASE || '/gateway';
+// as a frozen snapshot at /gateway/v<version>/. The deploy workflow sets DOCS_BASE
+// explicitly for both, so nothing in CI depends on the fallback below. Default '/'
+// for local dev, matching the protocol-docs repo — `pnpm dev` serves at
+// localhost:<port>/ rather than under /gateway/. A hand-run `pnpm build` therefore
+// produces a root-based site: pass DOCS_BASE=/gateway if you mean to upload it.
+const docsBase = process.env.DOCS_BASE || '/';
 // Prefix used to rebase hand-authored root-absolute links (see plugin below):
 // '' when serving from root, otherwise the base with any trailing slash removed.
 const basePrefix = docsBase === '/' ? '' : docsBase.replace(/\/+$/, '');
