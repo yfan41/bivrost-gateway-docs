@@ -4,6 +4,7 @@ title: "Changelog"
 
 | Version | Change Date | Description | Release Date |
 | --- | --- | --- | --- |
+| 1.19.7.18 | 20260803 | 1. Reworked the Siemens CNC model list: the generic model was split into 828D and 840D sl; 810D/840D (winXP) was split into 810D(winXP) and 840D(winXP); 810D/840D (winNT) was split into 810D(winNT) and 840D(winNT); SINUMERIK ONE was renamed ONE; added the 802D and 808D models. Existing machine configurations are unaffected.<br />2. Revised the "Enable IP Whitelist" description: the login endpoint is not restricted by the whitelist, JWT-authenticated requests skip the whitelist check, and SecretKey-authenticated requests must still pass it. | 20260806 |
 | 1.19.7 | 20260719 | 1. Added Alarm Mapping.<br />2. Added the "Network Error as Offline" (NetworkErrorAsOffline) option to the machine configuration.<br />3. Files downloaded from DNC no longer carry a file extension.<br />4. Added compatibility with older Chromium-based browsers. | 20260719 |
 | 1.19.6 | 20260702 | 1. Revised the Monitor documentation. | 20260702 |
 | 1.19.5 | 20260615 | 1. Added Toolpath viewing to the "DNC" page. | 20260615 |

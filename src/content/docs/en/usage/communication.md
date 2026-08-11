@@ -137,7 +137,7 @@ Turn on the **Enable** switch to start the HTTP service.
 
 ![HTTP Settings](/img/manual/en/communication/http-settings.png)
 
-With **Enable IP Whitelist** on, the gateway only accepts HTTP interface requests from valid IP addresses on the whitelist. The **Whitelist** can hold several IP addresses, separated by ";".
+With **Enable IP Whitelist** on, all API requests except those with valid JWT authentication are restricted to whitelisted IP addresses. That is, the login endpoint is not restricted by the whitelist, and requests authenticated with a JWT after login skip the whitelist check; requests authenticated with a SecretKey must still pass the whitelist check. The **Whitelist** can hold several IP addresses, separated by ";".
 
 :::note[Note]
 When the settings are complete, click **Save**, then go back to Home and click **Restart Service** to apply the changes.
