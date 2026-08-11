@@ -1,6 +1,6 @@
 # 彼络物联网关 说明书（文档站）
 
-基于 [Starlight](https://starlight.astro.build/)（Astro）的《彼络物联网关 说明书》在线文档，内容对应说明书 **v1.19.7**，截图取自当前版本的网关 Web 管理页面。
+基于 [Starlight](https://starlight.astro.build/)（Astro）的《彼络物联网关 说明书》在线文档，内容对应说明书 **v1.19.7.18**，截图取自当前版本的网关 Web 管理页面。
 
 站点提供简体中文与英文两个版本：简体中文在根路径（`/gateway/`），英文在 `/gateway/en/`，右上角语言切换器可在两者之间跳转。
 
