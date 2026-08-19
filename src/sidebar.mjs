@@ -152,27 +152,39 @@ export function getSidebar(version) {
 }
 
 /**
- * Ordered doc slugs, depth-first — the manual's reading order.
+ * @typedef {{ slug: string, depth: number }} PrintChapter
+ */
+
+/**
+ * Ordered doc slugs, depth-first — the manual's reading order, each with the nesting
+ * level the printed table of contents indents by.
  *
- * Group nodes contribute ORDER ONLY and are deliberately not emitted: each group's
- * first child is its overview page, whose frontmatter title already equals the group
- * label (the group '三、网关使用' is the title of usage/index.md). Emitting both would
- * duplicate the chapter heading in the PDF.
+ * Group nodes contribute ORDER and NESTING ONLY and are deliberately not emitted:
+ * each group's first child is its overview page, whose frontmatter title already
+ * equals the group label (the group '三、网关使用' is the title of usage/index.md).
+ * Emitting both would duplicate the chapter heading in the PDF — and since that
+ * overview page IS the chapter the group is named after, it stays at the group's own
+ * level; only the clauses under it ('3.1.', '3.2.', …) indent.
  *
  * @param {ReturnType<typeof getSidebar>} items
- * @returns {string[]}
+ * @returns {PrintChapter[]}
  */
 export function flattenSidebar(items) {
-  /** @type {string[]} */
+  /** @type {PrintChapter[]} */
   const out = [];
-  /** @param {any[]} nodes */
-  const walk = (nodes) => {
+  /** @param {any[]} nodes @param {number} depth */
+  const walk = (nodes, depth) => {
     for (const node of nodes) {
-      if (Array.isArray(node.items)) walk(node.items);
-      else if (typeof node.slug === 'string') out.push(node.slug);
+      if (Array.isArray(node.items)) {
+        node.items.forEach((/** @type {any} */ child, /** @type {number} */ i) =>
+          walk([child], i === 0 ? depth : depth + 1)
+        );
+      } else if (typeof node.slug === 'string') {
+        out.push({ slug: node.slug, depth });
+      }
     }
   };
-  walk(items ?? []);
+  walk(items ?? [], 0);
   return out;
 }
 

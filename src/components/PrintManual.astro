@@ -14,11 +14,9 @@ interface Props {
   /** undefined for the root/简体中文 tree, 'en' under /en/. */
   locale: 'en' | undefined;
   version: string;
-  /** Build date, passed in so the two locales stamp the same day. */
-  date: string;
 }
 
-const { locale, version, date } = Astro.props;
+const { locale, version } = Astro.props;
 const isEnglish = locale === 'en';
 
 const order = flattenSidebar(getSidebar(version));
@@ -26,7 +24,7 @@ const entries = await getCollection('docs');
 const byId = new Map(entries.map((entry) => [entry.id, entry]));
 
 const sections = [];
-for (const slug of order) {
+for (const { slug, depth } of order) {
   const id = entryIdFor(slug, locale);
   const entry = byId.get(id);
   // Fail the BUILD, not the PDF run. A chapter silently vanishing from the manual
@@ -37,6 +35,7 @@ for (const slug of order) {
   const key = slug.replace(/\//g, '-');
   sections.push({
     slug,
+    depth,
     // Locale-qualified path, matching what the browser derives from an href:
     // /gateway/en/usage/login/ → 'en/usage/login'. Each tree's root normalises
     // to 'index' (简体中文) / 'en' (English).
@@ -67,20 +66,39 @@ const printData = {
 
 <div class="print-manual" data-pagefind-ignore>
   <section class="print-cover">
-    <img src={logo.src} width={logo.width} height={logo.height} alt="Bivrost" />
-    <h1 class="print-cover-title">
-      {isEnglish ? 'Bivrost IoT Gateway' : '彼络物联网关'}
-    </h1>
-    <p class="print-cover-sub">{isEnglish ? 'User Manual' : '说明书'}</p>
-    <p class="print-cover-meta">v{version} · {date}</p>
+    <div class="print-cover-mark">
+      <img src={logo.src} width={logo.width} height={logo.height} alt="Bivrost" />
+    </div>
+
+    <div class="print-cover-block">
+      <h1 class="print-cover-title">{isEnglish ? 'Bivrost IoT Gateway' : '彼络物联网关'}</h1>
+      <p class="print-cover-sub">{isEnglish ? '彼络物联网关' : 'Bivrost IoT Gateway'}</p>
+      <hr class="print-cover-rule" />
+      <p class:list={['print-cover-doctype', { 'is-latin': isEnglish }]}>
+        {isEnglish ? 'User Manual' : '说明书'}
+      </p>
+    </div>
+
+    <div class="print-cover-imprint">
+      <p class="print-cover-meta">
+        {isEnglish ? `Document Version V${version}` : `文档版本 V${version}`}
+      </p>
+      <hr class="print-cover-rule" />
+      <p class="print-cover-org">
+        {isEnglish ? 'Bivrost Technologies Company Limited' : '深圳市彼络科技有限公司'}
+      </p>
+      <p class="print-cover-org-en">
+        {isEnglish ? '深圳市彼络科技有限公司' : 'Bivrost Technologies Company Limited'}
+      </p>
+    </div>
   </section>
 
   <nav class="print-toc" aria-label={isEnglish ? 'Contents' : '目录'}>
-    <h1>{isEnglish ? 'Contents' : '目录'}</h1>
+    <h1 class:list={[{ 'is-latin': isEnglish }]}>{isEnglish ? 'Contents' : '目录'}</h1>
     <ol>
       {
-        sections.map(({ sectionId, entry }) => (
-          <li>
+        sections.map(({ sectionId, entry, depth }) => (
+          <li class={`print-toc-${depth}`}>
             <a href={`#${sectionId}`}>{entry.data.title}</a>
           </li>
         ))

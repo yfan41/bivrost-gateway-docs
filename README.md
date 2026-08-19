@@ -28,7 +28,8 @@ pnpm build && pnpm pdf                  # 生成 dist/bivrost-gateway-manual-{zh
 ```
 
 - PDF 由 `/print/`（中文）与 `/en/print/`（英文）两个路由渲染。这两个页面把侧边栏顺序中的全部 23 章合并为一篇长文档，前面加封面与目录；用浏览器打开并 Ctrl-P 预览，是调整 `src/styles/print-manual.css` 最快的方式
-- 章节顺序的唯一来源是 `src/sidebar.mjs`，`astro.config.mjs` 的侧边栏与 PDF 共用，二者不会脱节。章节标题取自各页 frontmatter 的 `title`
+- 章节顺序的唯一来源是 `src/sidebar.mjs`，`astro.config.mjs` 的侧边栏与 PDF 共用，二者不会脱节。章节标题取自各页 frontmatter 的 `title`；侧边栏分组的下级条目在目录中缩进一级（分组的首章即该组概述页，与分组同名，不缩进）
+- 版式按说明书惯例设置：正文宋体、标题黑体、表格加框、提示框改为线框、页眉页脚含书名与页码，封面不含日期且不带页眉页脚（生成器把封面单独渲染一次再换入第 1 页，以保留 Chromium 生成的书签树）
 - 合并后各页锚点会重名，页面上的内联脚本会给每章的 `id` 加上 `<章节>--` 前缀，并把站内链接改写为文档内锚点，因此 PDF 里的交叉引用可直接跳转
 - `pnpm pdf` 不挂在 `pnpm build` 上：没装浏览器也能正常构建站点。`pnpm install` 同样不会下载浏览器（见 `pnpm-workspace.yaml` 的 `allowBuilds`）
 - CI 在第一次构建后生成一次 PDF，同一份文件同时发布到 `/gateway/` 与 `/gateway/v<版本>/`；runner 上需要 `fonts-noto-cjk`，否则中文会渲染成方框
@@ -41,7 +42,7 @@ pnpm build && pnpm pdf                  # 生成 dist/bivrost-gateway-manual-{zh
 - `public/img/manual/en/<章节>/` — 各章节英文界面截图，文件名与中文版一一对应
 - `src/assets/logo.png` — 从说明书 PDF 提取的透明底 Logo（导航栏用）
 - `src/styles/custom.css` — 品牌色与截图卡片样式
-- `src/styles/print-manual.css` — 整本 PDF 的分页、表格与截图样式
+- `src/styles/print-manual.css` — 整本 PDF 的版式、分页、表格与截图样式
 - `src/sidebar.mjs` — 章节顺序（侧边栏与 PDF 共用）
 - `src/components/Footer.astro` — 页脚版权信息
 - `src/components/SocialIcons.astro` — 顶栏「下载 PDF」按钮（Starlight 在顶栏与移动端菜单都会渲染此组件）

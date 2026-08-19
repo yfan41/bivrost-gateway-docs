@@ -6,11 +6,31 @@
  * <link media="print">): it forces the light palette, drops shadows, sets
  * break-inside/orphans/widows on content, and its `print:hidden` utility hides the
  * nav sidebar, the TOC, pagination and the header's search + right-group. This file
- * covers only what that stylesheet does NOT do for a 23-chapter merged document.
+ * covers only what that stylesheet does NOT do for a 23-chapter bound manual.
  *
  * Rules here are unlayered on purpose — Starlight's own rules live in
  * @layer starlight.*, so plain selectors win. Same mechanism as custom.css.
+ *
+ * IMPORTANT: StarlightPage renders its slot INSIDE `.sl-markdown-content`, so
+ * `.print-manual` is a DESCENDANT of it, never an ancestor. Rules that must outrank
+ * print.css's `.sl-markdown-content …` selectors are anchored on `.print-section`,
+ * which both nests correctly and carries enough specificity to win without
+ * `!important`.
  */
+
+:root {
+  /*
+   * Book typography. A 说明书 sets its body in a Song/Serif face and its headings in
+   * a Hei/Sans face; the stacks name the macOS families first (local preview) then
+   * the Noto CJK families the CI runner installs, so a locally checked page and the
+   * published PDF agree. The English manual falls through to Georgia/Helvetica.
+   */
+  --print-serif: 'Songti SC', 'Noto Serif CJK SC', 'Source Han Serif SC', 'Source Han Serif CN',
+    STSong, SimSun, Georgia, 'Times New Roman', serif;
+  --print-sans: 'Heiti SC', 'Noto Sans CJK SC', 'Source Han Sans SC', 'PingFang SC',
+    'Microsoft YaHei', SimHei, Helvetica, Arial, sans-serif;
+  --print-rule: hsl(224, 8%, 45%);
+}
 
 /* ------------------------------------------------------------------ *
  * Screen: the print routes are also usable in a browser (Ctrl-P preview
@@ -19,33 +39,85 @@
 
 .print-manual .print-cover {
   text-align: center;
-  padding-block: 6rem 3rem;
+  padding-block: 4rem 3rem;
 }
 .print-manual .print-cover img {
-  width: 220px;
+  width: 200px;
   height: auto;
   margin-inline: auto;
 }
 .print-manual .print-cover-title {
-  font-size: 2.5rem;
-  margin-block: 1.5rem 0.25rem;
+  font-size: 2.25rem;
+  letter-spacing: 0.04em;
+  margin-block: 0 0.5rem;
+  border: 0;
 }
 .print-manual .print-cover-sub {
-  font-size: 1.5rem;
-  color: var(--sl-color-gray-2);
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sl-color-gray-3);
   margin: 0;
 }
-.print-manual .print-cover-meta {
-  margin-block-start: 2rem;
+.print-manual .print-cover-doctype {
+  font-size: 1.75rem;
+  letter-spacing: 0.5em;
+  /* The letter-spacing is trailing, so pull the block back to stay optically centred. */
+  text-indent: 0.5em;
+  margin-block: 2rem 0;
+}
+/* Latin text does not want CJK title tracking. */
+.print-manual .print-cover-doctype.is-latin,
+.print-manual .print-toc h1.is-latin {
+  letter-spacing: 0.08em;
+  text-indent: 0;
+}
+.print-manual .print-cover-rule {
+  width: 60%;
+  margin: 1.75rem auto;
+  border: 0;
+  border-top: 2px solid var(--print-rule);
+}
+.print-manual .print-cover-meta,
+.print-manual .print-cover-org {
+  color: var(--sl-color-gray-2);
+  margin: 0.25rem 0;
+}
+.print-manual .print-cover-org {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+}
+.print-manual .print-cover-org-en {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
   color: var(--sl-color-gray-3);
+  margin: 0.35rem 0 0;
+}
+
+.print-manual .print-toc h1 {
+  text-align: center;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  border: 0;
 }
 .print-manual .print-toc ol {
   list-style: none;
   padding: 0;
-  line-height: 2;
+  line-height: 2.1;
 }
 .print-manual .print-toc a {
   text-decoration: none;
+}
+.print-manual .print-toc-0 {
+  font-family: var(--print-sans);
+  font-weight: 600;
+}
+.print-manual .print-toc-1 + .print-toc-0 {
+  /* Air between chapters, so the numbering groups visually. */
+  margin-block-start: 0.6rem;
+}
+.print-manual .print-toc-1 {
+  padding-inline-start: 2.5em;
 }
 
 /* Front-page quick-link cards are site navigation, not manual content. */
@@ -60,28 +132,110 @@
 @media print {
   @page {
     size: A4;
-    /* Chromium clips displayHeaderFooter templates below ~15mm; keep headroom. */
+    /* Chromium clips displayHeaderFooter templates below ~15mm; keep headroom.
+       The 14mm side margins are what the 7-column CNC matrix needs. */
     margin: 18mm 14mm;
   }
 
-  /* One chapter per sheet, matching the printed manual. */
+  /* ---- Book typography ------------------------------------------- */
+
+  .print-manual,
+  .print-manual .print-section {
+    font-family: var(--print-serif);
+    font-size: 10.5pt;
+    line-height: 1.75;
+  }
+  .print-manual :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--print-sans);
+    color: var(--sl-color-white); /* print.css maps this to near-black */
+  }
+  /* Justified columns; `break-word` keeps long identifiers from tearing a line open
+     when justification stretches the spaces. Table cells stay unjustified — the
+     columns are too narrow for it. */
+  .print-manual .print-section :is(p, li) {
+    text-align: justify;
+    overflow-wrap: break-word;
+  }
+  /*
+   * Cross-references print as plain text: on paper an accent-coloured, underlined
+   * run of words reads as a defect. The anchors stay live, so they remain clickable
+   * in the PDF.
+   */
+  .print-manual a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ---- Cover ------------------------------------------------------ */
+
+  /*
+   * Three bands — mark, title block, imprint — filling one sheet. `vh` resolves
+   * against the page area in print media, so this is the printable box exactly; the
+   * generator swaps a header/footer-free capture in for this page.
+   */
+  .print-manual .print-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 14mm 14mm 10mm;
+  }
+  .print-manual .print-cover-title {
+    font-size: 26pt;
+  }
+  .print-manual .print-cover-doctype {
+    font-size: 20pt;
+  }
+
   .print-manual .print-cover,
   .print-manual .print-toc {
     break-after: page;
   }
-  .print-manual .print-cover {
-    padding-block: 25vh 0;
-  }
+
+  /* ---- Chapters --------------------------------------------------- */
+
   .print-manual .print-section {
     break-before: page;
   }
   .print-manual .print-section:first-of-type {
     break-before: auto;
   }
+  /* Chapter opener: name over a rule, the convention the printed manual uses. */
   .print-manual .print-section-title {
+    font-size: 17pt;
+    margin-block: 0 1.4rem;
+    padding-block-end: 0.4rem;
+    border-bottom: 1.5pt solid var(--print-rule);
     break-after: avoid;
-    margin-block-start: 0;
   }
+  .print-manual .print-section :is(h2, h3, h4) {
+    break-after: avoid;
+  }
+  .print-manual .print-section h2 {
+    font-size: 13pt;
+    margin-block: 1.6rem 0.6rem;
+  }
+  .print-manual .print-section h3 {
+    font-size: 11.5pt;
+    margin-block: 1.2rem 0.5rem;
+  }
+  .print-manual .print-section h4 {
+    font-size: 10.5pt;
+    margin-block: 1rem 0.4rem;
+  }
+
+  /* ---- Table of contents ------------------------------------------ */
+
+  .print-manual .print-toc h1 {
+    font-size: 17pt;
+    margin-block: 0 2rem;
+  }
+  .print-manual .print-toc ol {
+    line-height: 2;
+  }
+
+  /* ---- Site chrome that is not part of the document ---------------- */
 
   /*
    * SiteTitle is NOT print:hidden (Starlight keeps the wordmark for single-page
@@ -91,21 +245,45 @@
   .page > header {
     display: none;
   }
-
   /*
-   * StarlightPage renders the route's frontmatter title as the page <h1>. The
-   * merged manual has its own cover page, so that heading is screen-only.
+   * StarlightPage renders the route's frontmatter title as the page <h1>, and the
+   * Footer override appends the site copyright line. The manual carries both on its
+   * cover instead.
    */
-  .content-panel:has(h1#_top) {
+  .content-panel:has(h1#_top),
+  footer {
+    display: none;
+  }
+  /* Heading anchor icons. Starlight hides them via opacity under
+     @media (hover: hover), which headless Chromium does not reliably match. */
+  .sl-markdown-content .sl-anchor-link {
     display: none;
   }
 
+  /* ---- Notices ----------------------------------------------------- */
+
   /*
-   * Heading anchor icons. Starlight hides them via opacity under
-   * @media (hover: hover), which headless Chromium does not reliably match.
+   * Starlight's asides are a coloured left bar plus a tinted panel and an icon —
+   * screen affordances. A manual sets a notice as a ruled box with its level as the
+   * label, which also survives monochrome printing.
    */
-  .sl-markdown-content .sl-anchor-link {
+  .print-manual .starlight-aside {
+    border: 0.75pt solid var(--print-rule);
+    border-inline-start-width: 3pt;
+    background: transparent;
+    padding: 0.6rem 0.9rem;
+    break-inside: avoid;
+  }
+  .print-manual .starlight-aside__title {
+    font-family: var(--print-sans);
+    color: var(--sl-color-white);
+    font-size: 10.5pt;
+  }
+  .print-manual .starlight-aside__icon {
     display: none;
+  }
+  .print-manual .starlight-aside__content {
+    color: var(--sl-color-white);
   }
 
   /* ---------------------------------------------------------------- *
@@ -122,21 +300,32 @@
     overflow: visible;
     width: 100%;
     table-layout: fixed;
-    font-size: 0.78rem;
+    font-size: 9pt;
+    border-collapse: collapse;
+    break-inside: auto;
   }
   .sl-markdown-content thead:not(:where(.not-content *)) {
     /* Repeat the header row on every page a long table spans. */
     display: table-header-group;
   }
+  .sl-markdown-content tr:not(:where(.not-content *)) {
+    break-inside: avoid;
+  }
+  /* A ruled grid, header row shaded — the table style a manual is expected to use. */
   .sl-markdown-content :is(th, td):not(:where(.not-content *)) {
-    padding: 0.3rem 0.5rem;
+    border: 0.5pt solid var(--sl-color-gray-4);
+    padding: 0.28rem 0.45rem;
     vertical-align: top;
     overflow-wrap: anywhere;
+  }
+  .sl-markdown-content th:not(:where(.not-content *)) {
+    font-family: var(--print-sans);
+    background: var(--sl-color-gray-6);
   }
 
   /* 一、简介 — 7-column CNC support matrix; column 1 carries the vendor name. */
   #sec-index table {
-    font-size: 0.68rem;
+    font-size: 8pt;
   }
   #sec-index :is(th, td) {
     padding: 0.2rem 0.3rem;
@@ -149,7 +338,7 @@
 
   /* 版本变更历史记录 — 4 columns, column 3 is long prose with <br />. */
   #sec-changelog table {
-    font-size: 0.72rem;
+    font-size: 8.5pt;
   }
   #sec-changelog :is(th, td):nth-child(1) {
     width: 11%;
@@ -166,8 +355,10 @@
 
   /* 4.2. 命令格式 — dense reference tables. */
   #sec-reference-command-format table {
-    font-size: 0.72rem;
+    font-size: 8.5pt;
   }
+
+  /* ---- Figures ----------------------------------------------------- */
 
   /*
    * Screenshots: never overflow a sheet, never split. max-height is A4 content
@@ -177,7 +368,33 @@
   .sl-markdown-content img[src*='/img/manual/'] {
     max-width: 100%;
     max-height: 180mm;
+    border-radius: 0;
     break-inside: avoid;
     box-shadow: none;
+  }
+  .print-manual .print-section p:has(img) {
+    text-align: center;
+  }
+
+  /* ---- Code samples ------------------------------------------------ *
+   *
+   * print.css sets `break-inside: avoid` on every code frame. Where a sample runs
+   * past a single sheet that pushes it onto a fresh page and leaves the previous one
+   * half empty; let them fragment, and hold the frame's title bar to the first line
+   * of code instead.
+   */
+  .print-manual .print-section :is(.expressive-code, figure, pre) {
+    break-inside: auto;
+  }
+  .print-manual .expressive-code .frame .header {
+    break-after: avoid;
+  }
+  .print-manual .print-section pre {
+    orphans: 3;
+    widows: 3;
+    font-size: 8.5pt;
+  }
+  .print-manual .print-section .expressive-code .frame pre {
+    border: 0.5pt solid var(--sl-color-gray-5);
   }
 }

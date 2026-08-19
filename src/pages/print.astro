@@ -10,7 +10,6 @@ import PrintManual from '../components/PrintManual.astro';
 import versionRaw from '../../VERSION?raw';
 
 const version = versionRaw.trim();
-const date = new Date().toISOString().slice(0, 10);
 ---
 
 <StarlightPage
@@ -26,5 +25,5 @@ const date = new Date().toISOString().slice(0, 10);
     head: [{ tag: 'meta', attrs: { name: 'robots', content: 'noindex, nofollow' } }],
   }}
 >
-  <PrintManual locale={undefined} version={version} date={date} />
+  <PrintManual locale={undefined} version={version} />
 </StarlightPage>
