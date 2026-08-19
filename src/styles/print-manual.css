@@ -1,0 +1,183 @@
+/**
+ * Styles for the merged whole-manual print routes (/print/, /en/print/), which
+ * scripts/generate-pdf.mjs captures with headless Chromium.
+ *
+ * Starlight already ships @astrojs/starlight/style/print.css (linked as
+ * <link media="print">): it forces the light palette, drops shadows, sets
+ * break-inside/orphans/widows on content, and its `print:hidden` utility hides the
+ * nav sidebar, the TOC, pagination and the header's search + right-group. This file
+ * covers only what that stylesheet does NOT do for a 23-chapter merged document.
+ *
+ * Rules here are unlayered on purpose — Starlight's own rules live in
+ * @layer starlight.*, so plain selectors win. Same mechanism as custom.css.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Screen: the print routes are also usable in a browser (Ctrl-P preview
+ * is the fast iteration loop for this file), so keep them sane there too.
+ * ------------------------------------------------------------------ */
+
+.print-manual .print-cover {
+  text-align: center;
+  padding-block: 6rem 3rem;
+}
+.print-manual .print-cover img {
+  width: 220px;
+  height: auto;
+  margin-inline: auto;
+}
+.print-manual .print-cover-title {
+  font-size: 2.5rem;
+  margin-block: 1.5rem 0.25rem;
+}
+.print-manual .print-cover-sub {
+  font-size: 1.5rem;
+  color: var(--sl-color-gray-2);
+  margin: 0;
+}
+.print-manual .print-cover-meta {
+  margin-block-start: 2rem;
+  color: var(--sl-color-gray-3);
+}
+.print-manual .print-toc ol {
+  list-style: none;
+  padding: 0;
+  line-height: 2;
+}
+.print-manual .print-toc a {
+  text-decoration: none;
+}
+
+/* Front-page quick-link cards are site navigation, not manual content. */
+.print-manual .home-grid {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * Print
+ * ------------------------------------------------------------------ */
+
+@media print {
+  @page {
+    size: A4;
+    /* Chromium clips displayHeaderFooter templates below ~15mm; keep headroom. */
+    margin: 18mm 14mm;
+  }
+
+  /* One chapter per sheet, matching the printed manual. */
+  .print-manual .print-cover,
+  .print-manual .print-toc {
+    break-after: page;
+  }
+  .print-manual .print-cover {
+    padding-block: 25vh 0;
+  }
+  .print-manual .print-section {
+    break-before: page;
+  }
+  .print-manual .print-section:first-of-type {
+    break-before: auto;
+  }
+  .print-manual .print-section-title {
+    break-after: avoid;
+    margin-block-start: 0;
+  }
+
+  /*
+   * SiteTitle is NOT print:hidden (Starlight keeps the wordmark for single-page
+   * printing), but on a bound manual with its own cover it would print once at the
+   * top of the cover page.
+   */
+  .page > header {
+    display: none;
+  }
+
+  /*
+   * StarlightPage renders the route's frontmatter title as the page <h1>. The
+   * merged manual has its own cover page, so that heading is screen-only.
+   */
+  .content-panel:has(h1#_top) {
+    display: none;
+  }
+
+  /*
+   * Heading anchor icons. Starlight hides them via opacity under
+   * @media (hover: hover), which headless Chromium does not reliably match.
+   */
+  .sl-markdown-content .sl-anchor-link {
+    display: none;
+  }
+
+  /* ---------------------------------------------------------------- *
+   * Tables — the critical override.
+   *
+   * Starlight sets `.sl-markdown-content table { display: block; overflow: auto }`
+   * (style/markdown.css). A display:block overflow container CLIPS horizontally in
+   * print and defeats table-layout, <thead> repetition and row splitting — which is
+   * why wide tables truncate when printing from the live site today. Restoring
+   * `display: table` is what makes the CNC matrix and the changelog paginate.
+   * ---------------------------------------------------------------- */
+  .sl-markdown-content table:not(:where(.not-content *)) {
+    display: table;
+    overflow: visible;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 0.78rem;
+  }
+  .sl-markdown-content thead:not(:where(.not-content *)) {
+    /* Repeat the header row on every page a long table spans. */
+    display: table-header-group;
+  }
+  .sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+    padding: 0.3rem 0.5rem;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  /* 一、简介 — 7-column CNC support matrix; column 1 carries the vendor name. */
+  #sec-index table {
+    font-size: 0.68rem;
+  }
+  #sec-index :is(th, td) {
+    padding: 0.2rem 0.3rem;
+    text-align: center;
+  }
+  #sec-index :is(th, td):first-child {
+    width: 30%;
+    text-align: start;
+  }
+
+  /* 版本变更历史记录 — 4 columns, column 3 is long prose with <br />. */
+  #sec-changelog table {
+    font-size: 0.72rem;
+  }
+  #sec-changelog :is(th, td):nth-child(1) {
+    width: 11%;
+  }
+  #sec-changelog :is(th, td):nth-child(2) {
+    width: 13%;
+  }
+  #sec-changelog :is(th, td):nth-child(3) {
+    width: 63%;
+  }
+  #sec-changelog :is(th, td):nth-child(4) {
+    width: 13%;
+  }
+
+  /* 4.2. 命令格式 — dense reference tables. */
+  #sec-reference-command-format table {
+    font-size: 0.72rem;
+  }
+
+  /*
+   * Screenshots: never overflow a sheet, never split. max-height is A4 content
+   * height (~245mm) minus room for the surrounding paragraph. The card shadow from
+   * custom.css prints as a grey smear.
+   */
+  .sl-markdown-content img[src*='/img/manual/'] {
+    max-width: 100%;
+    max-height: 180mm;
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}

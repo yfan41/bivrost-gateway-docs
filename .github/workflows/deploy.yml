@@ -35,9 +35,27 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install CJK fonts
+        # `playwright install --with-deps` installs shared libraries, not fonts.
+        # Without Noto CJK the 简体中文 PDF renders entirely as tofu (□□□), so fail
+        # loudly here rather than shipping an unreadable manual.
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+          test "$(fc-list :lang=zh | wc -l)" -gt 0 || { echo 'No CJK font installed'; exit 1; }
+
+      - name: Install Chromium for Playwright
+        # playwright is a devDependency, but its browser download is blocked by the
+        # allowBuilds policy in pnpm-workspace.yaml (so a plain `pnpm install` stays
+        # light). Fetch the revision matching the installed library explicitly.
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Build & deploy over SSH (rsync)
         # Publishes the manual twice: the latest tree served in place at /gateway/,
-        # and a frozen snapshot at /gateway/v<version>/. DOCS_BASE (read by
+        # and a frozen snapshot at /gateway/v<version>/. Both carry the downloadable
+        # whole-manual PDFs, generated once from the first build. DOCS_BASE (read by
         # astro.config.mjs) rebases each build's URLs; VERSION at the repo root is
         # the single source of the version. pnpm build runs starlight-links-validator;
         # a broken link fails the build (and the deploy) before anything is uploaded.
@@ -68,11 +86,23 @@ jobs:
           #    wiping the sibling v<version>/ snapshot dirs (no content dir starts
           #    with /v<digit>).
           DOCS_BASE=/gateway pnpm build
+
+          # Whole-manual PDFs (简体中文 + English) into dist/, so they rsync with the
+          # site and survive --delete. Runs BEFORE the upload: if the PDF fails, the
+          # deploy must fail too, or the header download link 404s.
+          DOCS_BASE=/gateway pnpm run pdf
+          mkdir -p "$RUNNER_TEMP/manual-pdf"
+          cp dist/*.pdf "$RUNNER_TEMP/manual-pdf/"
+
           rsync -avz --delete --exclude '/v[0-9]*/' \
             -e "$SSH" dist/ "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/"
 
           # 2) Frozen snapshot at /gateway/v<version>/ (isolated subdir, plain --delete).
           DOCS_BASE="/gateway/v${VER}" pnpm build
+          # Reuse the PDFs from pass 1 rather than spending another Chromium run: the
+          # filename comes from VERSION and every cross-reference inside the PDF is an
+          # in-document #fragment, so the same bytes are correct under either base.
+          cp "$RUNNER_TEMP/manual-pdf/"*.pdf dist/
           $SSH "${SSH_USER}@${SSH_HOST}" "mkdir -p '${DEPLOY_PATH}/v${VER}'"
           rsync -avz --delete \
             -e "$SSH" dist/ "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/v${VER}/"

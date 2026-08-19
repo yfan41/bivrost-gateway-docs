@@ -18,15 +18,35 @@ pnpm build        # 生成静态站点到 dist/（starlight-links-validator 校�
 pnpm serve        # 本地预览 dist/ 产物
 ```
 
+## 导出 PDF
+
+整本说明书可导出为 PDF（中英文各一份），供离线阅读与打印。站点右上角的 **下载 PDF** 按钮即指向该文件。
+
+```bash
+pnpm exec playwright install chromium   # 仅首次：下载与 playwright 版本匹配的 Chromium
+pnpm build && pnpm pdf                  # 生成 dist/bivrost-gateway-manual-{zh-CN,en}-v<版本>.pdf
+```
+
+- PDF 由 `/print/`（中文）与 `/en/print/`（英文）两个路由渲染。这两个页面把侧边栏顺序中的全部 23 章合并为一篇长文档，前面加封面与目录；用浏览器打开并 Ctrl-P 预览，是调整 `src/styles/print-manual.css` 最快的方式
+- 章节顺序的唯一来源是 `src/sidebar.mjs`，`astro.config.mjs` 的侧边栏与 PDF 共用，二者不会脱节。章节标题取自各页 frontmatter 的 `title`
+- 合并后各页锚点会重名，页面上的内联脚本会给每章的 `id` 加上 `<章节>--` 前缀，并把站内链接改写为文档内锚点，因此 PDF 里的交叉引用可直接跳转
+- `pnpm pdf` 不挂在 `pnpm build` 上：没装浏览器也能正常构建站点。`pnpm install` 同样不会下载浏览器（见 `pnpm-workspace.yaml` 的 `allowBuilds`）
+- CI 在第一次构建后生成一次 PDF，同一份文件同时发布到 `/gateway/` 与 `/gateway/v<版本>/`；runner 上需要 `fonts-noto-cjk`，否则中文会渲染成方框
+
 ## 目录结构
 
-- `src/content/docs/` — 简体中文正文；侧边栏结构在 `astro.config.mjs` 中定义，与说明书目录一致
+- `src/content/docs/` — 简体中文正文；侧边栏结构在 `src/sidebar.mjs` 中定义，与说明书目录一致
 - `src/content/docs/en/` — 英文正文，文件名与中文一一对应（Starlight 按 `slug` 自动匹配两个语言的同名页面）
 - `public/img/manual/<章节>/` — 各章节中文界面截图（取自当前 Web UI）
 - `public/img/manual/en/<章节>/` — 各章节英文界面截图，文件名与中文版一一对应
 - `src/assets/logo.png` — 从说明书 PDF 提取的透明底 Logo（导航栏用）
 - `src/styles/custom.css` — 品牌色与截图卡片样式
+- `src/styles/print-manual.css` — 整本 PDF 的分页、表格与截图样式
+- `src/sidebar.mjs` — 章节顺序（侧边栏与 PDF 共用）
 - `src/components/Footer.astro` — 页脚版权信息
+- `src/components/SocialIcons.astro` — 顶栏「下载 PDF」按钮（Starlight 在顶栏与移动端菜单都会渲染此组件）
+- `src/pages/print.astro`、`src/pages/en/print.astro` — 整本合并的打印页
+- `scripts/generate-pdf.mjs` — 用 headless Chromium 把打印页导出为 PDF
 
 ## 写作约定
 
