@@ -122,8 +122,21 @@ jobs:
           mkdir -p "$RUNNER_TEMP/manual-pdf"
           cp dist/*.pdf "$RUNNER_TEMP/manual-pdf/"
 
+          # The PDF filename carries the version, so a release renames it and
+          # --delete would remove the old one. Browsers hold on to index.html for
+          # hours (see the Cache-Control block in the site's nginx server), and a
+          # page that outlives its PDF makes the header download link 404. Protect
+          # keeps previously uploaded manuals on the receiver without affecting what
+          # is transferred; the prune below caps how many pile up.
           rsync -avz --delete --exclude '/v[0-9]*/' \
+            --filter='protect /bivrost-gateway-manual-*.pdf' \
             -e "$SSH" dist/ "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/"
+
+          # Keep the 6 newest manuals (3 releases x 2 locales) at ~14 MB a release;
+          # anything older is only reachable from a long-stale tab, and its frozen
+          # /gateway/v<version>/ snapshot still carries its own copy either way.
+          $SSH "${SSH_USER}@${SSH_HOST}" \
+            "cd '${DEPLOY_PATH}' && ls -t bivrost-gateway-manual-*.pdf 2>/dev/null | tail -n +7 | xargs -r rm -f"
 
           # 2) Frozen snapshot at /gateway/v<version>/ (isolated subdir, plain --delete).
           DOCS_BASE="/gateway/v${VER}" pnpm build
