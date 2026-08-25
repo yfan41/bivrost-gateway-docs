@@ -130,6 +130,16 @@ export function getSidebar(version) {
           translations: { en: '4.2. Command Format' },
           slug: 'reference/command-format',
         },
+        {
+          label: '4.3. 集群故障切换（选装）',
+          translations: { en: '4.3. Cluster Failover (Optional)' },
+          slug: 'reference/cluster',
+        },
+        {
+          label: '4.4. MCP 服务',
+          translations: { en: '4.4. MCP Service' },
+          slug: 'reference/mcp',
+        },
       ],
     },
     {
