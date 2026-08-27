@@ -2,9 +2,9 @@
 title: "3.6. Communication"
 ---
 
-**Communication** covers Cloud Settings, MODBUS Settings, MQTT Settings, Database Settings, Gateway File Server Settings, HTTP Settings, Hub Settings and so on. You can turn on one or more of these communication methods as required.
+**Communication** covers Cloud Settings, MODBUS Settings, MQTT Settings, Database Settings, Gateway File Server Settings, HTTP Settings, Hub Settings, MCP Settings and so on. You can turn on one or more of these communication methods as required.
 
-The left side of the **Communication** page lists the available communication methods (and shows whether each one is enabled); the right side holds the settings for the selected method. Turn on the **Enable** switch in those settings to show all of the fields. After you click **Save**, go back to Home and click **Restart Service** to apply the changes.
+The left side of the **Communication** page lists the available communication methods (and shows whether each one is enabled); the right side holds the settings for the selected method. Turn on the **Enable** switch in those settings to show all of the fields. Except for MCP Settings, after you click **Save** you must go back to Home and click **Restart Service** to apply the changes.
 
 ![Communication page](/img/manual/en/communication/communication-page.png)
 
@@ -165,5 +165,18 @@ Separate multiple linked gateways with `;`.
 
 :::note[Note]
 When the settings are complete, click **Save**, then go back to Home and click **Restart Service** to apply the changes.
+
+:::
+
+## 3.6.8. MCP Settings {#mcp}
+
+Turn on the **Enable** switch and click **Save** to start the MCP service. The MCP (Model Context Protocol) server exposes machine data, data analysis and gateway status as "tools" for MCP-capable AI clients (such as Claude Code and Claude Desktop), so machines can be queried in natural language without calling the interfaces by hand.
+
+**Endpoint** shows this gateway's MCP server address (for example `http://192.168.100.1/mcp`), for use in the MCP client's configuration. It is read-only.
+
+The MCP service is disabled by default; while it is off, that address returns HTTP 404. It currently exposes 33 read-only tools — anything involving writes, machine control or program transfer has no MCP tool. Authentication and access control follow the HTTP interface settings (secret keys, IP whitelist, authorized APIs) and need no separate configuration on this page. For the full tool list, the authentication methods and client configuration examples, see [4.4. MCP Service](/en/reference/mcp/).
+
+:::note[Note]
+Unlike the other communication methods, the MCP switch takes effect as soon as you click **Save** — there is no need to go back to Home and restart the service.
 
 :::

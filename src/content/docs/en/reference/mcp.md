@@ -12,7 +12,7 @@ MCP tools go through the exact same processing path inside the gateway as the HT
 
 The MCP server is served at `/mcp`, on the same port as the gateway's HTTP API, e.g. `http://192.168.100.1/mcp`. It currently exposes 33 **read-only** tools covering machine configuration, live status, analytics and gateway system information. Anything involving writes, machine control or program transfer has no MCP tool and still requires the HTTP API.
 
-MCP is **disabled by default**; while it is off, `/mcp` returns HTTP 404. To enable it, open the MCP entry on the gateway's Communication page, turn the switch on and save. It takes effect immediately — no restart of the gateway or its services is required.
+MCP is **disabled by default**; while it is off, `/mcp` returns HTTP 404. To enable it, open the MCP entry under [3.6.8. MCP Settings](/en/usage/communication/#mcp), turn the switch on and save. It takes effect immediately — no restart of the gateway or its services is required.
 
 ## 4.4.2. Authentication {#auth}
 
