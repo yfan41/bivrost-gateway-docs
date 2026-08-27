@@ -12,7 +12,7 @@ MCP tools go through the exact same processing path inside the gateway as the HT
 
 The MCP server is served at `/mcp`, on the same port as the gateway's HTTP API, e.g. `http://192.168.100.1/mcp`. It currently exposes 33 **read-only** tools covering machine configuration, live status, analytics and gateway system information. Anything involving writes, machine control or program transfer has no MCP tool and still requires the HTTP API.
 
-MCP is enabled by default — there is no separate switch in the gateway admin UI. `/mcp` is reachable as soon as the gateway's HTTP API is reachable.
+MCP is **disabled by default**; while it is off, `/mcp` returns HTTP 404. To enable it, open the MCP entry on the gateway's Communication page, turn the switch on and save. It takes effect immediately — no restart of the gateway or its services is required.
 
 ## 4.4.2. Authentication {#auth}
 
@@ -25,6 +25,8 @@ The MCP server shares the same authentication and access control as the HTTP API
 ## 4.4.3. Calling Through the Cloud Platform {#cloud}
 
 If the gateway is connected to the Bivrost cloud platform, an MCP client can instead connect to the cloud platform's MCP server (`https://{cloud-platform-address}/mcp`), which forwards the call to the target gateway; the tool list is identical to a direct gateway connection. In this case send `accessToken: <gateway access token>` instead — the same gateway access token entered under [3.6.1. Cloud Platform](/en/usage/communication/#cloud) — which both authenticates the caller and selects which gateway the call runs on.
+
+The cloud platform's MCP service is likewise disabled by default; the platform operator must set `EnableMcp: true` in its appsettings and restart the service before it can be reached.
 
 ## 4.4.4. Client Configuration Examples {#client}
 
