@@ -26,8 +26,6 @@ The MCP server shares the same authentication and access control as the HTTP API
 
 If the gateway is connected to the Bivrost cloud platform, an MCP client can instead connect to the cloud platform's MCP server (`https://{cloud-platform-address}/mcp`), which forwards the call to the target gateway; the tool list is identical to a direct gateway connection. In this case send `accessToken: <gateway access token>` instead — the same gateway access token entered under [3.6.1. Cloud Platform](/en/usage/communication/#cloud) — which both authenticates the caller and selects which gateway the call runs on.
 
-The cloud platform's MCP service is likewise disabled by default; the platform operator must set `EnableMcp: true` in its appsettings and restart the service before it can be reached.
-
 ## 4.4.4. Client Configuration Examples {#client}
 
 Using Claude Code as an example, add the gateway's MCP server:
