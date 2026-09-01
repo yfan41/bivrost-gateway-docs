@@ -48,6 +48,18 @@ The individual entries under Gateway Status are described below:
 
 For Cloud, MQTT, Database and MODBUS, the other statuses include "Initiated", "Waiting for Connection" and "Error". "Initiated" means the gateway has initialised the service but cannot proceed any further, because of a configuration error or a break in the network. "Waiting for Connection" means no reply has been received from the target server, which may indicate a network fault or a server fault. "Error" means a fault occurred at some stage.
 
+### 3.2.2.1. Queue Backlog and Discarding It {#queue-backlog}
+
+When a service's destination (the cloud platform, the MQTT server, the database and so on) is temporarily unreachable, the data waiting to be sent is queued on the gateway and sent once the connection comes back. Anything beyond the in-memory capacity is buffered on disk, so the backlog survives a gateway restart and is still sent afterwards.
+
+Once a backlog reaches 100 items or more, the service's row in the "Data Pipeline" card shows the current backlog size. If the backlog is shrinking, the status reads "Recovering", meaning the connection is back and the data is being sent — no action is needed.
+
+If the target server has been down for a long time (days, say), the backlog may no longer be worth sending, and sending it still costs disk space and bandwidth. In that case click the **Discard queued data** button on that row: after you confirm, everything that service has waiting to be sent, in memory and on disk, is **permanently discarded** and cannot be recovered, so use it with care. Discarding only affects the pending queue; it does not affect data acquisition from the machines or data already uploaded.
+
+:::caution[Caution]
+Discarded data cannot be recovered. If it still needs to be uploaded, restore the connection to the target server first and let the gateway send the backlog.
+:::
+
 ## 3.2.3. Gateway Details {#gateway-details}
 
 The **UID** under "Gateway Details" is the device's unique identifier. You need to give it to support when you request help or upgrade your license.
