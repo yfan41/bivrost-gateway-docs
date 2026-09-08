@@ -1,0 +1,1869 @@
+{
+  "schemaVersion": 1,
+  "images": {
+    "/img/manual/analysis/alarm-analysis.png": {
+      "sha256": "ffbaba49576808f9a3d0f7bf1b4e1b910fb0e80b9a951c5e9de3c5b3b0c1ec4d",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/analysis/analysis-page.png": {
+      "sha256": "b9fd506284d815d631e3f8133067080c7836106194d94ee6916a6023a20ccbba",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/analysis/comprehensive-analysis.png": {
+      "sha256": "590091b212c4de8d6022deef780d6cfc9173a3728cf52f2ea377427fcfe930c4",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/analysis/count-analysis.png": {
+      "sha256": "42fe185b8fd19aa6fa63a68f5a77ef72ab311dfda25d352d4a5bb4e74c1ffea2",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/analysis/cycle-analysis.png": {
+      "sha256": "8d34aa885367046abcfda9cd7df1dd63c341afbe61e529e09e9fef825ac7cec8",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/analysis/oee-analysis.png": {
+      "sha256": "1bfa9500d764d78809e863720388b400ad81087b8db6091814f66dac3d37daad",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/analysis/range-last.png": {
+      "sha256": "436194947696d6c95948a614f65708e850075dba1cfc1a33b83b1b0d09e8ed04",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/analysis/range-manual.png": {
+      "sha256": "436194947696d6c95948a614f65708e850075dba1cfc1a33b83b1b0d09e8ed04",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/analysis/range-relative.png": {
+      "sha256": "436194947696d6c95948a614f65708e850075dba1cfc1a33b83b1b0d09e8ed04",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/api-test-page.png": {
+      "sha256": "6ae18c61f22c309ff68985c7f960266e3911a458463e7a37f1bbcc836a9288ce",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/call-failed.png": {
+      "sha256": "0ef4e5c39f7665654e1738890a9209fdf28b0e04f23d6101f08d4f2b8bedd98d",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/channel-picker.png": {
+      "sha256": "8cb72ede6b9a430c622abf168624e48ebdbef141428736caec3a86d4acbdccc9",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/common-data.png": {
+      "sha256": "a24cec53d22a364ab931ab8a44407bd3ebf9093dc12b9a3824d7b0d32d892a41",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/interface-picker.png": {
+      "sha256": "319a2e29a561122dc2a94a1bc988f5819ec6c8c93a6af17b0e47ac113bc69991",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/machine-picker.png": {
+      "sha256": "cfe1e8937a8ea8c16ab21b508fb36a44eb8c2a31f6620482ee1d6d63a6584682",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/read-count.png": {
+      "sha256": "f12d665e5ac94db664ec72bff127a8e8e3eb9742724a4c3cfb1bd1a1407f04a2",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/read-offset-data.png": {
+      "sha256": "51f0730fd29a69f7a95d4a80c102f9571b6bdedb154165ecec3c8be5222f4582",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/read-plc-data.png": {
+      "sha256": "23b835c829c6be73c85d7b6dd6dde56ebb9dfc3805040013c0187341f15411e1",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/read-toollife.png": {
+      "sha256": "56881615c66c1b13a82937f8e8f640a81bff141409b975d69c4e58f736198dcf",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/write-offset-data.png": {
+      "sha256": "0432456a8fddd44f14b93122ba7b21bf36fe5ecaf62079da708f41d35b089648",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/api-test/write-plc-data.png": {
+      "sha256": "fc592ab0199193cf75a1383af759a59aa5bc563e9447bc1e47e7b2015e319fe3",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/command-format/external-machine.png": {
+      "sha256": "e0659acab1e5f34755ce4c8d9cb895a30218ff9692aadeaee9082a95c143575c",
+      "width": 960,
+      "height": 770,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/command-format/external-plc-tab.png": {
+      "sha256": "858800f12a1e513683c9831b725ef76cfcfa02504941bf94fcbae61f960dea36",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/communication/cloud-gateway-link.png": {
+      "sha256": "efcd754112e6d7ebe369d6c719aca48153d74d3c11c5d51b01c2d76f6412808b",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        },
+        {
+          "x": 408,
+          "y": 291,
+          "width": 180,
+          "height": 22,
+          "background": "#e0e2ec",
+          "text": "cloud.example.com",
+          "fontSize": 14,
+          "fontFamily": "monospace",
+          "color": "#20242b",
+          "reason": "云平台示例域名"
+        }
+      ]
+    },
+    "/img/manual/communication/cloud-settings.png": {
+      "sha256": "c2af4fbce21ea389b82643309e17fc219cf8fadb5aa068e52333211186471246",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        },
+        {
+          "x": 408,
+          "y": 291,
+          "width": 180,
+          "height": 22,
+          "background": "#e0e2ec",
+          "text": "cloud.example.com",
+          "fontSize": 14,
+          "fontFamily": "monospace",
+          "color": "#20242b",
+          "reason": "云平台示例域名"
+        }
+      ]
+    },
+    "/img/manual/communication/communication-page.png": {
+      "sha256": "fc499728f8fbdc91ebdaf9c7749956cad6d742eb7e8b060cd77c80bf087a6252",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/communication/database-save-mode.png": {
+      "sha256": "48a0de0887460e5dac7a699ac5f221e1a7baf8c05edaf1215dec340a581426bd",
+      "width": 760,
+      "height": 534,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/communication/database-settings.png": {
+      "sha256": "10c6c1e419da5bc2a82985ffd278c574643e1a75c392825562ef54db618aedd5",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/communication/file-server-settings.png": {
+      "sha256": "a295b3a600b5103deb9d4ba37f26cab22236fb6cc383e70f030aed0b7cee2e27",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/communication/http-settings.png": {
+      "sha256": "4b376102012003f49fb7c8c7e693a4be0fca5029d539e0abb3694546b5848f6d",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/communication/hub-gateway-link.png": {
+      "sha256": "0b786f528ec972f804e6a5a50ff8025c66b6bb6ad1bfd05684e7d09350ac4328",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        },
+        {
+          "x": 497,
+          "y": 198,
+          "width": 46,
+          "height": 20,
+          "background": "#ffffff",
+          "text": "Hub",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "Hub 功能说明中的品牌"
+        }
+      ]
+    },
+    "/img/manual/communication/hub-settings.png": {
+      "sha256": "5ca537804e6ababc94c17a0b385f2cc64dfa5fb1569cb0d37a5dd7cf1187f321",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        },
+        {
+          "x": 497,
+          "y": 198,
+          "width": 46,
+          "height": 20,
+          "background": "#ffffff",
+          "text": "Hub",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "Hub 功能说明中的品牌"
+        }
+      ]
+    },
+    "/img/manual/communication/modbus-settings.png": {
+      "sha256": "eb70cbf6ec83edf9eee7a920bf078bb3390d8d80d082a50096aec19c299b6a6d",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/communication/mqtt-settings.png": {
+      "sha256": "de1b0e74b382e24bd4fe4d9d879102b67829713b854fdded5940d0529bff15fb",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        },
+        {
+          "x": 646,
+          "y": 291,
+          "width": 186,
+          "height": 24,
+          "background": "#e0e2ec",
+          "text": "cloud.example.com",
+          "fontSize": 14,
+          "fontFamily": "monospace",
+          "color": "#20242b",
+          "reason": "MQTT 示例域名"
+        }
+      ]
+    },
+    "/img/manual/file-transfer/backup-dialog.png": {
+      "sha256": "5ec80aa7d301a271836087fc6c1a4d4a8983e61cab858cbf57e435e68804039f",
+      "width": 400,
+      "height": 228,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/file-transfer/create-directory-dialog.png": {
+      "sha256": "375987fa93e520926b192ab0d8d85d4f41c962dfade55c1ecdafb622d1398124",
+      "width": 420,
+      "height": 234,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/file-transfer/delete-file-dialog.png": {
+      "sha256": "afb4040c3bde72c7e8873171f05fe49df3d5eef86ceab166b8ae15d83ee4b141",
+      "width": 400,
+      "height": 206,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/file-transfer/file-list.png": {
+      "sha256": "02be9cbc60673fb992e59b5b2a7452d8111a6fa90cc23a42579146345dd77348",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/file-transfer/file-preview.png": {
+      "sha256": "551a4fc5c89741da7c1125b64fda920aeaf3489d72d27964074b889706f8547a",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/file-transfer/machine-directory-selected.png": {
+      "sha256": "53893d168ee2db9ddf52e2d2f7687ca361214d8261f5d40c4762f180d9cb8e6c",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/file-transfer/send-file-dialog.png": {
+      "sha256": "9535f7a8e0b5bb8873cf55ab5bdb39c2cc897c014848573debf0ba59f9db9131",
+      "width": 560,
+      "height": 436,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/file-transfer/toolpath-viewer.png": {
+      "sha256": "c8209d02ef453fceb330772a3ce3bced343c5b3151839daaa8d0ad2a73421721",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/file-transfer/transfer-page.png": {
+      "sha256": "75b1efaa7b7e7eee403bb46ce725fcb136585132748742162e4b08ea913a3237",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/groups/add-group-dialog.png": {
+      "sha256": "e04df37bf4f24551720a349c3bb5835a8cc557a54328028d48be411a105cf574",
+      "width": 960,
+      "height": 649,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/groups/delete-group-dialog.png": {
+      "sha256": "969f86d93f72d701cc61ee789e6b517d6f8819b4a9152b58f231f1be25b8eb6f",
+      "width": 400,
+      "height": 182,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/groups/edit-group-dialog.png": {
+      "sha256": "1e14ab380f851934e06a4947a6df7a3a400133de903fc6c8adf16a68ec427422",
+      "width": 960,
+      "height": 689,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/groups/group-batch-delete.png": {
+      "sha256": "1a09c100742bb4fafb0285de2366256dd93176255c5c5bde7c7a72f922295e68",
+      "width": 400,
+      "height": 204,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/groups/group-batch-select.png": {
+      "sha256": "6be2cb9cd7f12e844c8440d189780f87d07c39eed930683f72aa214104ca7774",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/groups/group-count-multiplier.png": {
+      "sha256": "6e133bf7818789dbdcf7193dfbfe035b61c85679cae5bf057bc4d752ddfb46e9",
+      "width": 360,
+      "height": 228,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/groups/group-external-machines.png": {
+      "sha256": "e0659acab1e5f34755ce4c8d9cb895a30218ff9692aadeaee9082a95c143575c",
+      "width": 960,
+      "height": 770,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/groups/group-machine-picker.png": {
+      "sha256": "4ea04fe2d38e9c4b5a7481b60beb00ac9d36c381aab0cf322748f961889e5871",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#adadad",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/groups/group-machines-selected.png": {
+      "sha256": "864886659f71b174e370365eef7be79435ef9aace4246919e06f99d0fa799f4c",
+      "width": 181,
+      "height": 32,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/groups/groups-page.png": {
+      "sha256": "dfb2de09426e0d3bfc5423b975ff113c3326e9d6407004ec82e489cd72160904",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/groups/groups-search.png": {
+      "sha256": "fb115dcf2eb1a076018a81a4eb77eacb1da693aaacbc260079f94ff095d1c1a4",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/home/gateway-details.png": {
+      "sha256": "e651700c77c2439881e1ba169d6a6503152c5c9b680569b9e6eaf5bd800f1ac2",
+      "width": 1354,
+      "height": 221,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/home/home-page.png": {
+      "sha256": "141d8dc34ecdb975f3b6206c68f79a4fba927abb5e1386a999fdcdd5dc9c52ca",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/home/restart-service.png": {
+      "sha256": "6e13a481e52536ba05c559a686723bcbbc59df226db26b168f7719363a630a77",
+      "width": 350,
+      "height": 186,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/home/shutdown-dialog.png": {
+      "sha256": "334cf08ff5931acd48961358554dfcd4f26aa6b9e12dd231a0bbd7718688f362",
+      "width": 420,
+      "height": 190,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/home/status-cards.png": {
+      "sha256": "c642b0a4b8dea020d6d842ba5ee9a7aef209f659cfdfb91cee1e78d615d4977a",
+      "width": 1354,
+      "height": 328,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/home/status-chips.png": {
+      "sha256": "c9c52f57b9b8c53b2b107f0c4d880b0977cca5501635906d51a86f7f899812d0",
+      "width": 1354,
+      "height": 100,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/login/login-page.png": {
+      "sha256": "ed125917f80f5168398706c356d0328017593f9905d1fd179d6e7f40b5e46907",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/add-cnc-dialog.png": {
+      "sha256": "f012605f3e1989dbedbb53db28f78af4a0dbda152e862f91e3967d6e40963171",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/add-machine-menu.png": {
+      "sha256": "68b325cdf924f33323886b285e6244f7056dcb1b7c7bfea6eb0875c73e4b90cd",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/machines/advanced-tab.png": {
+      "sha256": "d4fc4c2a07ff980984a5aedf235d178e373a5600430ad2e6390b37c470b1eb79",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/batch-activate-dialog.png": {
+      "sha256": "0e19df60ec52db2954a1b1658c296199735fab678be50b223027b7b5f692e5db",
+      "width": 560,
+      "height": 680,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/batch-delete-dialog.png": {
+      "sha256": "d65787f6ecfc26822aa148ca42273c7b1d95e20ba9d7e1b92d65e254dc72afa7",
+      "width": 400,
+      "height": 204,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/batch-edit-dialog.png": {
+      "sha256": "0e19df60ec52db2954a1b1658c296199735fab678be50b223027b7b5f692e5db",
+      "width": 560,
+      "height": 680,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/batch-select.png": {
+      "sha256": "8b0350138addab9573081c3b79bc17d692230d229dd730cc2bb020fa2b94d231",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/machines/connection-ok.png": {
+      "sha256": "9423fd95e64407e24865de4dffdcf10573d0dd5370e25f2e6467f1f261e0abd5",
+      "width": 1352,
+      "height": 52,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/connection-pending.png": {
+      "sha256": "e273858b29ff80fd9dc3a7f0ccb7941988c094b57cd119564b301f8e5d611304",
+      "width": 1352,
+      "height": 52,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/delete-dialog.png": {
+      "sha256": "36b30fed6339f473caf40af4e35e796560c4a4d798657865fccef07eddb61514",
+      "width": 400,
+      "height": 204,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/edit-dialogs-1.png": {
+      "sha256": "924b3a833acb75bf2b8e1173a493ce445b1524ad85d22387a189b41b8d16fcac",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/edit-dialogs-2.png": {
+      "sha256": "5340e9e068695ac834c136a4a8455594ae89602349a9707fcf04b4dfcf47ae33",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/external-plc-tab.png": {
+      "sha256": "858800f12a1e513683c9831b725ef76cfcfa02504941bf94fcbae61f960dea36",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/general-tab-opcua.png": {
+      "sha256": "930bb44b461a7fbd4f65abac34434bbe348856c571a30731f71f8f665388971f",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/general-tab.png": {
+      "sha256": "1de56cda978ff8656b47298838a85b689cfde4a2c71bf2cdcdd1ff9c3ba1e4ef",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/machines-page.png": {
+      "sha256": "ac3a8d9b27af6f5885e94e8059a7968a6f5c2dcda4355d1d33cfec074a5461c8",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/machines/machines-search.png": {
+      "sha256": "54443e56a9ac5e1d7fea0d03c8ad3a1bed4b6f4eb7ac7e28dbf01d123b360e1a",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/machines/machines-table.png": {
+      "sha256": "6d487e9a1d78a1f1d55b1698e1da08ee1285ceb8084649ed541e651887092520",
+      "width": 1354,
+      "height": 767,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/task-alarm-mapping.png": {
+      "sha256": "9213e9f55296061cde360e51f41626b9f1b0b069def20422b4ca9347cabea238",
+      "width": 760,
+      "height": 550,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/task-custom-functions.png": {
+      "sha256": "9c06e10bc74b12b6472f3ffb62d8c8b407509d4f36f6d44d13c0cbbc457f81e6",
+      "width": 173,
+      "height": 41,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/task-plc-command.png": {
+      "sha256": "9d30f7bc20433517f7ab8a3588f082952aba98fe9676a11a7ffe56a1701f91bb",
+      "width": 1120,
+      "height": 534,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/task-precondition-badge.png": {
+      "sha256": "8503cafe10304de9ef671872be70a22eedff044e731132049d9d820597aaae7d",
+      "width": 294,
+      "height": 61,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/task-settings-dialog.png": {
+      "sha256": "acafb68501ddc81097ffbc79f6c4a2b9fe2bfe278c56bdc24054341f876eed03",
+      "width": 760,
+      "height": 564,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/task-status-adjust.png": {
+      "sha256": "5bcd9d2509b99a021e5745c71fc8c558a52189f6a4b9820c194debcfad152022",
+      "width": 760,
+      "height": 726,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/task-tab.png": {
+      "sha256": "46c0a9f1340bcb396da00b694be8562b0ca71905fbd37abd5ef31b8df6671c76",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/machines/transfer-server-types.png": {
+      "sha256": "1a61356d451328b39fb69f0de0b7e06b7e47ca01d0d26e60ed8be7d72eeefd91",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#adadad",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/machines/transfer-tab.png": {
+      "sha256": "166123f9d74d055dde01773581c9a149ebea1ad6774c2d5bcd2a6f8d85cf2d94",
+      "width": 960,
+      "height": 725,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/misc/bottom-buttons.png": {
+      "sha256": "119b546a536ae5a91e6f66489b3a0f1c34df7be15689c1c3e5457628e155c0eb",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/monitor/group-monitor.png": {
+      "sha256": "ec271a4625d8075f0f4a66ece351163de56eefd9fed1681c349e38ef71c963c4",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/monitor/machine-monitor.png": {
+      "sha256": "1761617fd68659f70843bfc4ab1955cdd9322dcb4f5db9bc197592beffa50195",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/monitor/monitor-page.png": {
+      "sha256": "9ace480b4f602234b2cde902fc2972fad26b0bc1244bf25ee50ab78dca04f795",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/network/lan1-settings.png": {
+      "sha256": "be2e53e52bc4d510f17c15802f15672efdc9a89b7eebbf9932af76981b1426e5",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/network/network-page.png": {
+      "sha256": "ed120c17df1a86d59ac91343768b192daf14ff6876a658adfa11b5c2acbf6aa3",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/network/remote-not-enabled.png": {
+      "sha256": "a18ac3d4f91449928f9ba6f956d9f4bd1566ef3e5ce19e8d148a1da5ab17fc30",
+      "width": 960,
+      "height": 125,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/network/static-routing.png": {
+      "sha256": "d5985a5ab77eee14517a53c82bea183c3740cbd5ede5804cff410e1618737095",
+      "width": 960,
+      "height": 229,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/add-user-dialog.png": {
+      "sha256": "05e968889ebc47948467d3bf9711a6f5d9a4372d5c2f881bd59c51f209c15b6d",
+      "width": 420,
+      "height": 404,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/advanced-options.png": {
+      "sha256": "a1543300bf30332cc2b5675e686173e51736b3a3671d164b78e786310704bee8",
+      "width": 880,
+      "height": 299,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/change-gateway-name-dialog.png": {
+      "sha256": "ff8760cdb9e9e7807f1c8bc010bd892411d816475f2a3948b002b958d139049f",
+      "width": 360,
+      "height": 344,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/change-password-dialog.png": {
+      "sha256": "b11c207665034321eb4ae2fe2f43338cd72cb062c8294786c996b26b90c8836e",
+      "width": 400,
+      "height": 408,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/delete-user-dialog.png": {
+      "sha256": "0b4428e1353bd695c81b77b3d5ce1c1308820f12e55d8da4649a62bb857c6a93",
+      "width": 280,
+      "height": 182,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/edit-user-dialog.png": {
+      "sha256": "c7c83899288149920fe3339aa8bd07f3adce5197610dd0212b39c5596e770368",
+      "width": 420,
+      "height": 404,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/manage-users-dialog.png": {
+      "sha256": "156ef3c155e80b3567b5e4190ebe3b1bde58aa39b68aa216106da3b651fad708",
+      "width": 880,
+      "height": 269,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/more-dialog.png": {
+      "sha256": "1ae42939747b24f615a62939b4a648104c1ec52f90bda4871dbb7158bbf2ca2e",
+      "width": 880,
+      "height": 224,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/security-control.png": {
+      "sha256": "7744d521243d37c4c6522ebb22a1adc3c61ab556190d579677bdf158efbe7672",
+      "width": 880,
+      "height": 466,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/settings-page.png": {
+      "sha256": "4ec66161c1ec52cf37463da62d8a866a678c8643608c0ef42e7dca7192f360d0",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        },
+        {
+          "x": 875,
+          "y": 356,
+          "width": 57,
+          "height": 21,
+          "background": "#f4f3f6",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "许可公司名称及分隔点"
+        }
+      ]
+    },
+    "/img/manual/settings/time-region.png": {
+      "sha256": "c17013ea94669488c9b6d942932e8c4a851da9c5c4c1b8607d20c84685c6fe63",
+      "width": 880,
+      "height": 430,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/settings/user-permissions.png": {
+      "sha256": "5c52a102a17ab04f2b6cc07583bb7229720247d4f351add7dd4ac7ffe8577d11",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#adadad",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/settings/user-security-dialog.png": {
+      "sha256": "9209d4c7ea0790fb6b86cb07bc67ee6d9a2a56281c40f39853a4d5fffc996cc9",
+      "width": 520,
+      "height": 442,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/tasks/alarm-mapping-files.png": {
+      "sha256": "3a6c8d10822b52c7d00e7e5c6c3f07887d4d9d01ea51c3988e148e6eeee0d2cb",
+      "width": 926,
+      "height": 212,
+      "reviewed": "2026-09-08",
+      "regions": []
+    },
+    "/img/manual/tasks/alarm-monitor.png": {
+      "sha256": "ac3df74c98edccf9581a67ba90f0341d10bd08329278322e39a8df268fd5f22b",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/count-monitor-window.png": {
+      "sha256": "70d99f5cc924d59a586f69a1fef0cea81f5b9c28d2c4312c7e57205606c8af6a",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/count-monitor.png": {
+      "sha256": "997cfaf1cc2b848fbc070111b8a72195df431e402ffc2f56143cb0017e33c8ee",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/group-intervals.png": {
+      "sha256": "865d3e58c9f1062da150065161c229ca9b10bea65c1cd50515ade1368a0b44ad",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/machine-intervals.png": {
+      "sha256": "67e2a043f6cc4d3c1a41d3423bdd8a39f95695799cd35c6bdd2069891ce5c969",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/oee-break-time.png": {
+      "sha256": "64d23a3965d0ca863e1ff8f82e35d27bdd4be5319f253aa84949d9659040c2ff",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/oee-monitor.png": {
+      "sha256": "98c5d68c748c2cbe4bbd9da5b307bc39501457f80525ced27ab48f7c78451191",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/oee-utilization-options.png": {
+      "sha256": "f2e0c0699f30fcbb8538227021d7d434ac5b157dfc6278ab97807e51497a4f5c",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/oee-window-mode.png": {
+      "sha256": "ac96c03c2dcf73c1f4a9be67ac2134682c3321456eb0512be6e54f8dba12fcc6",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/overload-monitor.png": {
+      "sha256": "f5857f0c791a9b889f77fff6a538ca7d586884455bea37fa140abce39ff11d27",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/status-monitor-adjust.png": {
+      "sha256": "cd9c8f54aebb5038d75e7ca0d9d9db9cfd0e8653aea307c66672a4fde9654625",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/status-monitor-transform.png": {
+      "sha256": "abef5c2a47c61395a9c5091b6f25ed09e236cfc5a1a188ebeb27ce210fde96cb",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/status-monitor.png": {
+      "sha256": "9051144f02ad4c55d7b80c1e73b665abfa98ac76c9198dac402d2b4310700537",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/task-manager.png": {
+      "sha256": "766b5c7a4028a0daf1cb3a234296de5ef5e6f08bccd64ab5e0562f1837335014",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/tasks-page.png": {
+      "sha256": "67e2a043f6cc4d3c1a41d3423bdd8a39f95695799cd35c6bdd2069891ce5c969",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    },
+    "/img/manual/tasks/toollife-monitor.png": {
+      "sha256": "e2b104896dcbfd73bf0488c0b3f63d796aa0c00eeda2414a9e4d38af3db5d938",
+      "width": 1440,
+      "height": 900,
+      "reviewed": "2026-09-08",
+      "regions": [
+        {
+          "x": 40,
+          "y": 15,
+          "width": 116,
+          "height": 30,
+          "background": "#ffffff",
+          "text": "",
+          "fontSize": 14,
+          "fontFamily": "sans-serif",
+          "color": "#20242b",
+          "reason": "导航栏产品品牌"
+        }
+      ]
+    }
+  }
+}

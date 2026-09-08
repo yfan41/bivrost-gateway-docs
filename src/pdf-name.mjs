@@ -14,3 +14,8 @@
 export function pdfFileName(locale, version) {
   return `bivrost-gateway-manual-${locale}-v${version}.pdf`;
 }
+
+/** @param {string} version */
+export function neutralPdfFileName(version) {
+  return `gateway-manual-zh-CN-v${version}.pdf`;
+}
