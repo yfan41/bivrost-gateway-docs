@@ -4,6 +4,7 @@ title: "Changelog"
 
 | Version | Change Date | Description | Release Date |
 | --- | --- | --- | --- |
+| 1.19.7.37 | 20260909 | 1. Renamed the home page's "Network" row to "Internet" and documented how its states are decided, in "[3.2. Home](/en/usage/home/)". | 20260909 |
 | 1.19.7.29 | 20260901 | 1. Added "[3.2.2.1. Queue Backlog and Discarding It](/en/usage/home/#queue-backlog)", covering the data-pipeline backlog display, the "Recovering" status, and the new button that discards queued data. | 20260901 |
 | 1.19.7.24 | 20260827 | 1. The MCP service now has a switch and is disabled by default; it must be enabled under [3.6.8. MCP Settings](/en/usage/communication/#mcp) before it can be reached. Updated "[4.4. MCP Service](/en/reference/mcp/)" accordingly. | 20260827 |
 | 1.19.7.22 | 20260819 | 1. Added "[4.3. Cluster Failover (Optional)](/en/reference/cluster/)", covering how the shared standby pool works, how to build it, failover and switch-back behaviour, forced takeover, and what is not replicated. | 20260820 |
