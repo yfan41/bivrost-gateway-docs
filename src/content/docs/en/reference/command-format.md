@@ -102,13 +102,13 @@ Post-processing commands let you transform the raw data you collect. Two kinds a
 $DA$ takes a single value at a given position out of the data read by the command to its left and publishes it under a given tag. It cannot perform calculations, but it lets you merge PLC tasks whose addresses are adjacent, reducing the number of PLC tasks and improving execution efficiency. For example:
 
 ```
-R,2036|count,4,Int32,
+R,2036|count,5,Int32,
 $DA$0$DA$|Part Count,
 $DA$3$DA$|Part Count-Good,
 $DA$4$DA$|Part Count-Reject;
 ```
 
-This reads 4 Int32 values starting at R2036, giving an array of length 4. $DA$ then takes element 0 and tags it Part Count, takes element 3 and tags it Part Count-Good, takes element 4 and tags it Part Count-Reject, and uploads these three values.
+This reads 5 Int32 values starting at R2036, giving an array of length 5. $DA$ then takes element 0 and tags it Part Count, takes element 3 and tags it Part Count-Good, takes element 4 and tags it Part Count-Reject, and uploads these three values.
 
 If a $DA$ tag is not specified, the default tag is `<raw data tag>_<number>`, where the number is the position given to $DA$. Had the example above set no tags, the three values would default to `count_0`, `count_3` and `count_4`.
 
