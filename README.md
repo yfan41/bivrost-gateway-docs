@@ -41,6 +41,7 @@ pnpm build && pnpm pdf                  # 生成 dist/bivrost-gateway-manual-{zh
 - `public/img/manual/<章节>/` — 各章节中文界面截图（取自当前 Web UI）
 - `public/img/manual/en/<章节>/` — 各章节英文界面截图，文件名与中文版一一对应
 - `src/assets/logo.png` — 从说明书 PDF 提取的透明底 Logo（导航栏用）
+- `src/data/device-support.json` — 4.5. 支持设备的数据源（见下节），中英文共用
 - `src/styles/custom.css` — 品牌色与截图卡片样式
 - `src/styles/print-manual.css` — 整本 PDF 的版式、分页、表格与截图样式
 - `src/sidebar.mjs` — 章节顺序（侧边栏与 PDF 共用）
@@ -48,6 +49,7 @@ pnpm build && pnpm pdf                  # 生成 dist/bivrost-gateway-manual-{zh
 - `src/components/SocialIcons.astro` — 顶栏「下载 PDF」按钮（Starlight 在顶栏与移动端菜单都会渲染此组件）
 - `src/pages/print.astro`、`src/pages/en/print.astro` — 整本合并的打印页
 - `scripts/generate-pdf.mjs` — 用 headless Chromium 把打印页导出为 PDF
+- `scripts/derive-support-matrix.mjs`、`seed-support-matrix.mjs`、`render-support-tables.mjs`、`check-support-matrix.mjs` — 支持设备表的推导、生成、渲染与校验
 
 ## 固件版本同步
 
@@ -68,6 +70,50 @@ pnpm build && pnpm pdf                  # 生成 dist/bivrost-gateway-manual-{zh
 3. `pnpm check:firmware` 通过后在本仓库提交，再由主仓库更新子模块指针。主仓库的 `publish-gateway.ps1` 发布前会运行同一检查，不通过即中止发布。
 
 `scripts/check-firmware-sync.mjs` 默认读取 `../../Changelog.md`（作为 `bivrost.iot` 子模块检出时的位置），也可用 `--changelog <路径>` 指定；找不到时跳过，因此单独克隆本仓库或 CI 构建不受影响。`baseline` 之前的版本不检查。该脚本与《通讯协议》仓库中的同名脚本保持一致，两站差异只写在各自的 `firmware-sync.json` 中。
+
+## 支持设备表
+
+[4.5. 支持设备](src/content/docs/reference/supported-devices.md)只列设备类型、系统与型号（含标注为开发中的），
+逐个接口与逐个字段的支持情况在《通讯协议》1.4. 接口支持说明中。两处都由 `src/data/device-support.json`
+生成，中英文共用一份数据。
+
+`src/data/device-support.json` 与 `scripts/lib/render-support.mjs`、`scripts/render-support-tables.mjs`
+在本仓与《通讯协议》仓中**保持逐字一致**（与 `check-firmware-sync.mjs` 同样的约定）：两本书渲染的区块不同，
+但数据与脚本是同一份。改动一侧后复制到另一侧，不要各改各的。
+
+正文里用 HTML 注释标出生成区间，注释之外的文字不会被脚本改动；需要渲染的页面由脚本扫描内容目录找出，
+不用在脚本里登记：
+
+```markdown
+<!-- support:matrix type=CNC group=basic -->
+…自动生成的表格…
+<!-- /support -->
+```
+
+三种区块：`devices`（《说明书》4.5 的设备清单，带 `type=`）、`catalogue`（接口清单）、`matrix`
+（带 `type=` 与 `group=`，`group` 可用逗号列多个）与 `fields`（字段支持表，带 `type=`、`class=`，
+字段多的数据类再用 `part=` 分表）。
+
+| 命令 | 用途 |
+| --- | --- |
+| `pnpm render:support` | 把数据文件渲染进中英文正文页 |
+| `pnpm check:support` | 校验正文中的生成区块是否为最新（`prebuild` 会自动运行） |
+
+**这份数据全部人工维护，没有任何脚本从网关源码推导。** 网关新增或删除机台系统／型号、接口，或
+`Bivrost.IOT.Common/Models/DataOutputModel.cs` 里 `*Output` 类的字段时，要在同一次改动里更新本文件——
+`bivrost.iot` 仓的 `CLAUDE.md` 把这条写进了发布提交清单。漏改不会有编译或构建错误，只会让文档说错话。
+
+`support` 为每个接口的三态：`y` 已支持、`n` 不支持、`d` 开发中（通讯库已覆盖、网关还没做）。
+**尚未接入的设备**（这类 PLC 与机器人）在品牌一层标 `"planned": true`。
+
+`dataClasses` 描述**各系统型号之间有差异的字段**：所有支持该接口的系统都返回的字段不写进去，它跟随接口的
+支持情况，含义由 1.2. 数据说明负责。每个数据类给出 `interface`（决定哪些行出现在表里）、`fields`
+（`members` 列出对应的 JSON 字段名，`part` 分表），厂商专有字段的数据类再标 `"sparse": true`，这样表里
+只列真正返回这些字段的型号，不必为几个格子铺满四十多行 ✗。
+
+对应地，每一行用 `fields` 列出它支持哪些有差异的字段，用 `notes` 写按型号或用法限定的脚注
+（如刀具寿命的 `ToolLife.count`、时间数据的 `TimeData.currentCycleTime`）。**支持某接口的行必须显式写出
+该数据类的 `fields`**，哪怕是空数组：`render-support.mjs` 宁可报错停下，也不把「没填」默认渲染成「不支持」。
 
 ## 写作约定
 

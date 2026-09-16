@@ -1,0 +1,4595 @@
+{
+  "$comment": "手工维护：接口与字段的支持情况由人填写，没有脚本从网关源码推导。新增机台系统/型号、接口或输出字段时，与 C# 改动同一次提交更新本文件，并复制到另一本书的仓库。规则见 README「接口支持表」。",
+  "groups": [
+    {
+      "id": "basic",
+      "zh": "基础数据",
+      "en": "Basic Data"
+    },
+    {
+      "id": "program",
+      "zh": "程序与坐标",
+      "en": "Program and Position"
+    },
+    {
+      "id": "motion",
+      "zh": "进给、负载与能耗",
+      "en": "Feed, Load and Energy"
+    },
+    {
+      "id": "tooling",
+      "zh": "刀具与 PLC 数据",
+      "en": "Tooling and PLC Data"
+    },
+    {
+      "id": "dnc",
+      "zh": "程序传输",
+      "en": "File Transfer"
+    },
+    {
+      "id": "dncDir",
+      "zh": "目录与程序选择",
+      "en": "Directories and Program Selection"
+    }
+  ],
+  "interfaces": [
+    {
+      "id": "readCNCStatus",
+      "group": "basic",
+      "ref": "2.5.1.2",
+      "zh": "机台状态",
+      "en": "Status",
+      "types": [
+        "CNC",
+        "Laser",
+        "Robot",
+        "PLC"
+      ]
+    },
+    {
+      "id": "readAlarm",
+      "group": "basic",
+      "ref": "2.5.1.1",
+      "zh": "警报信息",
+      "en": "Alarms",
+      "types": [
+        "CNC",
+        "Laser",
+        "Robot",
+        "PLC"
+      ]
+    },
+    {
+      "id": "readCount",
+      "group": "basic",
+      "ref": "2.5.1.4",
+      "zh": "加工计数",
+      "en": "Part Count",
+      "types": [
+        "CNC",
+        "Laser",
+        "Robot",
+        "PLC"
+      ]
+    },
+    {
+      "id": "readCurrentToolNumber",
+      "group": "basic",
+      "ref": "2.5.1.5",
+      "zh": "当前刀号",
+      "en": "Current Tool",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "readTimeData",
+      "group": "basic",
+      "ref": "2.5.1.20",
+      "zh": "机台时间数据",
+      "en": "Time Data",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "readProgramInfo",
+      "group": "basic",
+      "ref": "2.5.1.17",
+      "zh": "加工程序信息",
+      "en": "Program Info",
+      "types": [
+        "CNC",
+        "Laser",
+        "Robot"
+      ]
+    },
+    {
+      "id": "readProgramBlock",
+      "group": "program",
+      "ref": "2.5.1.16",
+      "zh": "程序段",
+      "en": "Program Block",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "readPosition",
+      "group": "program",
+      "ref": "2.5.1.15",
+      "zh": "坐标数据",
+      "en": "Position",
+      "types": [
+        "CNC",
+        "Laser",
+        "Robot"
+      ]
+    },
+    {
+      "id": "readCurrentProgram",
+      "group": "program",
+      "ref": "2.6.4",
+      "zh": "当前运行的文件",
+      "en": "Running File",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "readLog",
+      "group": "program",
+      "ref": "2.5.1.11",
+      "zh": "日志信息",
+      "en": "Machine Log",
+      "types": [
+        "CNC",
+        "Laser",
+        "Robot"
+      ]
+    },
+    {
+      "id": "readFeedAndSpindle",
+      "group": "motion",
+      "ref": "2.5.1.8",
+      "zh": "进给转速数据",
+      "en": "Feed and Spindle",
+      "types": [
+        "CNC"
+      ]
+    },
+    {
+      "id": "readFeed",
+      "group": "motion",
+      "ref": "2.5.1.7",
+      "zh": "进给数据",
+      "en": "Feed",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "readLoad",
+      "group": "motion",
+      "ref": "2.5.1.10",
+      "zh": "负载数据",
+      "en": "Load",
+      "types": [
+        "CNC"
+      ]
+    },
+    {
+      "id": "readEnergyConsum",
+      "group": "motion",
+      "ref": "2.5.1.6",
+      "zh": "能耗数据",
+      "en": "Energy",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "readLaserPower",
+      "group": "motion",
+      "ref": "2.5.1.9",
+      "zh": "激光功率",
+      "en": "Laser Power",
+      "types": [
+        "Laser"
+      ]
+    },
+    {
+      "id": "readToolLife",
+      "group": "tooling",
+      "ref": "2.5.1.21",
+      "zh": "刀具寿命",
+      "en": "Tool Life",
+      "types": [
+        "CNC"
+      ]
+    },
+    {
+      "id": "readOffsetData",
+      "group": "tooling",
+      "ref": "2.5.1.12",
+      "zh": "读取刀补数据",
+      "en": "Read Offsets",
+      "types": [
+        "CNC"
+      ]
+    },
+    {
+      "id": "writeOffsetData",
+      "group": "tooling",
+      "ref": "2.5.1.14",
+      "zh": "写入刀补数据",
+      "en": "Write Offsets",
+      "types": [
+        "CNC"
+      ]
+    },
+    {
+      "id": "readPlcData",
+      "group": "tooling",
+      "ref": "2.5.1.18",
+      "zh": "读取 PLC 数据",
+      "en": "Read PLC Data",
+      "types": [
+        "CNC",
+        "Laser",
+        "Robot",
+        "PLC"
+      ]
+    },
+    {
+      "id": "writePlcData",
+      "group": "tooling",
+      "ref": "2.5.1.19",
+      "zh": "写入 PLC 数据",
+      "en": "Write PLC Data",
+      "types": [
+        "CNC",
+        "Laser",
+        "Robot",
+        "PLC"
+      ]
+    },
+    {
+      "id": "readProgramList",
+      "group": "dnc",
+      "ref": "2.6.1",
+      "zh": "读取文件列表",
+      "en": "List Files",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "receiveFileStream",
+      "group": "dnc",
+      "ref": "2.6.2",
+      "zh": "接收机台文件",
+      "en": "Receive File",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "sendFileStream",
+      "group": "dnc",
+      "ref": "2.6.5",
+      "zh": "发送文件至机台",
+      "en": "Send File",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "deleteFile",
+      "group": "dnc",
+      "ref": "2.6.8",
+      "zh": "删除机台文件",
+      "en": "Delete File",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "createDir",
+      "group": "dncDir",
+      "ref": "2.6.11",
+      "zh": "创建机台目录",
+      "en": "Create Directory",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "deleteDir",
+      "group": "dncDir",
+      "ref": "2.6.12",
+      "zh": "删除机台目录",
+      "en": "Delete Directory",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "selectProgram",
+      "group": "dncDir",
+      "ref": "2.6.14",
+      "zh": "选择程序",
+      "en": "Select Program",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    },
+    {
+      "id": "lockFileByRange",
+      "group": "dncDir",
+      "ref": "2.6.10",
+      "zh": "锁定程序编辑",
+      "en": "Lock Editing",
+      "types": [
+        "CNC",
+        "Laser"
+      ]
+    }
+  ],
+  "dataClasses": [
+    {
+      "id": "CNCStatus",
+      "types": [
+        "CNC"
+      ],
+      "interface": "readCNCStatus",
+      "ref": "1.2.4",
+      "zh": "机台状态",
+      "en": "Machine Status",
+      "fields": [
+        {
+          "id": "mode2",
+          "part": 1,
+          "zh": "手动模式选择",
+          "en": "Manual Mode Selection"
+        },
+        {
+          "id": "readyStatus",
+          "part": 1,
+          "zh": "准备就绪状态",
+          "en": "Ready Status"
+        },
+        {
+          "id": "alarmOnlyStatus",
+          "part": 1,
+          "zh": "警报状态（不含警告）",
+          "en": "Alarm Only Status"
+        },
+        {
+          "id": "emergencySetStatus",
+          "part": 1,
+          "zh": "急停设定状态",
+          "en": "Emergency Set Status"
+        },
+        {
+          "id": "signalLight",
+          "part": 1,
+          "zh": "信号灯",
+          "en": "Signal Lights",
+          "members": [
+            "lightColor1",
+            "lightStatus1",
+            "lightColor2",
+            "lightStatus2",
+            "lightColor3",
+            "lightStatus3",
+            "lightColor4",
+            "lightStatus4"
+          ]
+        }
+      ],
+      "sparse": true
+    },
+    {
+      "id": "TimeData",
+      "types": [
+        "CNC"
+      ],
+      "interface": "readTimeData",
+      "ref": "1.2.24",
+      "zh": "机台时间数据",
+      "en": "Machine Time Data",
+      "fields": [
+        {
+          "id": "cumulativePowerOnTime",
+          "part": 1,
+          "zh": "累计通电时间",
+          "en": "Cumulative Power-On Time",
+          "members": [
+            "cumulativePowerOnTimeMin",
+            "cumulativePowerOnTimeMs"
+          ]
+        },
+        {
+          "id": "powerOnTime",
+          "part": 1,
+          "zh": "当前通电时间",
+          "en": "Current Power-On Time",
+          "members": [
+            "powerOnTimeMin",
+            "powerOnTimeMs"
+          ]
+        },
+        {
+          "id": "cumulativeOperatingTime",
+          "part": 1,
+          "zh": "累计运行时间",
+          "en": "Cumulative Operating Time",
+          "members": [
+            "cumulativeOperatingTimeMin",
+            "cumulativeOperatingTimeMs"
+          ]
+        },
+        {
+          "id": "operatingTime",
+          "part": 1,
+          "zh": "当前运行时间",
+          "en": "Current Operating Time",
+          "members": [
+            "operatingTimeMin",
+            "operatingTimeMs"
+          ]
+        },
+        {
+          "id": "cumulativeCuttingTime",
+          "part": 1,
+          "zh": "累计加工（切削）时间",
+          "en": "Cumulative Cutting Time",
+          "members": [
+            "cumulativeCuttingTimeMin",
+            "cumulativeCuttingTimeMs"
+          ]
+        },
+        {
+          "id": "cuttingTime",
+          "part": 2,
+          "zh": "当前加工（切削）时间",
+          "en": "Current Cutting Time",
+          "members": [
+            "cuttingTimeMin",
+            "cuttingTimeMs"
+          ]
+        },
+        {
+          "id": "lastCycleTime",
+          "part": 2,
+          "zh": "上次循环时间",
+          "en": "Last Cycle Time",
+          "members": [
+            "lastCycleTimeMin",
+            "lastCycleTimeMs"
+          ]
+        },
+        {
+          "id": "currentCycleTime",
+          "part": 2,
+          "zh": "当前循环时间",
+          "en": "Current Cycle Time",
+          "members": [
+            "currentCycleTimeMin",
+            "currentCycleTimeMs"
+          ]
+        },
+        {
+          "id": "currentCuttingTime",
+          "part": 2,
+          "zh": "当前加工工件切削时间",
+          "en": "Current Workpiece Cutting Time",
+          "members": [
+            "currentCuttingTimeMin",
+            "currentCuttingTimeMs"
+          ]
+        },
+        {
+          "id": "remainingCycleTime",
+          "part": 2,
+          "zh": "剩余循环时间",
+          "en": "Remaining Cycle Time",
+          "members": [
+            "remainingCycleTimeMin",
+            "remainingCycleTimeMs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ToolLife",
+      "types": [
+        "CNC"
+      ],
+      "interface": "readToolLife",
+      "ref": "1.2.25",
+      "zh": "刀具寿命数据",
+      "en": "Tool Life Data",
+      "fields": [
+        {
+          "id": "count",
+          "part": 1,
+          "zh": "计数寿命",
+          "en": "Count Life",
+          "members": [
+            "countLimit",
+            "currentCount",
+            "prewarningCount"
+          ]
+        },
+        {
+          "id": "time",
+          "part": 1,
+          "zh": "计时寿命",
+          "en": "Time Life",
+          "members": [
+            "timeLimit",
+            "currentTime",
+            "prewarningTime"
+          ]
+        },
+        {
+          "id": "wear",
+          "part": 1,
+          "zh": "磨损寿命",
+          "en": "Wear Life",
+          "members": [
+            "wearLimit",
+            "currentWear",
+            "prewarningWear"
+          ]
+        },
+        {
+          "id": "rawToolIdentity",
+          "part": 1,
+          "zh": "刀具识别码与超时",
+          "en": "Tool ID and Overrun",
+          "members": [
+            "inventoryNum",
+            "rawTimeLimit1",
+            "rawTimeLimit2",
+            "rawOverTime"
+          ]
+        },
+        {
+          "id": "rawOverCount",
+          "part": 1,
+          "zh": "超出寿命［次］",
+          "en": "Life Exceeded [count]",
+          "members": [
+            "rawOverCount"
+          ]
+        },
+        {
+          "id": "rawPrewarningTime",
+          "part": 1,
+          "zh": "预警寿命［时间］",
+          "en": "Prewarning Life [time]",
+          "members": [
+            "rawPrewarningTime"
+          ]
+        }
+      ]
+    }
+  ],
+  "machineTypes": [
+    {
+      "id": "CNC",
+      "zh": "数控机床",
+      "en": "CNC Machine Tools",
+      "systems": [
+        {
+          "brandKey": "Bosunman",
+          "brand": {
+            "zh": "Bosunman 博尚",
+            "en": "Bosunman"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "BSK 系列",
+                "en": "BSK Series"
+              },
+              "modelNames": [
+                {
+                  "zh": "BSK系列串口转网口",
+                  "en": "BSK Series Serial over Ethernet"
+                },
+                {
+                  "zh": "BSK系列网口",
+                  "en": "BSK Series Ethernet"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "powerOnTime",
+                  "cumulativeOperatingTime",
+                  "operatingTime",
+                  "currentCycleTime"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "DF 系列",
+                "en": "DF Series"
+              },
+              "modelNames": [
+                {
+                  "zh": "DF系列串口转网口",
+                  "en": "DF Series Serial over Ethernet"
+                },
+                {
+                  "zh": "DF系列网口",
+                  "en": "DF Series Ethernet"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "operatingTime",
+                  "currentCycleTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Brother",
+          "brand": {
+            "zh": "Brother 兄弟",
+            "en": "Brother"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "TC系列",
+                "en": "TC Series"
+              },
+              "modelNames": [
+                {
+                  "zh": "TC系列",
+                  "en": "TC Series"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "operatingTime"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "S系列",
+                "en": "S Series"
+              },
+              "modelNames": [
+                {
+                  "zh": "S系列",
+                  "en": "S Series"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "y",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "operatingTime",
+                  "currentCycleTime",
+                  "currentCuttingTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time",
+                  "rawPrewarningTime"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "A00系列串口转网口",
+                "en": "A00 Series Serial over Ethernet"
+              },
+              "modelNames": [
+                {
+                  "zh": "A00系列串口转网口",
+                  "en": "A00 Series Serial over Ethernet"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "operatingTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Citizen",
+          "brand": {
+            "zh": "Citizen 西铁城",
+            "en": "Citizen"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "Mitsubishi 三菱",
+                "en": "Mitsubishi"
+              },
+              "modelNames": [
+                {
+                  "zh": "Mitsubishi 三菱",
+                  "en": "Mitsubishi"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "cumulativeCuttingTime",
+                  "currentCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Delta",
+          "brand": {
+            "zh": "Delta 台达",
+            "en": "Delta"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativeOperatingTime",
+                  "operatingTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Dmg Mori",
+          "brand": {
+            "zh": "Dmg Mori 德马吉森精机",
+            "en": "Dmg Mori"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "730BM",
+                "en": "730BM"
+              },
+              "modelNames": [
+                {
+                  "zh": "730BM",
+                  "en": "730BM"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "n",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "n",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": []
+              }
+            },
+            {
+              "models": {
+                "zh": "840D",
+                "en": "840D"
+              },
+              "modelNames": [
+                {
+                  "zh": "840D",
+                  "en": "840D"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "powerOnTime",
+                  "operatingTime",
+                  "cumulativeCuttingTime",
+                  "currentCycleTime"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "OPC UA",
+                "en": "OPC UA"
+              },
+              "modelNames": [
+                {
+                  "zh": "OPC UA",
+                  "en": "OPC UA"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "n",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "n",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [
+                  "signalLight"
+                ],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "currentCycleTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Fagor",
+          "brand": {
+            "zh": "Fagor 法格",
+            "en": "Fagor"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "8035M，8035T，8040M，8040T",
+                "en": "8035M, 8035T, 8040M, 8040T"
+              },
+              "modelNames": [
+                {
+                  "zh": "8035M",
+                  "en": "8035M"
+                },
+                {
+                  "zh": "8035T",
+                  "en": "8035T"
+                },
+                {
+                  "zh": "8040M",
+                  "en": "8040M"
+                },
+                {
+                  "zh": "8040T",
+                  "en": "8040T"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "currentCycleTime"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "8055M，8055T",
+                "en": "8055M, 8055T"
+              },
+              "modelNames": [
+                {
+                  "zh": "8055M",
+                  "en": "8055M"
+                },
+                {
+                  "zh": "8055T",
+                  "en": "8055T"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "currentCycleTime"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "8060L，8060M，8060T，8065M，8065T，8070L，8070M，8070T",
+                "en": "8060L, 8060M, 8060T, 8065M, 8065T, 8070L, 8070M, 8070T"
+              },
+              "modelNames": [
+                {
+                  "zh": "8060L",
+                  "en": "8060L"
+                },
+                {
+                  "zh": "8060M",
+                  "en": "8060M"
+                },
+                {
+                  "zh": "8060T",
+                  "en": "8060T"
+                },
+                {
+                  "zh": "8065M",
+                  "en": "8065M"
+                },
+                {
+                  "zh": "8065T",
+                  "en": "8065T"
+                },
+                {
+                  "zh": "8070L",
+                  "en": "8070L"
+                },
+                {
+                  "zh": "8070M",
+                  "en": "8070M"
+                },
+                {
+                  "zh": "8070T",
+                  "en": "8070T"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "powerOnTime",
+                  "currentCycleTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Fanuc",
+          "brand": {
+            "zh": "Fanuc 发那科",
+            "en": "Fanuc"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "0i-B，0i-C，15i，16i，16i-W，18i，18i-W，21i，Power Mate i-D，Power Mate i-H",
+                "en": "0i-B, 0i-C, 15i, 16i, 16i-W, 18i, 18i-W, 21i, Power Mate i-D, Power Mate i-H"
+              },
+              "modelNames": [
+                {
+                  "zh": "0i-B",
+                  "en": "0i-B"
+                },
+                {
+                  "zh": "0i-C",
+                  "en": "0i-C"
+                },
+                {
+                  "zh": "15i",
+                  "en": "15i"
+                },
+                {
+                  "zh": "16i",
+                  "en": "16i"
+                },
+                {
+                  "zh": "16i-W",
+                  "en": "16i-W"
+                },
+                {
+                  "zh": "18i",
+                  "en": "18i"
+                },
+                {
+                  "zh": "18i-W",
+                  "en": "18i-W"
+                },
+                {
+                  "zh": "21i",
+                  "en": "21i"
+                },
+                {
+                  "zh": "Power Mate i-D",
+                  "en": "Power Mate i-D"
+                },
+                {
+                  "zh": "Power Mate i-H",
+                  "en": "Power Mate i-H"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "y"
+              },
+              "fields": {
+                "CNCStatus": [
+                  "mode2"
+                ],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "cumulativeCuttingTime",
+                  "currentCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              },
+              "notes": {
+                "TimeData.currentCycleTime": {
+                  "zh": "程序结尾必须复位以清零",
+                  "en": "must be reset at the end of the program to clear"
+                },
+                "CNCStatus.mode2": {
+                  "zh": "仅 15，15i 型号",
+                  "en": "15 and 15i only"
+                }
+              }
+            },
+            {
+              "models": {
+                "zh": "0i-D，0i-F，30i，31i，32i，35i，Power Motion i-A",
+                "en": "0i-D, 0i-F, 30i, 31i, 32i, 35i, Power Motion i-A"
+              },
+              "modelNames": [
+                {
+                  "zh": "0i-D",
+                  "en": "0i-D"
+                },
+                {
+                  "zh": "0i-F",
+                  "en": "0i-F"
+                },
+                {
+                  "zh": "30i",
+                  "en": "30i"
+                },
+                {
+                  "zh": "31i",
+                  "en": "31i"
+                },
+                {
+                  "zh": "32i",
+                  "en": "32i"
+                },
+                {
+                  "zh": "35i",
+                  "en": "35i"
+                },
+                {
+                  "zh": "Power Motion i-A",
+                  "en": "Power Motion i-A"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "y",
+                "lockFileByRange": "y"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "cumulativeCuttingTime",
+                  "currentCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              },
+              "notes": {
+                "TimeData.currentCycleTime": {
+                  "zh": "程序结尾必须复位以清零",
+                  "en": "must be reset at the end of the program to clear"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Gsk",
+          "brand": {
+            "zh": "Gsk 广州数控",
+            "en": "Gsk"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "980，988",
+                "en": "980, 988"
+              },
+              "modelNames": [
+                {
+                  "zh": "980",
+                  "en": "980"
+                },
+                {
+                  "zh": "988",
+                  "en": "988"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "operatingTime",
+                  "cuttingTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "25i",
+                "en": "25i"
+              },
+              "modelNames": [
+                {
+                  "zh": "25i",
+                  "en": "25i"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "operatingTime",
+                  "cuttingTime"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "以太网，串口转网口",
+                "en": "Ethernet, Serial over Ethernet"
+              },
+              "modelNames": [
+                {
+                  "zh": "以太网",
+                  "en": "Ethernet"
+                },
+                {
+                  "zh": "串口转网口",
+                  "en": "Serial over Ethernet"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "operatingTime",
+                  "cuttingTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "986 V4.15",
+                "en": "986 V4.15"
+              },
+              "modelNames": [
+                {
+                  "zh": "986 V4.15",
+                  "en": "986 V4.15"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "n",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "operatingTime",
+                  "cuttingTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Haas",
+          "brand": {
+            "zh": "Haas 哈斯",
+            "en": "Haas"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型，串口",
+                "en": "General, Serial"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                },
+                {
+                  "zh": "串口",
+                  "en": "Serial"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "lastCycleTime",
+                  "currentCycleTime"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "MT-CONNECT",
+                "en": "MT-CONNECT"
+              },
+              "modelNames": [
+                {
+                  "zh": "MT-CONNECT",
+                  "en": "MT-CONNECT"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "n",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "n",
+                "readPlcData": "n",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "lastCycleTime",
+                  "currentCycleTime",
+                  "remainingCycleTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Heidenhain",
+          "brand": {
+            "zh": "Heidenhain 海德汉",
+            "en": "Heidenhain"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "TNC640，TNC640 DNC",
+                "en": "TNC640, TNC640 DNC"
+              },
+              "modelNames": [
+                {
+                  "zh": "TNC640",
+                  "en": "TNC640"
+                },
+                {
+                  "zh": "TNC640 DNC",
+                  "en": "TNC640 DNC"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime"
+                ],
+                "ToolLife": [
+                  "time",
+                  "rawToolIdentity"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "iTNC530 DNC",
+                "en": "iTNC530 DNC"
+              },
+              "modelNames": [
+                {
+                  "zh": "iTNC530 DNC",
+                  "en": "iTNC530 DNC"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime"
+                ],
+                "ToolLife": [
+                  "time",
+                  "rawToolIdentity"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Hnc",
+          "brand": {
+            "zh": "Hnc 华中数控",
+            "en": "Hnc"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "1.26.02",
+                "en": "1.26.02"
+              },
+              "modelNames": [
+                {
+                  "zh": "1.26.02",
+                  "en": "1.26.02"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "n",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": []
+              }
+            },
+            {
+              "models": {
+                "zh": "1.24",
+                "en": "1.24"
+              },
+              "modelNames": [
+                {
+                  "zh": "1.24",
+                  "en": "1.24"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "n",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": []
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "IO Module",
+          "brand": {
+            "zh": "IO 外接模块",
+            "en": "IO Module"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "研华 ADAM-6000",
+                "en": "ADVANTECH ADAM-6000"
+              },
+              "modelNames": [
+                {
+                  "zh": "研华 ADAM-6000",
+                  "en": "ADVANTECH ADAM-6000"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readCurrentToolNumber": "n",
+                "readTimeData": "n",
+                "readProgramInfo": "n",
+                "readProgramBlock": "n",
+                "readPosition": "n",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "n",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": []
+              }
+            },
+            {
+              "models": {
+                "zh": "有人 IO424T",
+                "en": "USR IO424T"
+              },
+              "modelNames": [
+                {
+                  "zh": "有人 IO424T",
+                  "en": "USR IO424T"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readCurrentToolNumber": "n",
+                "readTimeData": "n",
+                "readProgramInfo": "n",
+                "readProgramBlock": "n",
+                "readPosition": "n",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "n",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "n",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": []
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Jingdiao",
+          "brand": {
+            "zh": "Jingdiao 北京精雕",
+            "en": "Jingdiao"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "JD50",
+                "en": "JD50"
+              },
+              "modelNames": [
+                {
+                  "zh": "JD50",
+                  "en": "JD50"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativeOperatingTime",
+                  "operatingTime",
+                  "cuttingTime",
+                  "currentCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Kede",
+          "brand": {
+            "zh": "Kede 科德",
+            "en": "Kede"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "GNC62",
+                "en": "GNC62"
+              },
+              "modelNames": [
+                {
+                  "zh": "GNC62",
+                  "en": "GNC62"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "y",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "powerOnTime",
+                  "currentCycleTime",
+                  "remainingCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time",
+                  "wear"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Knd",
+          "brand": {
+            "zh": "Knd 凯恩帝",
+            "en": "Knd"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "V4.3.00b",
+                  "en": "V4.3.00b"
+                },
+                {
+                  "zh": "V5.1.00c",
+                  "en": "V5.1.00c"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "n",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [
+                  "readyStatus"
+                ],
+                "TimeData": [
+                  "cumulativeOperatingTime",
+                  "operatingTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Lanhao",
+          "brand": {
+            "zh": "Lanhao 蓝昊",
+            "en": "Lanhao"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "n",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "n",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [
+                  "emergencySetStatus"
+                ],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Lnc",
+          "brand": {
+            "zh": "Lnc 宝元",
+            "en": "Lnc"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "n",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "n",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [
+                  "alarmOnlyStatus",
+                  "emergencySetStatus"
+                ],
+                "TimeData": [
+                  "cumulativeCuttingTime",
+                  "currentCycleTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Lynuc",
+          "brand": {
+            "zh": "Lynuc 铼钠克",
+            "en": "Lynuc"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "operatingTime",
+                  "cuttingTime",
+                  "currentCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Makino",
+          "brand": {
+            "zh": "Makino 牧野",
+            "en": "Makino"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "y",
+                "lockFileByRange": "y"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "cumulativeCuttingTime",
+                  "currentCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              },
+              "notes": {
+                "TimeData.currentCycleTime": {
+                  "zh": "程序结尾必须复位以清零",
+                  "en": "must be reset at the end of the program to clear"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Mazak",
+          "brand": {
+            "zh": "Mazak 马扎克",
+            "en": "Mazak"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "MT-CONNECT",
+                "en": "MT-CONNECT"
+              },
+              "modelNames": [
+                {
+                  "zh": "MT-CONNECT",
+                  "en": "MT-CONNECT"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "n",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "cumulativeCuttingTime"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "640，Matrix",
+                "en": "640, Matrix"
+              },
+              "modelNames": [
+                {
+                  "zh": "640",
+                  "en": "640"
+                },
+                {
+                  "zh": "Matrix",
+                  "en": "Matrix"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "n",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "n",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "n",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [
+                  "emergencySetStatus"
+                ]
+              }
+            },
+            {
+              "models": {
+                "zh": "Smart，Smooth",
+                "en": "Smart, Smooth"
+              },
+              "modelNames": [
+                {
+                  "zh": "Smart",
+                  "en": "Smart"
+                },
+                {
+                  "zh": "Smooth",
+                  "en": "Smooth"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "powerOnTime",
+                  "cumulativeOperatingTime",
+                  "operatingTime",
+                  "cumulativeCuttingTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Mitsubishi",
+          "brand": {
+            "zh": "Mitsubishi 三菱",
+            "en": "Mitsubishi"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "C64",
+                  "en": "C64"
+                },
+                {
+                  "zh": "M70/M700 L系列",
+                  "en": "M70/M700 L Series"
+                },
+                {
+                  "zh": "M70/M700 M系列",
+                  "en": "M70/M700 M Series"
+                },
+                {
+                  "zh": "M80/M800 L系列",
+                  "en": "M80/M800 L Series"
+                },
+                {
+                  "zh": "M80/M800 M系列",
+                  "en": "M80/M800 M Series"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "cumulativeCuttingTime",
+                  "currentCycleTime"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Okuma",
+          "brand": {
+            "zh": "Okuma 大隈",
+            "en": "Okuma"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "P200L",
+                  "en": "P200L"
+                },
+                {
+                  "zh": "P200M",
+                  "en": "P200M"
+                },
+                {
+                  "zh": "P300L",
+                  "en": "P300L"
+                },
+                {
+                  "zh": "P300M",
+                  "en": "P300M"
+                },
+                {
+                  "zh": "P300S(LP)",
+                  "en": "P300S(LP)"
+                },
+                {
+                  "zh": "P300S(MP)",
+                  "en": "P300S(MP)"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "n",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "cumulativeOperatingTime",
+                  "cumulativeCuttingTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time",
+                  "wear"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Rexroth",
+          "brand": {
+            "zh": "Rexroth 力士乐",
+            "en": "Rexroth"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "OPC UA",
+                "en": "OPC UA"
+              },
+              "modelNames": [
+                {
+                  "zh": "OPC UA",
+                  "en": "OPC UA"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "n",
+                "readOffsetData": "n",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [
+                  "mode2"
+                ],
+                "TimeData": [
+                  "operatingTime",
+                  "currentCycleTime"
+                ]
+              },
+              "notes": {
+                "CNCStatus.mode2": {
+                  "zh": "副模式",
+                  "en": "secondary mode"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Siemens",
+          "brand": {
+            "zh": "Siemens 西门子",
+            "en": "Siemens"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "802D，808D，828D，840D sl，ONE，OPC UA",
+                "en": "802D, 808D, 828D, 840D sl, ONE, OPC UA"
+              },
+              "modelNames": [
+                {
+                  "zh": "802D",
+                  "en": "802D"
+                },
+                {
+                  "zh": "808D",
+                  "en": "808D"
+                },
+                {
+                  "zh": "828D",
+                  "en": "828D"
+                },
+                {
+                  "zh": "840D sl",
+                  "en": "840D sl"
+                },
+                {
+                  "zh": "ONE",
+                  "en": "ONE"
+                },
+                {
+                  "zh": "OPC UA",
+                  "en": "OPC UA"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "powerOnTime",
+                  "operatingTime",
+                  "cumulativeCuttingTime",
+                  "currentCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time",
+                  "wear",
+                  "rawOverCount"
+                ]
+              },
+              "notes": {
+                "ToolLife.rawOverCount": {
+                  "zh": "自定义模块方式",
+                  "en": "user-defined module"
+                }
+              }
+            },
+            {
+              "models": {
+                "zh": "810D(winXP)，810D(winNT)，840D(winXP)，840D(winNT)",
+                "en": "810D(winXP), 810D(winNT), 840D(winXP), 840D(winNT)"
+              },
+              "modelNames": [
+                {
+                  "zh": "810D(winXP)",
+                  "en": "810D(winXP)"
+                },
+                {
+                  "zh": "810D(winNT)",
+                  "en": "810D(winNT)"
+                },
+                {
+                  "zh": "840D(winXP)",
+                  "en": "840D(winXP)"
+                },
+                {
+                  "zh": "840D(winNT)",
+                  "en": "840D(winNT)"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "powerOnTime",
+                  "operatingTime",
+                  "cumulativeCuttingTime",
+                  "currentCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time",
+                  "wear",
+                  "rawOverCount"
+                ]
+              },
+              "notes": {
+                "ToolLife.rawOverCount": {
+                  "zh": "自定义模块方式",
+                  "en": "user-defined module"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Syntec",
+          "brand": {
+            "zh": "Syntec 新代",
+            "en": "Syntec"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "n",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "y",
+                "lockFileByRange": "n"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "powerOnTime",
+                  "operatingTime",
+                  "cumulativeCuttingTime",
+                  "lastCycleTime",
+                  "currentCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time"
+                ]
+              },
+              "notes": {
+                "TimeData.operatingTime": {
+                  "zh": "当前程序的自动运行时间",
+                  "en": "auto run time of the current program"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Mock",
+          "brand": {
+            "zh": "模拟机台",
+            "en": "Mock"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "y",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "y",
+                "readFeedAndSpindle": "y",
+                "readFeed": "n",
+                "readLoad": "y",
+                "readEnergyConsum": "y",
+                "readToolLife": "y",
+                "readOffsetData": "y",
+                "writeOffsetData": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "y",
+                "lockFileByRange": "y"
+              },
+              "fields": {
+                "CNCStatus": [],
+                "TimeData": [
+                  "cumulativePowerOnTime",
+                  "powerOnTime",
+                  "cumulativeOperatingTime",
+                  "operatingTime",
+                  "cumulativeCuttingTime",
+                  "cuttingTime",
+                  "lastCycleTime",
+                  "currentCycleTime",
+                  "currentCuttingTime",
+                  "remainingCycleTime"
+                ],
+                "ToolLife": [
+                  "count",
+                  "time",
+                  "wear"
+                ]
+              },
+              "notes": {
+                "ToolLife.count": {
+                  "zh": "ToolNum 1~10",
+                  "en": "ToolNum 1-10"
+                },
+                "ToolLife.time": {
+                  "zh": "ToolNum 11~20",
+                  "en": "ToolNum 11-20"
+                },
+                "ToolLife.wear": {
+                  "zh": "ToolNum 21~30",
+                  "en": "ToolNum 21-30"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Laser",
+      "zh": "激光焊接机",
+      "en": "Laser Welders",
+      "systems": [
+        {
+          "brandKey": "Hans",
+          "brand": {
+            "zh": "Hans 大族",
+            "en": "Hans"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readCurrentToolNumber": "n",
+                "readTimeData": "n",
+                "readProgramInfo": "y",
+                "readProgramBlock": "n",
+                "readPosition": "y",
+                "readCurrentProgram": "n",
+                "readLog": "n",
+                "readFeed": "y",
+                "readEnergyConsum": "n",
+                "readLaserPower": "y",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "n",
+                "receiveFileStream": "n",
+                "sendFileStream": "n",
+                "deleteFile": "n",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              }
+            },
+            {
+              "models": {
+                "zh": "OPC UA",
+                "en": "OPC UA"
+              },
+              "modelNames": [
+                {
+                  "zh": "OPC UA",
+                  "en": "OPC UA"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readCurrentToolNumber": "n",
+                "readTimeData": "n",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "n",
+                "readFeed": "y",
+                "readEnergyConsum": "n",
+                "readLaserPower": "n",
+                "readPlcData": "y",
+                "writePlcData": "n",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "y",
+                "deleteDir": "y",
+                "selectProgram": "n",
+                "lockFileByRange": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Mock",
+          "brand": {
+            "zh": "模拟机台",
+            "en": "Mock"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "y",
+                "readCurrentToolNumber": "n",
+                "readTimeData": "y",
+                "readProgramInfo": "y",
+                "readProgramBlock": "y",
+                "readPosition": "y",
+                "readCurrentProgram": "y",
+                "readLog": "y",
+                "readFeed": "y",
+                "readEnergyConsum": "n",
+                "readLaserPower": "y",
+                "readPlcData": "y",
+                "writePlcData": "y",
+                "readProgramList": "y",
+                "receiveFileStream": "y",
+                "sendFileStream": "y",
+                "deleteFile": "y",
+                "createDir": "n",
+                "deleteDir": "n",
+                "selectProgram": "n",
+                "lockFileByRange": "y"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Robot",
+      "zh": "机器人",
+      "en": "Robots",
+      "systems": [
+        {
+          "brandKey": "ABB",
+          "brand": {
+            "zh": "ABB",
+            "en": "ABB"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "RobotWare 6.0",
+                "en": "RobotWare 6.0"
+              },
+              "modelNames": [
+                {
+                  "zh": "RobotWare 6.0",
+                  "en": "RobotWare 6.0"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readProgramInfo": "y",
+                "readPosition": "y",
+                "readLog": "y",
+                "readPlcData": "y",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Fanuc",
+          "brand": {
+            "zh": "Fanuc 发那科",
+            "en": "Fanuc"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readProgramInfo": "y",
+                "readPosition": "y",
+                "readLog": "y",
+                "readPlcData": "y",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Knd",
+          "brand": {
+            "zh": "Knd 凯恩帝",
+            "en": "Knd"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readProgramInfo": "y",
+                "readPosition": "y",
+                "readLog": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Kuka",
+          "brand": {
+            "zh": "Kuka 库卡",
+            "en": "Kuka"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "机侧代理",
+                "en": "Controller-Side Proxy"
+              },
+              "modelNames": [
+                {
+                  "zh": "机侧代理",
+                  "en": "Controller-Side Proxy"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readProgramInfo": "y",
+                "readPosition": "y",
+                "readLog": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Mock",
+          "brand": {
+            "zh": "模拟机台",
+            "en": "Mock"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readProgramInfo": "y",
+                "readPosition": "y",
+                "readLog": "y",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Efort",
+          "brand": {
+            "zh": "Efort 埃夫特",
+            "en": "Efort"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "ER7BC10",
+                "en": "ER7BC10"
+              },
+              "support": {
+                "readCNCStatus": "d",
+                "readAlarm": "d",
+                "readCount": "n",
+                "readProgramInfo": "d",
+                "readPosition": "d",
+                "readLog": "n",
+                "readPlcData": "n",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Estun",
+          "brand": {
+            "zh": "Estun 埃斯顿",
+            "en": "Estun"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "support": {
+                "readCNCStatus": "d",
+                "readAlarm": "d",
+                "readCount": "n",
+                "readProgramInfo": "d",
+                "readPosition": "d",
+                "readLog": "n",
+                "readPlcData": "n",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Hyundai",
+          "brand": {
+            "zh": "Hyundai 现代",
+            "en": "Hyundai"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "support": {
+                "readCNCStatus": "d",
+                "readAlarm": "d",
+                "readCount": "n",
+                "readProgramInfo": "d",
+                "readPosition": "d",
+                "readLog": "n",
+                "readPlcData": "n",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Yamaha",
+          "brand": {
+            "zh": "Yamaha 雅马哈",
+            "en": "Yamaha"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "RCX",
+                "en": "RCX"
+              },
+              "support": {
+                "readCNCStatus": "d",
+                "readAlarm": "d",
+                "readCount": "n",
+                "readProgramInfo": "d",
+                "readPosition": "d",
+                "readLog": "n",
+                "readPlcData": "n",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Yaskawa",
+          "brand": {
+            "zh": "Yaskawa 安川",
+            "en": "Yaskawa"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "YRC1000，YRC 高速以太网",
+                "en": "YRC1000, YRC High-speed Ethernet"
+              },
+              "support": {
+                "readCNCStatus": "d",
+                "readAlarm": "d",
+                "readCount": "n",
+                "readProgramInfo": "d",
+                "readPosition": "d",
+                "readLog": "n",
+                "readPlcData": "n",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PLC",
+      "zh": "PLC 与其它设备",
+      "en": "PLCs and Other Devices",
+      "systems": [
+        {
+          "brandKey": "Standard Protocols",
+          "brand": {
+            "zh": "标准协议",
+            "en": "Standard Protocols"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "Modbus TCP",
+                  "en": "Modbus TCP"
+                },
+                {
+                  "zh": "Modbus RTU",
+                  "en": "Modbus RTU"
+                },
+                {
+                  "zh": "Modbus ASCII over TCP",
+                  "en": "Modbus ASCII over TCP"
+                },
+                {
+                  "zh": "Modbus RTU over TCP",
+                  "en": "Modbus RTU over TCP"
+                },
+                {
+                  "zh": "OPC UA",
+                  "en": "OPC UA"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "IO Module",
+          "brand": {
+            "zh": "IO 外接模块",
+            "en": "IO Module"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "研华 ADAM-6000",
+                "en": "ADVANTECH ADAM-6000"
+              },
+              "modelNames": [
+                {
+                  "zh": "研华 ADAM-6000",
+                  "en": "ADVANTECH ADAM-6000"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            },
+            {
+              "models": {
+                "zh": "有人 IO424T",
+                "en": "USR IO424T"
+              },
+              "modelNames": [
+                {
+                  "zh": "有人 IO424T",
+                  "en": "USR IO424T"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "y",
+                "readCount": "n",
+                "readPlcData": "n",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Jingtuo",
+          "brand": {
+            "zh": "Jingtuo 劲拓",
+            "en": "Jingtuo"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "JTE-800",
+                "en": "JTE-800"
+              },
+              "modelNames": [
+                {
+                  "zh": "JTE-800",
+                  "en": "JTE-800"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Zhenhuaxing",
+          "brand": {
+            "zh": "Zhenhuaxing 振华兴",
+            "en": "Zhenhuaxing"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "VCTA-Z5ML",
+                "en": "VCTA-Z5ML"
+              },
+              "modelNames": [
+                {
+                  "zh": "VCTA-Z5ML",
+                  "en": "VCTA-Z5ML"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Allen-Bradley",
+          "brand": {
+            "zh": "Allen-Bradley 罗克韦尔",
+            "en": "Allen-Bradley"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "1756",
+                  "en": "1756"
+                },
+                {
+                  "zh": "1769",
+                  "en": "1769"
+                },
+                {
+                  "zh": "1783",
+                  "en": "1783"
+                },
+                {
+                  "zh": "Micro800系列",
+                  "en": "Micro800 Series"
+                },
+                {
+                  "zh": "SLC系列",
+                  "en": "SLC Series"
+                },
+                {
+                  "zh": "其它",
+                  "en": "Others"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Delta",
+          "brand": {
+            "zh": "Delta 台达",
+            "en": "Delta"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "AS系列",
+                  "en": "AS Series"
+                },
+                {
+                  "zh": "DVP系列",
+                  "en": "DVP Series"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Keyence",
+          "brand": {
+            "zh": "Keyence 基恩士",
+            "en": "Keyence"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "KV700",
+                  "en": "KV700"
+                },
+                {
+                  "zh": "KV300",
+                  "en": "KV300"
+                },
+                {
+                  "zh": "KV Nano系列",
+                  "en": "KV Nano Series"
+                },
+                {
+                  "zh": "其它",
+                  "en": "Others"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Melsec",
+          "brand": {
+            "zh": "Melsec 三菱",
+            "en": "Melsec"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "Q系列",
+                  "en": "Q Series"
+                },
+                {
+                  "zh": "L系列",
+                  "en": "L Series"
+                },
+                {
+                  "zh": "以太网模块QJ71E71",
+                  "en": "Ethernet Module QJ71E71"
+                },
+                {
+                  "zh": "以太网模块QJ71EIP71",
+                  "en": "Ethernet Module QJ71EIP71"
+                },
+                {
+                  "zh": "A系列",
+                  "en": "A Series"
+                },
+                {
+                  "zh": "R系列",
+                  "en": "R Series"
+                },
+                {
+                  "zh": "FX2N系列",
+                  "en": "FX2N Series"
+                },
+                {
+                  "zh": "FX3G系列",
+                  "en": "FX3G Series"
+                },
+                {
+                  "zh": "FX3S系列",
+                  "en": "FX3S Series"
+                },
+                {
+                  "zh": "FX3U系列",
+                  "en": "FX3U Series"
+                },
+                {
+                  "zh": "FX5U系列",
+                  "en": "FX5U Series"
+                },
+                {
+                  "zh": "其它",
+                  "en": "Others"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Omron",
+          "brand": {
+            "zh": "Omron 欧姆龙",
+            "en": "Omron"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "NJ系列",
+                  "en": "NJ Series"
+                },
+                {
+                  "zh": "NX系列",
+                  "en": "NX Series"
+                },
+                {
+                  "zh": "NY系列",
+                  "en": "NY Series"
+                },
+                {
+                  "zh": "其它",
+                  "en": "Others"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Panasonic",
+          "brand": {
+            "zh": "Panasonic 松下",
+            "en": "Panasonic"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Simatic",
+          "brand": {
+            "zh": "Simatic 西门子",
+            "en": "Simatic"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "S7-200",
+                  "en": "S7-200"
+                },
+                {
+                  "zh": "S7-200 Smart",
+                  "en": "S7-200 Smart"
+                },
+                {
+                  "zh": "S7-300",
+                  "en": "S7-300"
+                },
+                {
+                  "zh": "S7-400",
+                  "en": "S7-400"
+                },
+                {
+                  "zh": "S7-1200",
+                  "en": "S7-1200"
+                },
+                {
+                  "zh": "S7-1500",
+                  "en": "S7-1500"
+                },
+                {
+                  "zh": "其它",
+                  "en": "Others"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Yongwei",
+          "brand": {
+            "zh": "Yongwei 咏为",
+            "en": "Yongwei"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "modelNames": [
+                {
+                  "zh": "General",
+                  "en": "General"
+                },
+                {
+                  "zh": "通用协议转以太网",
+                  "en": "General over TCP"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "n"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Mock",
+          "brand": {
+            "zh": "模拟机台",
+            "en": "Mock"
+          },
+          "rows": [
+            {
+              "models": {
+                "zh": "通用型",
+                "en": "General"
+              },
+              "modelNames": [
+                {
+                  "zh": "通用型",
+                  "en": "General"
+                }
+              ],
+              "support": {
+                "readCNCStatus": "y",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "y",
+                "writePlcData": "y"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Beckhoff",
+          "brand": {
+            "zh": "Beckhoff 倍福",
+            "en": "Beckhoff"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "ADS（TwinCAT2，TwinCAT3）",
+                "en": "ADS (TwinCAT2, TwinCAT3)"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Cimon",
+          "brand": {
+            "zh": "Cimon 西蒙",
+            "en": "Cimon"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "所有型号",
+                "en": "All models"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Fatek",
+          "brand": {
+            "zh": "Fatek 永宏",
+            "en": "Fatek"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "编程口协议（串口，串口转网口）",
+                "en": "Programming port (serial, serial over Ethernet)"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Fuji",
+          "brand": {
+            "zh": "Fuji 富士",
+            "en": "Fuji"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "SPB，SPH",
+                "en": "SPB, SPH"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "GE",
+          "brand": {
+            "zh": "GE 通用电气",
+            "en": "GE"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "SRTP",
+                "en": "SRTP"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Inovance",
+          "brand": {
+            "zh": "Inovance 汇川",
+            "en": "Inovance"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "AM400，AM400_800，AC800，H3U，XP，H5U，Easy 系列",
+                "en": "AM400, AM400_800, AC800, H3U, XP, H5U, Easy Series"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "LSIS",
+          "brand": {
+            "zh": "LSIS LS 产电",
+            "en": "LSIS"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "XGB（Cnet，CPU，Fast Enet）",
+                "en": "XGB (Cnet, CPU, Fast Enet)"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "MegMeet",
+          "brand": {
+            "zh": "MegMeet 麦格米特",
+            "en": "MegMeet"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "MC80，MC100，MC200，MC200E，MC280",
+                "en": "MC80, MC100, MC200, MC200E, MC280"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Toyopuc",
+          "brand": {
+            "zh": "Toyopuc 丰田工机",
+            "en": "Toyopuc"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "计算机链接（2PORT-EFR 模块）",
+                "en": "Computer Link (2PORT-EFR module)"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Vigor",
+          "brand": {
+            "zh": "Vigor 丰炜",
+            "en": "Vigor"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "VS 系列",
+                "en": "VS Series"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Xinje",
+          "brand": {
+            "zh": "Xinje 信捷",
+            "en": "Xinje"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "XC，XD，XL 系列",
+                "en": "XC, XD, XL Series"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Yaskawa",
+          "brand": {
+            "zh": "Yaskawa 安川",
+            "en": "Yaskawa"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "Memobus",
+                "en": "Memobus"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        },
+        {
+          "brandKey": "Yokogawa",
+          "brand": {
+            "zh": "Yokogawa 横河",
+            "en": "Yokogawa"
+          },
+          "planned": true,
+          "rows": [
+            {
+              "models": {
+                "zh": "Link",
+                "en": "Link"
+              },
+              "support": {
+                "readCNCStatus": "n",
+                "readAlarm": "n",
+                "readCount": "n",
+                "readPlcData": "d",
+                "writePlcData": "d"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

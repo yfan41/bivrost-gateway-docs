@@ -113,11 +113,37 @@
   font-size: var(--sl-text-sm);
 }
 
-/* CNC support matrix ✓/✗ (Starlight's theme-aware semantic colors). */
-.sl-markdown-content td .sup-y {
+/* Support tables ✓/◐/✗ (Starlight's theme-aware semantic colors). The three
+   glyphs differ in shape as well as hue, so the tables still read on a
+   monochrome print and for readers who cannot separate red from green.
+   This block is kept identical in bivrost-gateway-docs and
+   bivrost-gateway-protocol-docs; the two books render different blocks from the
+   same src/data/device-support.json. */
+.sl-markdown-content :is(td, th) .sup-y {
   color: var(--sl-color-green);
   font-weight: 600;
 }
-.sl-markdown-content td .sup-n {
+.sl-markdown-content :is(td, th) .sup-d {
+  color: var(--sl-color-orange);
+  font-weight: 600;
+}
+.sl-markdown-content :is(td, th) .sup-n {
   color: var(--sl-color-red);
+}
+.sl-markdown-content :is(td, th) :is(.sup-y, .sup-d, .sup-n) {
+  white-space: nowrap;
+}
+
+/* Generated support tables. The mark columns are centred by the Markdown
+   alignment row, so these rules only buy back width: seven columns of interface
+   names do not fit Starlight's content column at body size, and letting a long
+   name such as readCurrentToolNumber wrap at its <wbr> points is far better than
+   the horizontal scroll the table would otherwise need. The field tables of
+   1.4.6 have the same shape — a long 系统［型号］ column and up to six mark
+   columns — so they get the same treatment. */
+.sl-markdown-content :is(.support-matrix, .support-fields) table {
+  font-size: var(--sl-text-xs);
+}
+.sl-markdown-content :is(.support-matrix, .support-fields) :is(th, td) {
+  padding: 0.35rem 0.4rem;
 }

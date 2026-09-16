@@ -21,6 +21,10 @@ check and refuses to publish while it fails.
 - UI wording comes from the in-repo Angular app: `bivrost.iot/Bivrost.IOT.Gateway/web/public/i18n/{zh,en}/*.json`.
 - `scripts/check-firmware-sync.mjs` is kept byte-identical with the protocol docs repo. Change both copies
   together; put per-repo differences in `firmware-sync.json`.
+- So are `src/data/device-support.json`, `scripts/lib/render-support.mjs` and
+  `scripts/render-support-tables.mjs`, which generate 4.5. 支持设备 here and 1.4. 接口支持说明 in the protocol
+  docs from the same data. Nothing derives that data from the gateway sources — it is hand-written, and the
+  outer repo's `CLAUDE.md` requires updating it alongside interface and field changes. See README「支持设备表」.
 
 ## VERSION file
 

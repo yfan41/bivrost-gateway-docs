@@ -151,7 +151,7 @@
   @page {
     size: A4;
     /* Chromium clips displayHeaderFooter templates below ~15mm; keep headroom.
-       The 14mm side margins are what the 7-column CNC matrix needs. */
+       14mm side margins keep the changelog and command-format tables readable. */
     margin: 18mm 14mm;
   }
 
@@ -347,17 +347,15 @@
     background: var(--sl-color-gray-6);
   }
 
-  /* 一、简介 — 7-column CNC support matrix; column 1 carries the vendor name. */
-  #sec-index table {
-    font-size: 8pt;
+  /*
+   * 4.5. 支持设备 — 系统 / 型号 / 状态. The model column carries a long
+   * comma-separated list, so it takes whatever the other two do not need.
+   */
+  #sec-reference-supported-devices :is(th, td):nth-child(1) {
+    width: 24%;
   }
-  #sec-index :is(th, td) {
-    padding: 0.2rem 0.3rem;
-    text-align: center;
-  }
-  #sec-index :is(th, td):first-child {
-    width: 30%;
-    text-align: start;
+  #sec-reference-supported-devices :is(th, td):nth-child(3) {
+    width: 10%;
   }
 
   /* 版本变更历史记录 — 4 columns, column 3 is long prose with <br />. */

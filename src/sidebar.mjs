@@ -140,6 +140,11 @@ export function getSidebar(version) {
           translations: { en: '4.4. MCP Service' },
           slug: 'reference/mcp',
         },
+        {
+          label: '4.5. 支持设备',
+          translations: { en: '4.5. Supported Devices' },
+          slug: 'reference/supported-devices',
+        },
       ],
     },
     {
