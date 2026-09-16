@@ -12,13 +12,15 @@ The layout adapts to the screen size: the Machine List and the Group List may be
 
 Click a machine row in the Machine List to open the Machine Monitor page, which shows the machine's live data (Main Program, Sub-program, current Alarm Level, Current Tool No, spindle load, feedrate, Feedrate Override, spindle speed, Spindle Override and so on) together with the Count, Availability, status statistics and Alarm History for the last 24 hours.
 
+The **Current Count** card at the top shows the live count for the current counting period, labelled "Current period" beneath the value. The period mode (Scheduled Reset or Time Window) and its reset times come from [3.5.5. Count Monitoring Settings](/en/usage/tasks/#count-monitor); the page no longer repeats them.
+
 The ‹ button in the top-left corner returns to the Monitor home page.
 
 ![Machine Monitor](/img/manual/en/monitor/machine-monitor.png)
 
 ## 3.11.2. Group Monitor (Group Overview) {#group-monitor}
 
-Click a group row in the Group List to open the Group Monitor page, which presents the group's live data as an Andon wall (Availability, the number of machines in each status, a status tile for every machine, alarm severity and time, and so on) along with the availability and status trend charts. For groups with a large amount of data, the trend charts take a moment to load.
+Click a group row in the Group List to open the Group Monitor page, which presents the group's live data as an Andon wall (Availability, the number of machines in each status, a status card for every machine, alarm severity and time, and so on) along with the availability and status trend charts. For groups with a large amount of data, the trend charts take a moment to load.
 
 The ‹ button in the top-left corner returns to the Monitor home page.
 

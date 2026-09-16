@@ -4,7 +4,12 @@ title: "Changelog"
 
 | Version | Change Date | Description | Release Date |
 | --- | --- | --- | --- |
+| 1.19.7.42 | 20260916 | 1. "[3.11.1. Machine Monitor](/en/usage/monitor/#machine-monitor)" now says the "Current Count" card is labelled "Current period", and drops the note about the "Monitor" permission it used to need; the Monitor pages and earlier changelog entries now call these cells cards throughout. | 20260916 |
+| 1.19.7.41 | 20260915 | 1. Documented the "Current Count" card and its counting period in "[3.11.1. Machine Monitor](/en/usage/monitor/#machine-monitor)". | 20260915 |
+| 1.19.7.40 | 20260915 | 1. Added the CNC system Makino to the supported machine list. | 20260915 |
+| 1.19.7.38 | 20260915 | 1. Documented the PToStringArray and GetActiveBits functions in "[4.2.4.3. $POST$ Post-processing Functions](/en/reference/command-format/#post-functions)". | 20260915 |
 | 1.19.7.37 | 20260909 | 1. Renamed the home page's "Network" row to "Internet" and documented how its states are decided, in "[3.2. Home](/en/usage/home/)". | 20260909 |
+| 1.19.7.31 | 20260915 | 1. "[3.12.2.2. Upgrade Gateway](/en/usage/settings/#upgrade-gateway)" now notes that an upload can be cancelled while in progress. | 20260915 |
 | 1.19.7.29 | 20260901 | 1. Added "[3.2.2.1. Queue Backlog and Discarding It](/en/usage/home/#queue-backlog)", covering the data-pipeline backlog display, the "Recovering" status, and the new button that discards queued data. | 20260901 |
 | 1.19.7.24 | 20260827 | 1. The MCP service now has a switch and is disabled by default; it must be enabled under [3.6.8. MCP Settings](/en/usage/communication/#mcp) before it can be reached. Updated "[4.4. MCP Service](/en/reference/mcp/)" accordingly. | 20260827 |
 | 1.19.7.22 | 20260819 | 1. Added "[4.3. Cluster Failover (Optional)](/en/reference/cluster/)", covering how the shared standby pool works, how to build it, failover and switch-back behaviour, forced takeover, and what is not replicated. | 20260820 |

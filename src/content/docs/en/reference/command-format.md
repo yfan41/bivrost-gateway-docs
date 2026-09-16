@@ -290,6 +290,29 @@ $POST$ToUInt32(PGetSubBytes(___PLC_TrawData0_data___, 166, 4, true), 0)$POST$|Al
 $POST$UTF8.GetString(PGetSubBytes(___PLC_TrawData0_data___, 170, 28))$POST$|Station 1 Part QR Code;
 ```
 
+**PToStringArray**
+
+```
+PToStringArray(item)
+```
+
+Converts an input of any type into a string array: for an array or collection, the output holds the ToString() result of each element (a null element becomes an empty string); for a single value, the output is a one-element array holding that value's ToString() result.
+
+**GetActiveBits**
+
+```
+GetActiveBits(bytes, offset[, bytes2, offset2, ...])
+```
+
+| Input | Type | Description |
+| --- | --- | --- |
+| bytes | Byte[] | (Required) The Byte array to inspect |
+| offset | Int32 | (Required) Offset added to each index |
+
+Finds every Bit set to 1 in the Byte array and outputs a string array of "index + offset". Bit j (counted from the least significant bit) of Byte i has index i×8+j, with both i and j starting at 0. Arguments must come in pairs; when several pairs are passed, their results are appended in order. This is typically used to turn a PLC alarm bit area into a list of alarm numbers.
+
+For example, with bytes = `{0x05, 0x80}` and offset = 100, bits 0 and 2 of Byte 0 and bit 7 of Byte 1 are set, so the output is `{"100", "102", "115"}`.
+
 ### 4.2.4.4. $MOCK$ Mock Task {#mock}
 
 A $MOCK$ task returns the requested number of dummy values of the requested type. The returned values carry no real meaning; they exist only for a few special situations. Post-processing cannot stand on its own — it must follow the mandatory part of a PLC task. In some cases, however, the post-processing needs a different interval from the data read, or for other reasons has to be set up as a task of its own. A $MOCK$ task covers those cases.

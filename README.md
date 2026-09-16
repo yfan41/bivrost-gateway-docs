@@ -1,6 +1,6 @@
 # 彼络物联网关 说明书（文档站）
 
-基于 [Starlight](https://starlight.astro.build/)（Astro）的《彼络物联网关 说明书》在线文档，内容对应说明书 **v1.19.7.22**，截图取自当前版本的网关 Web 管理页面。
+基于 [Starlight](https://starlight.astro.build/)（Astro）的《彼络物联网关 说明书》在线文档，内容对应说明书 **v1.19.7.42**，截图取自当前版本的网关 Web 管理页面。
 
 站点提供简体中文与英文两个版本：简体中文在根路径（`/gateway/`），英文在 `/gateway/en/`，右上角语言切换器可在两者之间跳转。
 
@@ -48,6 +48,26 @@ pnpm build && pnpm pdf                  # 生成 dist/bivrost-gateway-manual-{zh
 - `src/components/SocialIcons.astro` — 顶栏「下载 PDF」按钮（Starlight 在顶栏与移动端菜单都会渲染此组件）
 - `src/pages/print.astro`、`src/pages/en/print.astro` — 整本合并的打印页
 - `scripts/generate-pdf.mjs` — 用 headless Chromium 把打印页导出为 PDF
+
+## 固件版本同步
+
+本站记录网关固件（`bivrost.iot` 仓库根目录 `Changelog.md`）中与说明书相关的变化。为保证两边一致，每个固件版本都要在根目录 `firmware-sync.json` 中登记本站的处理结论：
+
+| status | 含义 |
+| --- | --- |
+| `done` | 已更新正文，且 `src/content/docs/changelog.md` 与 `en/changelog.md` 都有该版本的行 |
+| `n/a` | 该版本对说明书无影响，须在 `note` 中写明原因 |
+| `pending` | 需要更新但尚未完成，检查不通过 |
+
+**判断标准**：界面与操作、配置项、部署与升级步骤、支持的设备与系统、用户权限的变化，都属于本站（`done`）；只影响接口路径、参数、返回字段或错误码的变化属于《通讯协议》；纯内部修复且界面与操作不变的记为 `n/a`。拿不准时按 `done` 处理。
+
+**流程**：
+
+1. 固件发布后，读取 `Changelog.md` 顶部新的 `## Version` 段，在 `firmware-sync.json` 中登记。
+2. 对 `done` 的版本修改中英文正文，在两个 changelog 表格顶部加行；把 `VERSION` 升到该固件版本，并同步本文件首段的版本号（`pnpm build` 前置的 `check-version` 会校验两者一致）。
+3. `pnpm check:firmware` 通过后在本仓库提交，再由主仓库更新子模块指针。主仓库的 `publish-gateway.ps1` 发布前会运行同一检查，不通过即中止发布。
+
+`scripts/check-firmware-sync.mjs` 默认读取 `../../Changelog.md`（作为 `bivrost.iot` 子模块检出时的位置），也可用 `--changelog <路径>` 指定；找不到时跳过，因此单独克隆本仓库或 CI 构建不受影响。`baseline` 之前的版本不检查。该脚本与《通讯协议》仓库中的同名脚本保持一致，两站差异只写在各自的 `firmware-sync.json` 中。
 
 ## 写作约定
 

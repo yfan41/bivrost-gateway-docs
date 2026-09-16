@@ -290,6 +290,29 @@ $POST$ToUInt32(PGetSubBytes(___PLC_TrawData0_data___, 166, 4, true), 0)$POST$|�
 $POST$UTF8.GetString(PGetSubBytes(___PLC_TrawData0_data___, 170, 28))$POST$|工位1工件二维码;
 ```
 
+**PToStringArray**
+
+```
+PToStringArray(item)
+```
+
+将任意类型的输入转为字符串数组：输入为数组或集合时，输出其中每个元素的 ToString() 结果（空元素输出为空字符串）；输入为单个值时，输出只含该值 ToString() 结果的单元素数组。
+
+**GetActiveBits**
+
+```
+GetActiveBits(bytes, offset[, bytes2, offset2, ...])
+```
+
+| 输入量 | 类型 | 说明 |
+| --- | --- | --- |
+| bytes | Byte[] | （必需）要检查的 Byte 数组 |
+| offset | Int32 | （必需）加到序号上的偏移量 |
+
+找出 Byte 数组中所有值为 1 的 Bit，输出"序号 + offset"组成的字符串数组。第 i 个 Byte 的第 j 位（从低位起，i、j 均从 0 计）的序号为 i×8+j。参数须成对出现，传入多组时结果依次追加。常用于把 PLC 中的报警位区转换为报警号列表。
+
+例如 bytes = `{0x05, 0x80}`，offset = 100：第 0 个 Byte 的第 0、2 位与第 1 个 Byte 的第 7 位为 1，输出 `{"100", "102", "115"}`。
+
 ### 4.2.4.4. $MOCK$ 模拟任务 {#mock}
 
 $MOCK$ 任务返回指定数量与类型的虚拟值，返回值没有实际意义，仅用于一些特殊场合。如后处理不可单独出现，必须出现在一个 PLC 任务的必须部分之后。然而有些情况下后处理与数据读取需要的间隔不同，或者其他原因，需要把后处理单独设置为一个任务。这种情况下可以使用 $MOCK$ 任务。

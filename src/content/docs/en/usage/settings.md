@@ -98,7 +98,7 @@ The "Gateway" card provides the Upload License and Upgrade Gateway functions; th
 
 **Upgrade Gateway…** in the "Gateway" card uploads an upgrade package (.bpkg) to update the gateway software.
 
-The procedure is similar to "Upload License": contact support to obtain the upgrade package, save it on your computer, then click the **Upgrade Gateway…** button to upload it. An upload progress dialog appears — please wait a moment. Once the package has uploaded successfully, a confirmation dialog appears; click **Confirm** to start the upgrade. Wait about 10 seconds, then refresh the Home page and check the gateway version under Gateway Details.
+The procedure is similar to "Upload License": contact support to obtain the upgrade package, save it on your computer, then click the **Upgrade Gateway…** button to upload it. An upload progress dialog appears — please wait a moment; you can click **Cancel** at any time to abort the upload. Once the package has uploaded successfully, a confirmation dialog appears; click **Confirm** to start the upgrade. Wait about 10 seconds, then refresh the Home page and check the gateway version under Gateway Details.
 
 
 ### 3.12.2.3. Local Caching {#local-cache}
